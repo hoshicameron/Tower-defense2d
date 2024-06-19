@@ -11,7 +11,7 @@ namespace GameSystemsCookbook
     /// 
     // This SceneBootstrapper is adapted from here:
     // https://github.com/Unity-Technologies/com.unity.multiplayer.samples.coop/blob/main/Assets/Scripts/Editor/SceneBootstrapper.cs
-
+/*
     [InitializeOnLoad]
     public class SceneBootstrapper
     {
@@ -138,4 +138,5 @@ namespace GameSystemsCookbook
         //}
 
     }
+    */
 }
