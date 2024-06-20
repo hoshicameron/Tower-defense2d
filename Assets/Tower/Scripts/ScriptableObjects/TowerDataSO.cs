@@ -10,6 +10,6 @@ namespace Tower.Scripts
          [field: SerializeField] public float FireRate { get; private set; } = 5;
          [field:SerializeField] public Sprite HeadSprite { get; private set; }
          [field:SerializeField] public Sprite BaseSprite { get; private set; }
-         
+         [field:SerializeField]public LayerMask DetectionLayer { get; private set; }
     }
 }

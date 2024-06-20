@@ -12,3 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04ae92946fea4cb4b6e19180ef1e1b7a, type: 3}
   m_Name: BulletTowerData
   m_EditorClassIdentifier: 
+  <TurnSpeed>k__BackingField: 10
+  <Range>k__BackingField: 5
+  <FireRate>k__BackingField: 5
+  <HeadSprite>k__BackingField: {fileID: 21300000, guid: df3158204b0d1be45963d56cd6922e10, type: 3}
+  <BaseSprite>k__BackingField: {fileID: 21300000, guid: f74a5d99d7257d143acfe6a0844f70ca, type: 3}

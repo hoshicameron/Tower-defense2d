@@ -15,8 +15,9 @@ namespace Tower.Scripts
 
         [Header("Shooting")] 
         [SerializeField] private ShooterBase shooterBase;
+        [SerializeField] private Sensor sensor;
 
-        public Transform Target { get; set; }
+        private Transform target;
         private bool isShooting;
         private Coroutine shootRoutine;
 
@@ -31,35 +32,43 @@ namespace Tower.Scripts
             if (bodyRenderer is not null)
                 bodyRenderer.sprite = towerDataSo.BaseSprite;
             rotator.Initialize(head, towerDataSo.TurnSpeed);
+            sensor.Initialize(transform,towerDataSo.Range,towerDataSo.DetectionLayer,EnemyDetected);
+        }
+
+        private void EnemyDetected(Transform detectedTarget)
+        {
+            target = detectedTarget;
         }
 
         private void Update()
         {
+            sensor.Detect();
+            
+            if(target is null)
+                return;
+            
             RotateTowardsTarget();
             HandleShooting();
         }
 
         private void HandleShooting()
         {
-            if (CanShoot() && !isShooting)
+            if (isShooting)
+            {
                 shootRoutine = StartCoroutine(shooterBase.ShootRoutine(1 / towerDataSo.FireRate));
-            else if(!CanShoot() && isShooting)
+                isShooting = true;
+            }
+            else if (isShooting)
+            {
                 StopCoroutine(shootRoutine);
+                isShooting = false;
+            }
         }
 
-        private bool CanShoot()
-        {
-            if (Target is null)
-                return false;
-            return Vector2.Distance(Target.position, transform.position) <= towerDataSo.Range;
-        }
-
+       
         private void RotateTowardsTarget()
         {
-            if (Target != null)
-            {
-                rotator.Rotate(Target, Time.deltaTime);
-            }
+            rotator.Rotate(target, Time.deltaTime);
         }
     }
 }
