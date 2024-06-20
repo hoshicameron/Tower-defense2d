@@ -1,4 +1,8 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections.Generic;
+using Tower.Scripts.StateMachine;
+using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Tower.Scripts
 {
@@ -14,12 +18,17 @@ namespace Tower.Scripts
         [SerializeField] private RotatorBase rotator;
 
         [Header("Shooting")] 
-        [SerializeField] private ShooterBase shooterBase;
-        [SerializeField] private Sensor sensor;
+        [SerializeField] private ShooterBase gun;
+        [field: SerializeField] public Sensor Sensor { get; private set; }
+        [SerializeField] private List<Transform> projectileSpawnPoint;
+        [field:Header("States")]
+        [SerializeField] public TowerState idleState;
+        [SerializeField] public TowerState shootState;
+        [SerializeField] public TowerState rotateState;
 
-        private Transform target;
         private bool isShooting;
         private Coroutine shootRoutine;
+        private TowerState currentState;
 
         private void Start()
         {
@@ -27,48 +36,58 @@ namespace Tower.Scripts
         }
         private void Initialize()
         {
+            SetupRenderers();
+            rotator.Initialize(head, towerDataSo.TurnSpeed);
+            Sensor.Initialize(transform,towerDataSo.Range,towerDataSo.DetectionLayer, _ => { });
+            gun.Initialize(projectileSpawnPoint);
+            ChangeToIdleState();
+        }
+
+        public void SetupRenderers()
+        {
             if (headRenderer is not null)
                 headRenderer.sprite = towerDataSo.HeadSprite;
             if (bodyRenderer is not null)
                 bodyRenderer.sprite = towerDataSo.BaseSprite;
-            rotator.Initialize(head, towerDataSo.TurnSpeed);
-            sensor.Initialize(transform,towerDataSo.Range,towerDataSo.DetectionLayer,EnemyDetected);
-        }
-
-        private void EnemyDetected(Transform detectedTarget)
-        {
-            target = detectedTarget;
         }
 
         private void Update()
         {
-            sensor.Detect();
-            
-            if(target is null)
-                return;
-            
-            RotateTowardsTarget();
-            HandleShooting();
+            Sensor.Detect();
+            currentState.Update(this);
         }
 
-        private void HandleShooting()
+        private void ChangeState(TowerState newState)
         {
-            if (isShooting)
-            {
-                shootRoutine = StartCoroutine(shooterBase.ShootRoutine(1 / towerDataSo.FireRate));
-                isShooting = true;
-            }
-            else if (isShooting)
-            {
+            currentState?.Exit(this);
+            currentState = newState;
+            currentState.Enter(this);
+        }
+
+        public void ChangeToIdleState() => ChangeState(idleState);
+        public void ChangeToShootState() => ChangeState(shootState);
+        public void ChangeToRotateState() => ChangeState(rotateState);
+
+        public void StartShooting() => shootRoutine = StartCoroutine(gun.ShootRoutine(1 / towerDataSo.FireRate));
+        public void StopShooting()
+        {
+            if(shootRoutine != null)
                 StopCoroutine(shootRoutine);
-                isShooting = false;
-            }
         }
 
-       
-        private void RotateTowardsTarget()
+        public void RotateTowardsTarget()
         {
-            rotator.Rotate(target, Time.deltaTime);
+            if(Sensor.Target == null)   return;
+            rotator.Rotate(Sensor.Target, Time.deltaTime);
+        }
+
+        public bool IsFacingTarget() => rotator.IsFacingTarget(Sensor.Target);
+
+        private void OnDrawGizmosSelected()
+        {
+            if (towerDataSo == null) return;
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(transform.position,towerDataSo.Range);
         }
     }
 }

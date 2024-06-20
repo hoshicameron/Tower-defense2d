@@ -78,7 +78,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 2, y: 2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
@@ -135,6 +135,12 @@ MonoBehaviour:
   bodyRenderer: {fileID: 4991232339360143092}
   head: {fileID: 4599096905794694542}
   rotator: {fileID: 11400000, guid: 95aa84a7c3b69ee47a64a263ec387157, type: 2}
+  gun: {fileID: 0}
+  <Sensor>k__BackingField: {fileID: 11400000, guid: a5d84db8d08df6d4596fd6392c979dc2, type: 2}
+  projectileSpawnPoint: []
+  idleState: {fileID: 11400000, guid: 29cba76190c8e404a93a0fccfd6c9dec, type: 2}
+  shootState: {fileID: 11400000, guid: 65f82b15457a8c14e8cd72ab9e7eac5a, type: 2}
+  rotateState: {fileID: 11400000, guid: 33db9d81a9f5e734c8b6518df4eafa1e, type: 2}
 --- !u!1 &6861497225829475333
 GameObject:
   m_ObjectHideFlags: 0
@@ -213,7 +219,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 2, y: 2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0

@@ -6,6 +6,7 @@ namespace Tower.Scripts
     
     public abstract class RotatorBase : ScriptableObject
     {
+        [SerializeField] private float angleTolerance = 10f;
         protected Transform head;
         protected float turnSpeed;
         
@@ -16,6 +17,14 @@ namespace Tower.Scripts
         }
 
         public abstract void Rotate(Transform target,float deltaTime);
+
+        public bool IsFacingTarget(Transform target)
+        {
+            Vector2 direction = target.position - head.position;
+            direction.Normalize();
+
+            return Vector2.Angle(head.forward, direction) <= angleTolerance;
+        }
 
         
     }

@@ -21,6 +21,11 @@ namespace Tower.Scripts
                 onEnemyDetected?.Invoke(target);
             }
         }
+        
+        private void OnEnable()
+        {
+            target = null;
+        }
 
         public void Initialize(Transform point,float range,LayerMask layerMask, Action<Transform> enemyDetected)
         {
@@ -32,28 +37,43 @@ namespace Tower.Scripts
 
         public void Detect()
         {
-            if(target is not null && IsTargetWithinRange() )
+            if(HasTargetWithinRange())
                 return;
             
-            var hits = Physics2D.OverlapCircleAll(detectionPoint.position, detectionRadius, targetLayerMask); // Check for overlaps within radius and layer
+            var hits = Physics2D.OverlapCircleAll(detectionPoint.position, detectionRadius, targetLayerMask);
 
-            if (hits.Length <= 0) return;
-            Transform closestEnemy = null;
-            var closestDistance = Mathf.Infinity;
-            foreach (var hit in hits)
+            if (hits.Length > 0)
             {
-                var distance = Vector2.Distance(detectionPoint.position, hit.transform.position);
-                if (!(distance < closestDistance)) continue;
-                closestEnemy = hit.transform;
-                closestDistance = distance;
+                Transform closestEnemy = null;
+                var closestDistance = Mathf.Infinity;
+                foreach (var hit in hits)
+                {
+                    var distance = Vector2.Distance(detectionPoint.position, hit.transform.position);
+                    if (!(distance < closestDistance)) continue;
+                    closestEnemy = hit.transform;
+                    closestDistance = distance;
+                }
+
+                if (closestEnemy != null)
+                {
+                    Target = closestEnemy;
+                }
             }
-
-            if (closestEnemy != null)
+            else
             {
-                Target = closestEnemy;
+                target = null;
             }
         }
         
-        private bool IsTargetWithinRange()=> Vector2.Distance(Target.position, detectionPoint.position) <= detectionRadius;
+        private bool HasTargetWithinRange()
+        {
+            if (Target == null) return false;
+            return Vector2.Distance(Target.position, detectionPoint.position) <= detectionRadius;
+        }
+
+        public bool CanShoot() => HasTargetWithinRange();
+
+        
+
     }
 }
