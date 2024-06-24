@@ -8,7 +8,7 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Enemy
   - Water
   - UI
   - 
@@ -43,4 +43,7 @@ TagManager:
     locked: 0
   - name: Tower
     uniqueID: 2701948823
+    locked: 0
+  - name: Projectile
+    uniqueID: 1048530629
     locked: 0
