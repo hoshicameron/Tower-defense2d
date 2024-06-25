@@ -7,7 +7,7 @@ namespace Modules.TowerModule.SubModules.WeaponModule.Scripts.Internal.Scriptabl
     public class WeaponDataSO : ScriptableObject
     {
         [field:SerializeField] public float TurnSpeed { get; private set; } = 10.0f;
-        [field:SerializeField] public float FireRate { get; private set; } = 5;
+        [field:SerializeField] public float DelayBetweenShoots { get; private set; } = 5;
         [field:SerializeField] public Projectile ProjectilePrefab { get; private set; }
         [field:SerializeField] public Sprite Sprite { get; private set; }
     }

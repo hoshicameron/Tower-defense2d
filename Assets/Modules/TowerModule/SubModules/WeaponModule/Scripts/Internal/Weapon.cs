@@ -19,6 +19,8 @@ namespace Modules.TowerModule.SubModules.WeaponModule.Scripts.Internal
         private Spawner projectileSpawner;
         private Coroutine shootRoutine;
 
+        public bool IsShooting { get; private set; }
+
         private void Awake()
         {
             if (spriteRenderer == null)
@@ -56,14 +58,21 @@ namespace Modules.TowerModule.SubModules.WeaponModule.Scripts.Internal
         private bool IsFacingTarget() => target != null && rotator.IsFacingTarget(target);
         public void SetTarget(Transform newTarget) => target = newTarget;
         public void RemoveTarget() => target = null;
-        private void StartShooting() => shootRoutine ??= StartCoroutine(projectileSpawner.ShootRoutine(target, 1 / weaponDataSo.FireRate));
+        private void StartShooting()
+        {
+            if(IsShooting)  return;
+            shootRoutine ??= StartCoroutine(projectileSpawner.ShootRoutine(target, weaponDataSo.DelayBetweenShoots));
+            IsShooting = true;
+        }
 
         private void StopShooting()
         {
+            if(!IsShooting) return;
             if (shootRoutine == null) return;
             
             StopCoroutine(shootRoutine);
             shootRoutine = null;
+            IsShooting = false;
         }
 
         private void OnValidate()

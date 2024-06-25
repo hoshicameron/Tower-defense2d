@@ -34,10 +34,15 @@ namespace Modules.TowerModule.SubModules.WeaponModule.Scripts.Internal.Projectil
             this.target = target;
             mover = (Mover)ScriptableObject.CreateInstance(movingType.GetType());
             mover.Initialize(target, transform, projectileDataSo.Speed);
+            
             sensor = (SensorBase)ScriptableObject.CreateInstance(sensorType.GetType());
             sensor.Initialize(collider,projectileDataSo.DetectionLayer,Collide);
-            rotator = (RotatorBase)ScriptableObject.CreateInstance(rotatorType.GetType());
-            rotator.Initialize(transform,projectileDataSo.RotationSpeed);
+
+            if (rotatorType != null)
+            {
+                rotator = (RotatorBase)ScriptableObject.CreateInstance(rotatorType.GetType());
+                rotator.Initialize(transform,projectileDataSo.RotationSpeed);
+            }
         }
         private void Collide(GameObject collider)
         {
