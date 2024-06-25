@@ -1,0 +1,16 @@
+{
+    "name": "TowerBaseMoudle",
+    "rootNamespace": "",
+    "references": [
+        "GUID:956ccc65c8540364fa4e0bea87e4d149"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

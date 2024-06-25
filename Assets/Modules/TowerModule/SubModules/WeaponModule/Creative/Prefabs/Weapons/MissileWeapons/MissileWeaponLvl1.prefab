@@ -1,0 +1,160 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2594082576358230569
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7705041793349966951}
+  m_Layer: 0
+  m_Name: MissileSpawnPoint1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7705041793349966951
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2594082576358230569}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.22, y: 0.52, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6729572766853241244}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3175850728566377440
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 791401426040395998}
+  m_Layer: 0
+  m_Name: MissileSpawnPoint2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &791401426040395998
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3175850728566377440}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.19, y: 0.52, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6729572766853241244}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &6960864415003565315
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2508560586195563472, guid: 68bfdfa8270999845be218f26c6d43e6, type: 3}
+      propertyPath: m_Name
+      value: MissileWeapon
+      objectReference: {fileID: 0}
+    - target: {fileID: 3826140810939711435, guid: 68bfdfa8270999845be218f26c6d43e6, type: 3}
+      propertyPath: rotatorType
+      value: 
+      objectReference: {fileID: 11400000, guid: e09317f120f84b84382e849c97a15a85, type: 2}
+    - target: {fileID: 3826140810939711435, guid: 68bfdfa8270999845be218f26c6d43e6, type: 3}
+      propertyPath: weaponDataSo
+      value: 
+      objectReference: {fileID: 11400000, guid: 9b574bcbf100a88409960013aea28fd8, type: 2}
+    - target: {fileID: 3826140810939711435, guid: 68bfdfa8270999845be218f26c6d43e6, type: 3}
+      propertyPath: projectileSpawnPositions.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3826140810939711435, guid: 68bfdfa8270999845be218f26c6d43e6, type: 3}
+      propertyPath: projectileSpawnPositions.Array.data[0]
+      value: 
+      objectReference: {fileID: 7705041793349966951}
+    - target: {fileID: 3826140810939711435, guid: 68bfdfa8270999845be218f26c6d43e6, type: 3}
+      propertyPath: projectileSpawnPositions.Array.data[1]
+      value: 
+      objectReference: {fileID: 791401426040395998}
+    - target: {fileID: 4466950194484724895, guid: 68bfdfa8270999845be218f26c6d43e6, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4466950194484724895, guid: 68bfdfa8270999845be218f26c6d43e6, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4466950194484724895, guid: 68bfdfa8270999845be218f26c6d43e6, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4466950194484724895, guid: 68bfdfa8270999845be218f26c6d43e6, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4466950194484724895, guid: 68bfdfa8270999845be218f26c6d43e6, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4466950194484724895, guid: 68bfdfa8270999845be218f26c6d43e6, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4466950194484724895, guid: 68bfdfa8270999845be218f26c6d43e6, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4466950194484724895, guid: 68bfdfa8270999845be218f26c6d43e6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4466950194484724895, guid: 68bfdfa8270999845be218f26c6d43e6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4466950194484724895, guid: 68bfdfa8270999845be218f26c6d43e6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5798617794516551685, guid: 68bfdfa8270999845be218f26c6d43e6, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 8ba8f1079abb2a243a85783a1b793498, type: 3}
+    - target: {fileID: 5798617794516551685, guid: 68bfdfa8270999845be218f26c6d43e6, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 4466950194484724895, guid: 68bfdfa8270999845be218f26c6d43e6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7705041793349966951}
+    - targetCorrespondingSourceObject: {fileID: 4466950194484724895, guid: 68bfdfa8270999845be218f26c6d43e6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 791401426040395998}
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 68bfdfa8270999845be218f26c6d43e6, type: 3}
+--- !u!4 &6729572766853241244 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4466950194484724895, guid: 68bfdfa8270999845be218f26c6d43e6, type: 3}
+  m_PrefabInstance: {fileID: 6960864415003565315}
+  m_PrefabAsset: {fileID: 0}
