@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: BulletDataLevel4
   m_EditorClassIdentifier: 
   <LifeTime>k__BackingField: 5
-  <Speed>k__BackingField: 5
+  <Speed>k__BackingField: 10
   <Damage>k__BackingField: 11
-  <Range>k__BackingField: 0.25
+  <RotationSpeed>k__BackingField: 0
   <DetectionLayer>k__BackingField:
     serializedVersion: 2
     m_Bits: 8
