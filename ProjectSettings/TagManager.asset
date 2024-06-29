@@ -41,6 +41,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Details
+    uniqueID: 1278991531
+    locked: 0
+  - name: Path
+    uniqueID: 2067082879
+    locked: 0
   - name: Tower
     uniqueID: 2701948823
     locked: 0
