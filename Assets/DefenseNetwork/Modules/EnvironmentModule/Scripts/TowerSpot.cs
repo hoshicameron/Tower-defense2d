@@ -1,7 +1,6 @@
 using GameSystemsCookbook;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.Serialization;
 
 namespace DefenseNetwork.Modules.EnvironmentModule.Scripts
 {
@@ -14,7 +13,7 @@ namespace DefenseNetwork.Modules.EnvironmentModule.Scripts
         [Header("Events")]
         [SerializeField] public UnityEvent onTowerSpotSelected;
         
-        private void OnMouseDown()
+        private void OnMouseUp()
         {
             onTowerSpotSelected?.Invoke();
         }
@@ -24,6 +23,7 @@ namespace DefenseNetwork.Modules.EnvironmentModule.Scripts
             modifyPointsEventChannel.RaiseEvent(-cost);
             towerTypeEventChannel.RaiseEvent(towerType);
             towerPositionEventChannel.RaiseEvent(transform.position);
+            Destroy(gameObject);
         }
     }
 }

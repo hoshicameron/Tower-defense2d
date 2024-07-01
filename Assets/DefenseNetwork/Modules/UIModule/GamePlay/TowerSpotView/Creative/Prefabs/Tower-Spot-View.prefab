@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6973015822925131205}
   - component: {fileID: 7420622641428265593}
   - component: {fileID: 2523728190132751242}
+  - component: {fileID: 8261307168301390227}
   m_Layer: 0
   m_Name: Tower-Spot-Panel
   m_TagString: Untagged
@@ -77,6 +78,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!225 &8261307168301390227
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2064648827693862027}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &4122916046582598876
 GameObject:
   m_ObjectHideFlags: 0
@@ -241,7 +254,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &8288562131139437053
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -272,14 +285,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerSelectionChannel: {fileID: 11400000, guid: f0f85dda4b51b294595ad618bfd4f842, type: 2}
-  towerPanel: {fileID: 6973015822925131205}
+  towerSpotCanvas: {fileID: 8261307168301390227}
   towerDeployPanel: {fileID: 9007928957381173075}
   closeButton: {fileID: 6722290062688056701}
   towerDeployButtonPrefab: {fileID: 6296930891899719767, guid: bec55e6178519dc4c9b1694589f8397a, type: 3}
   towerSpotDataSo: {fileID: 11400000, guid: d7ceb2ab7f4e1ce4088ea9a14329f911, type: 2}
   onTowerDeployButtonClicked:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: DefenseNetwork.Modules.EnvironmentModule.Scripts.TowerSpot,
+          EnvironmentModule
+        m_MethodName: DeployTower
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &2574891976704542907
 PrefabInstance:
   m_ObjectHideFlags: 0

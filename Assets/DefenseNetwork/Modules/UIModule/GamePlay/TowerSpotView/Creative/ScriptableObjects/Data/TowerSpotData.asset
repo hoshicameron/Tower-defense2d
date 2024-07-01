@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: TowerSpotData
   m_EditorClassIdentifier: 
   <AvailableTowers>k__BackingField:
-  - name: Bullet Tower
-    DeployCost: 0
-    TowerSprite: {fileID: 0}
+  - name: BulletTower
+    DeployCost: 80
+    TowerSprite: {fileID: 21300000, guid: 668f8c795642312468997e9e42cbeda5, type: 3}
     Type: 0
-  - name: 
-    DeployCost: 0
-    TowerSprite: {fileID: 0}
-    Type: 0
+  - name: MissileTower
+    DeployCost: 100
+    TowerSprite: {fileID: 21300000, guid: 8ba8f1079abb2a243a85783a1b793498, type: 3}
+    Type: 1

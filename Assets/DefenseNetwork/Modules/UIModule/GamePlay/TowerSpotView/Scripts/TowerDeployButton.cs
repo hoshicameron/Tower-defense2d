@@ -35,16 +35,18 @@ namespace DefenseNetwork.Modules.UIModule.GamePlay.TowerSpotView.Scripts
         {
             pointUpdateEventChannel.OnEventRaised -= PointUpdated;
         }
+        
+        private void PointUpdated(int point)
+        {
+            button.interactable = towerDeployCost <= point;
+        }
 
         private void Start()
         {
             button.onClick.AddListener(()=>onClick?.Invoke((int)towerDeployType, int.Parse(costText.text)));
         }
 
-        private void PointUpdated(int point)
-        {
-            button.interactable = towerDeployCost >= point;
-        }
+        
 
         public void UpdateUI(Sprite towerSprite, int cost, TowerType towerType)
         {

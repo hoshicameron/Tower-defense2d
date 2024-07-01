@@ -2,6 +2,7 @@
 using GameSystemsCookbook;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace DefenseNetwork.Modules.UIModule.GamePlay.TowerSpotView.Scripts
@@ -10,9 +11,10 @@ namespace DefenseNetwork.Modules.UIModule.GamePlay.TowerSpotView.Scripts
     {
         [Header("Event Channel")]
         [SerializeField] private GameObjectEventChannelSO towerSelectionChannel;
+        
         [Space]
         [Header("UI")]
-        [SerializeField] private RectTransform towerPanel;
+        [SerializeField] private CanvasGroup towerSpotCanvas;
         [SerializeField] private RectTransform towerDeployPanel;
         [SerializeField] private Button closeButton;
         [SerializeField] private TowerDeployButton towerDeployButtonPrefab;
@@ -71,11 +73,18 @@ namespace DefenseNetwork.Modules.UIModule.GamePlay.TowerSpotView.Scripts
             }
         }
         
-        private void HideTowerSpotPanel() => towerPanel.gameObject.SetActive(false);
-        
+        private void HideTowerSpotPanel()
+        {
+            towerSpotCanvas.alpha = 0;
+            towerSpotCanvas.interactable = false;
+            towerSpotCanvas.blocksRaycasts = false;
+        }
+
         public void ShowSpotTowerPanel()
         {
-            towerPanel.gameObject.SetActive(true);
+            towerSpotCanvas.alpha = 1;
+            towerSpotCanvas.interactable = true;
+            towerSpotCanvas.blocksRaycasts = true;
             towerSelectionChannel.RaiseEvent(gameObject);
         }
     }
