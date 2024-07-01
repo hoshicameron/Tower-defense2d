@@ -20,7 +20,7 @@ namespace DefenseNetwork.Modules.UIModule.GamePlay.TowerSpotView.Scripts
         private TowerType towerDeployType;
         private int towerDeployCost;
 
-        public event Action<int, int> onClick;
+        public event Action<TowerType> onClick;
         private void Awake()
         {
             button = GetComponent<Button>();
@@ -43,7 +43,7 @@ namespace DefenseNetwork.Modules.UIModule.GamePlay.TowerSpotView.Scripts
 
         private void Start()
         {
-            button.onClick.AddListener(()=>onClick?.Invoke((int)towerDeployType, int.Parse(costText.text)));
+            button.onClick.AddListener(()=>onClick?.Invoke(towerDeployType));
         }
 
         

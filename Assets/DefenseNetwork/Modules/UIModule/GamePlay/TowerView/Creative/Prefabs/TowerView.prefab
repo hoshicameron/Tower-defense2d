@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3636564288947809857}
   - component: {fileID: 414594918095438131}
   - component: {fileID: 3271291823885122975}
+  - component: {fileID: 3276335944569961479}
   m_Layer: 0
   m_Name: Tower-Panel
   m_TagString: Untagged
@@ -78,6 +79,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!225 &3276335944569961479
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1477349291545232353}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &2161889642931209020
 GameObject:
   m_ObjectHideFlags: 0
@@ -194,11 +207,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerSelectionChannel: {fileID: 11400000, guid: 3412f1b6749d63247a2dc9c82bf28f51, type: 2}
-  towerPanel: {fileID: 3636564288947809857}
+  towerSpotCanvas: {fileID: 3276335944569961479}
   closeButton: {fileID: 5107133939514799290}
-  upgradeButton: {fileID: 8508494035637411104}
   sellButton: {fileID: 4251092982708289594}
-  upgradeCostText: {fileID: 393681092513677553}
+  upgradeButton: {fileID: 1312474489186738869}
   onUpgradeButtonPressed:
     m_PersistentCalls:
       m_Calls: []
@@ -415,15 +427,15 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4a49e55011a94da4993b74cec19f5225, type: 3}
---- !u!114 &393681092513677553 stripped
+--- !u!114 &1312474489186738869 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4123461171905097944, guid: 4a49e55011a94da4993b74cec19f5225, type: 3}
+  m_CorrespondingSourceObject: {fileID: 3348708143909098140, guid: 4a49e55011a94da4993b74cec19f5225, type: 3}
   m_PrefabInstance: {fileID: 4345930521467170857}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Script: {fileID: 11500000, guid: 154f31fc0eb8430da32878e5391e6c57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!224 &7270464745401961663 stripped
@@ -431,17 +443,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 6388982667479317654, guid: 4a49e55011a94da4993b74cec19f5225, type: 3}
   m_PrefabInstance: {fileID: 4345930521467170857}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &8508494035637411104 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5358130127016733961, guid: 4a49e55011a94da4993b74cec19f5225, type: 3}
-  m_PrefabInstance: {fileID: 4345930521467170857}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &7664936255636516099
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -91,7 +91,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60f03e554593ea14d95d8a214bc2302d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pointEventChannel: {fileID: 11400000, guid: 73a97d96c1cf48f4ca168109486d272a, type: 2}
+  modifyPointEventChannel: {fileID: 11400000, guid: 73a97d96c1cf48f4ca168109486d272a, type: 2}
+  updatePointEventChannel: {fileID: 11400000, guid: e97ec824434d0a9469b008e729900865, type: 2}
   towerDataSo: {fileID: 0}
   onTowerSelected:
     m_PersistentCalls:
@@ -125,6 +126,22 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  onPointUpdated:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7232514766127736689}
+        m_TargetAssemblyTypeName: DefenseNetwork.Modules.UIModule.GamePlay.TowerView.Scripts.TowerView,
+          TowerUIModule
+        m_MethodName: SetUpgradeButtonInteractable
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &2479242317968723014
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -133,6 +150,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4485822031340200079}
     m_Modifications:
+    - target: {fileID: 1694910333307991406, guid: cfd2d30dd65a80b49bc9ee2ab540712d, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2161889642931209020, guid: cfd2d30dd65a80b49bc9ee2ab540712d, type: 3}
       propertyPath: m_Name
       value: TowerView

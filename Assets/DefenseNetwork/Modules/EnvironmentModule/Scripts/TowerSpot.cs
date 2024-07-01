@@ -8,8 +8,8 @@ namespace DefenseNetwork.Modules.EnvironmentModule.Scripts
     {
         [Header("Channel")] 
         [SerializeField] private IntEventChannelSO modifyPointsEventChannel;
-        [SerializeField] private IntEventChannelSO towerTypeEventChannel;
-        [SerializeField] private Vector2EventChannelSO towerPositionEventChannel;
+        [SerializeField] private Vector2EventChannelSO missileTowerDeployPositionEventChannel;
+        [SerializeField] private Vector2EventChannelSO bulletDeployPositionEventChannel;
         [Header("Events")]
         [SerializeField] public UnityEvent onTowerSpotSelected;
         
@@ -18,12 +18,20 @@ namespace DefenseNetwork.Modules.EnvironmentModule.Scripts
             onTowerSpotSelected?.Invoke();
         }
 
-        public void DeployTower(int towerType, int cost)
+        public void DeployMissileTower(int cost)
         {
             modifyPointsEventChannel.RaiseEvent(-cost);
-            towerTypeEventChannel.RaiseEvent(towerType);
-            towerPositionEventChannel.RaiseEvent(transform.position);
+            missileTowerDeployPositionEventChannel.RaiseEvent(transform.position);
             Destroy(gameObject);
         }
+        
+        public void DeployBulletTower(int cost)
+        {
+            modifyPointsEventChannel.RaiseEvent(-cost);
+            bulletDeployPositionEventChannel.RaiseEvent(transform.position);
+            Destroy(gameObject);
+        }
+        
+        
     }
 }

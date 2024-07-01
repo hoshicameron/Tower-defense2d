@@ -145,8 +145,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   modifyPointsEventChannel: {fileID: 11400000, guid: 73a97d96c1cf48f4ca168109486d272a, type: 2}
-  towerTypeEventChannel: {fileID: 11400000, guid: c61a32f31b9e25840815e619120cfc5d, type: 2}
-  towerPositionEventChannel: {fileID: 11400000, guid: 0eb470abcc8979b419dce9556ada9143, type: 2}
+  missileTowerDeployPositionEventChannel: {fileID: 11400000, guid: 0eb470abcc8979b419dce9556ada9143, type: 2}
+  bulletDeployPositionEventChannel: {fileID: 11400000, guid: 5a8f41b10408716488d0d0f30b551afe, type: 2}
   onTowerSpotSelected:
     m_PersistentCalls:
       m_Calls:
@@ -172,9 +172,57 @@ PrefabInstance:
     m_TransformParent: {fileID: 8760015354622846257}
     m_Modifications:
     - target: {fileID: 748058222355215159, guid: 137efbcf915a4394eb9fc25b80521edf, type: 3}
+      propertyPath: onBulletTowerDeployButtonClicked.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 748058222355215159, guid: 137efbcf915a4394eb9fc25b80521edf, type: 3}
+      propertyPath: onMissileTowerDeployButtonClicked.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 748058222355215159, guid: 137efbcf915a4394eb9fc25b80521edf, type: 3}
       propertyPath: onTowerDeployButtonClicked.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 4932879036153537423}
+    - target: {fileID: 748058222355215159, guid: 137efbcf915a4394eb9fc25b80521edf, type: 3}
+      propertyPath: onBulletTowerDeployButtonClicked.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 4932879036153537423}
+    - target: {fileID: 748058222355215159, guid: 137efbcf915a4394eb9fc25b80521edf, type: 3}
+      propertyPath: onMissileTowerDeployButtonClicked.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 4932879036153537423}
+    - target: {fileID: 748058222355215159, guid: 137efbcf915a4394eb9fc25b80521edf, type: 3}
+      propertyPath: onBulletTowerDeployButtonClicked.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 748058222355215159, guid: 137efbcf915a4394eb9fc25b80521edf, type: 3}
+      propertyPath: onBulletTowerDeployButtonClicked.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: DeployBulletTower
+      objectReference: {fileID: 0}
+    - target: {fileID: 748058222355215159, guid: 137efbcf915a4394eb9fc25b80521edf, type: 3}
+      propertyPath: onMissileTowerDeployButtonClicked.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 748058222355215159, guid: 137efbcf915a4394eb9fc25b80521edf, type: 3}
+      propertyPath: onMissileTowerDeployButtonClicked.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: DeployMissileTower
+      objectReference: {fileID: 0}
+    - target: {fileID: 748058222355215159, guid: 137efbcf915a4394eb9fc25b80521edf, type: 3}
+      propertyPath: onBulletTowerDeployButtonClicked.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: DefenseNetwork.Modules.EnvironmentModule.Scripts.TowerSpot, EnvironmentModule
+      objectReference: {fileID: 0}
+    - target: {fileID: 748058222355215159, guid: 137efbcf915a4394eb9fc25b80521edf, type: 3}
+      propertyPath: onMissileTowerDeployButtonClicked.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: DefenseNetwork.Modules.EnvironmentModule.Scripts.TowerSpot, EnvironmentModule
+      objectReference: {fileID: 0}
+    - target: {fileID: 748058222355215159, guid: 137efbcf915a4394eb9fc25b80521edf, type: 3}
+      propertyPath: onBulletTowerDeployButtonClicked.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 748058222355215159, guid: 137efbcf915a4394eb9fc25b80521edf, type: 3}
+      propertyPath: onMissileTowerDeployButtonClicked.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 1268426969948184104, guid: 137efbcf915a4394eb9fc25b80521edf, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

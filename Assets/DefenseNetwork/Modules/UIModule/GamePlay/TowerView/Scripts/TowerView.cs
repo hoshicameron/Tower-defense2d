@@ -1,5 +1,4 @@
 ﻿using GameSystemsCookbook;
-using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -11,11 +10,10 @@ namespace DefenseNetwork.Modules.UIModule.GamePlay.TowerView.Scripts
         [Header("Event Channel")]
         [SerializeField] private GameObjectEventChannelSO towerSelectionChannel;
         [Header("UI")]
-        [SerializeField] private RectTransform towerPanel;
+        [SerializeField] private CanvasGroup towerSpotCanvas;
         [SerializeField] private Button closeButton;
-        [SerializeField] private Button upgradeButton;
         [SerializeField] private Button sellButton;
-        [SerializeField] private TextMeshProUGUI upgradeCostText;
+        [SerializeField] private UpgradeButton upgradeButton;
         [Space]
         [SerializeField] public UnityEvent onUpgradeButtonPressed;
         [SerializeField] public UnityEvent onSellButtonPressed;
@@ -34,8 +32,8 @@ namespace DefenseNetwork.Modules.UIModule.GamePlay.TowerView.Scripts
         {
             HideTowerPanel();
             closeButton.onClick.AddListener(HideTowerPanel);
-            upgradeButton.onClick.AddListener(UpgradeButtonClicked);
             sellButton.onClick.AddListener(SellButtonClicked);
+            upgradeButton.onClick += UpgradeButtonClicked;
         }
 
         private void TowerSelected(GameObject selectedGameObject)
@@ -56,18 +54,25 @@ namespace DefenseNetwork.Modules.UIModule.GamePlay.TowerView.Scripts
             HideTowerPanel();
         }
 
-        public void HideTowerPanel() => towerPanel.gameObject.SetActive(false);
-        public void ShowTowerPanel()
+        private void HideTowerPanel()
         {
-            towerPanel.gameObject.SetActive(true);
+            towerSpotCanvas.alpha = 0;
+            towerSpotCanvas.interactable = false;
+            towerSpotCanvas.blocksRaycasts = false;
+        }
+
+        private void ShowTowerPanel()
+        {
+            towerSpotCanvas.alpha = 1;
+            towerSpotCanvas.interactable = true;
+            towerSpotCanvas.blocksRaycasts = true;
             towerSelectionChannel.RaiseEvent(gameObject);
         }
 
         public void ShowTowerPanelWithUpgrade(int upgradeCost)
         {
             ShowTowerPanel();
-            upgradeButton.gameObject.SetActive(true);
-            upgradeCostText.SetText(upgradeCost.ToString());
+            upgradeButton.SetText(upgradeCost.ToString());
         }
 
         public void ShowTowerPanelWithoutUpgrade()
@@ -75,5 +80,8 @@ namespace DefenseNetwork.Modules.UIModule.GamePlay.TowerView.Scripts
             ShowTowerPanel();
             upgradeButton.gameObject.SetActive(false);
         }
+
+        public void SetUpgradeButtonInteractable(bool interactable) => upgradeButton.Interactable(interactable);
+
     }
 }

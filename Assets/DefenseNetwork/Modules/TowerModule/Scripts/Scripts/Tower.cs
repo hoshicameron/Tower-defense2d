@@ -2,15 +2,14 @@ using DefenseNetwork.Modules.TowerModule.Scripts.Scripts.ScriptableObjects;
 using GameSystemsCookbook;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.Serialization;
 
 namespace DefenseNetwork.Modules.TowerModule.Scripts.Scripts
 {
     public class Tower : MonoBehaviour
     {
-        [FormerlySerializedAs("towerSoldEventChannel")]
         [Header("Channel")] 
-        [SerializeField] private IntEventChannelSO pointEventChannel;
+        [SerializeField] private IntEventChannelSO modifyPointEventChannel;
+        [SerializeField] private IntEventChannelSO updatePointEventChannel;
         [Space]
         [Header("Data")]
         [SerializeField] private TowerDataSO towerDataSo;
@@ -18,9 +17,25 @@ namespace DefenseNetwork.Modules.TowerModule.Scripts.Scripts
         [Header("Events")]
         [SerializeField] public UnityEvent<int> onTowerSelected;
         [SerializeField] public UnityEvent onTowerSelectedWhileMax;
+        [SerializeField] public UnityEvent<bool> onPointUpdated;
 
         private int towerLevel;
         private GameObject towerInternal;
+
+        private void OnEnable()
+        {
+            updatePointEventChannel.OnEventRaised += PointUpdated; 
+        }
+
+        private void OnDisable()
+        {
+            updatePointEventChannel.OnEventRaised -= PointUpdated; 
+        }
+
+        private void PointUpdated(int point)
+        {
+            onPointUpdated?.Invoke(towerDataSo.Upgrades[towerLevel].UpgradeCost<=point);
+        }
 
         private void Start()
         {
@@ -41,28 +56,29 @@ namespace DefenseNetwork.Modules.TowerModule.Scripts.Scripts
         public void UpgradeTower()
         {
             Destroy(towerInternal);
+            modifyPointEventChannel.RaiseEvent(towerDataSo.Upgrades[towerLevel].UpgradeCost);
             InstantiateTowerInternals(towerDataSo.Upgrades[++towerLevel].Prefab);
         }
 
         public void SellTower()
         {
-            pointEventChannel.RaiseEvent(towerDataSo.Upgrades[towerLevel].SellIncome);
+            modifyPointEventChannel.RaiseEvent(towerDataSo.Upgrades[towerLevel].SellIncome);
             Destroy(gameObject);
         }
     
-        private void OnMouseDown()
+        private void OnMouseUp()
         {
             TowerSelected();
         }
 
         private void TowerSelected()
         {
-            if (!IsTowerAtLastLevel())
+            if (!IsTowerAtMaxLevel())
                 onTowerSelected?.Invoke(towerDataSo.Upgrades[towerLevel].UpgradeCost);
             else
                 onTowerSelectedWhileMax?.Invoke();
         }
 
-        private bool IsTowerAtLastLevel() => towerLevel >= towerDataSo.Upgrades.Count -1;
+        private bool IsTowerAtMaxLevel() => towerLevel >= towerDataSo.Upgrades.Count -1;
     }
 }

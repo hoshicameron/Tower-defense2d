@@ -9,22 +9,18 @@ namespace DefenseNetwork.Modules.EnvironmentModule.Test.Scripts
         [Header("Channel")] 
         [SerializeField] private IntEventChannelSO modifyPointsEventChannel;
         [SerializeField] private IntEventChannelSO updatePointsEventChannel;
-        [SerializeField] private IntEventChannelSO towerTypeEventChannel;
         [SerializeField] private Vector2EventChannelSO towerPositionEventChannel;
 
         [Space] 
         [SerializeField] private int points;
         [SerializeField] private GameObject gameObjectToInstantiate;
         
-        public enum TowerType {BulletTower,MissileTower }
-
-        private TowerType towerType;
+        
         private void Start()
         {
             updatePointsEventChannel.RaiseEvent(points);
             Debug.Log("Notify");
             modifyPointsEventChannel.OnEventRaised += UpdatePoints;
-            towerTypeEventChannel.OnEventRaised += TowerTypeSelected;
             towerPositionEventChannel.OnEventRaised += TowerPositionRaised;
         }
 
@@ -39,10 +35,5 @@ namespace DefenseNetwork.Modules.EnvironmentModule.Test.Scripts
             Debug.Log($"Tower at point {position} must be deployed");
         }
 
-        private void TowerTypeSelected(int type)
-        {
-            towerType = (TowerType)type;
-            Debug.Log($"Selected Tower to deploy is: {towerType}");
-        }
     }
 }
