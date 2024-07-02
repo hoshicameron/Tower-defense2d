@@ -10,6 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 22f5cdee0bfb3491c8251330db986304, type: 3}
-  m_Name: MissileTowerDeployPositionEventChannel
+  m_Name: TowerSpotDeployPositionEventChannel
   m_EditorClassIdentifier: 
-  m_Description: Send position of where missile tower must be deploy.
+  m_Description: 

@@ -1,8 +1,7 @@
-using System;
 using GameSystemsCookbook;
 using UnityEngine;
 
-namespace DefenseNetwork.Modules.EnvironmentModule.Test.Scripts
+namespace DefenseNetwork.Modules.EnvironmentModule.Scripts.Scripts
 {
     public class TowerSpotTest : MonoBehaviour
     {

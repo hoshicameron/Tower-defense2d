@@ -22,6 +22,7 @@ namespace DefenseNetwork.Modules.EnvironmentModule.Scripts
         {
             modifyPointsEventChannel.RaiseEvent(-cost);
             missileTowerDeployPositionEventChannel.RaiseEvent(transform.position);
+            
             Destroy(gameObject);
         }
         
@@ -31,7 +32,5 @@ namespace DefenseNetwork.Modules.EnvironmentModule.Scripts
             bulletDeployPositionEventChannel.RaiseEvent(transform.position);
             Destroy(gameObject);
         }
-        
-        
     }
 }

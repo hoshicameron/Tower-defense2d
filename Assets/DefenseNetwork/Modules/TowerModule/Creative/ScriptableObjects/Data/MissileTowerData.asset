@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9eda6480c4cc89740805a6fc3fc245e4, type: 3}
+  m_Script: {fileID: 11500000, guid: aa97a0a5ca3646a4bbf85f332176d743, type: 3}
   m_Name: MissileTowerData
   m_EditorClassIdentifier: 
   <Name>k__BackingField: MissileTowerData
@@ -17,8 +17,6 @@ MonoBehaviour:
   - DeployCost: 100
     UpgradeCost: 150
     Prefab: {fileID: 1768766476918054524, guid: 8b576756487afc74a9fa2f5605c076c2, type: 3}
-    TowerSprite: {fileID: 21300000, guid: 8ba8f1079abb2a243a85783a1b793498, type: 3}
   - DeployCost: 150
     UpgradeCost: 0
     Prefab: {fileID: 1589910012338350844, guid: 9c644075f1854454691bc6a68f602f95, type: 3}
-    TowerSprite: {fileID: 21300000, guid: fecef8dc76022ad48aa6910d65a134e8, type: 3}

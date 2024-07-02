@@ -123,28 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!114 &56388811 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6665253642611611359, guid: 95820de97c0d5f640bf0178272f34653, type: 3}
-  m_PrefabInstance: {fileID: 738121159}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60f03e554593ea14d95d8a214bc2302d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &403206711 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6665253642611611359, guid: 95820de97c0d5f640bf0178272f34653, type: 3}
-  m_PrefabInstance: {fileID: 1121317272}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60f03e554593ea14d95d8a214bc2302d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &738121159
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -405,7 +383,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1758610685}
-  - component: {fileID: 1758610684}
+  - component: {fileID: 1758610686}
   m_Layer: 0
   m_Name: TowerTest
   m_TagString: Untagged
@@ -413,24 +391,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1758610684
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1758610683}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 257c851db3f6bef4fab33789ffa19ae1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  towerSoldChannel: {fileID: 11400000, guid: e9d8f3007bb17e547af97cb0cb0f5a1d, type: 2}
-  towers:
-  - {fileID: 56388811}
-  - {fileID: 403206711}
-  - {fileID: 1772754979}
-  currentScore: 100
 --- !u!4 &1758610685
 Transform:
   m_ObjectHideFlags: 0
@@ -446,17 +406,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1772754979 stripped
+--- !u!114 &1758610686
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6665253642611611359, guid: 95820de97c0d5f640bf0178272f34653, type: 3}
-  m_PrefabInstance: {fileID: 1849268038}
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1758610683}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60f03e554593ea14d95d8a214bc2302d, type: 3}
+  m_Script: {fileID: 11500000, guid: 5ec80359400c8f24a8d1704c44aa969c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  modifyPointEventChannel: {fileID: 11400000, guid: 73a97d96c1cf48f4ca168109486d272a, type: 2}
+  updatePointEventChannel: {fileID: 11400000, guid: e97ec824434d0a9469b008e729900865, type: 2}
+  point: 200
 --- !u!1001 &1849268038
 PrefabInstance:
   m_ObjectHideFlags: 0

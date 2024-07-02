@@ -10,6 +10,7 @@ namespace DefenseNetwork.Modules.TowerModule.Scripts.Scripts
         [Header("Channel")] 
         [SerializeField] private IntEventChannelSO modifyPointEventChannel;
         [SerializeField] private IntEventChannelSO updatePointEventChannel;
+        [SerializeField] private Vector2EventChannelSO towerSpotDeployPositionEventChannel;
         [Space]
         [Header("Data")]
         [SerializeField] private TowerDataSO towerDataSo;
@@ -24,7 +25,7 @@ namespace DefenseNetwork.Modules.TowerModule.Scripts.Scripts
 
         private void OnEnable()
         {
-            updatePointEventChannel.OnEventRaised += PointUpdated; 
+            updatePointEventChannel.OnEventRaised += PointUpdated;
         }
 
         private void OnDisable()
@@ -56,13 +57,14 @@ namespace DefenseNetwork.Modules.TowerModule.Scripts.Scripts
         public void UpgradeTower()
         {
             Destroy(towerInternal);
-            modifyPointEventChannel.RaiseEvent(towerDataSo.Upgrades[towerLevel].UpgradeCost);
+            modifyPointEventChannel.RaiseEvent(-towerDataSo.Upgrades[towerLevel].UpgradeCost);
             InstantiateTowerInternals(towerDataSo.Upgrades[++towerLevel].Prefab);
         }
 
         public void SellTower()
         {
             modifyPointEventChannel.RaiseEvent(towerDataSo.Upgrades[towerLevel].SellIncome);
+            towerSpotDeployPositionEventChannel.RaiseEvent(transform.position);
             Destroy(gameObject);
         }
     

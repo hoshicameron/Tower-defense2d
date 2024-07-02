@@ -6,14 +6,13 @@ using UnityEngine;
 
 namespace DefenseNetwork.Modules.UIModule.GamePlay.TowerView.Test.Scripts
 {
-    public class TowerTest : MonoBehaviour
+    public class TowerUITest : MonoBehaviour
     {
         [SerializeField] private IntEventChannelSO towerSoldChannel;
         [SerializeField] private List<Tower> towers;
         [SerializeField] private int currentScore = 100;
 
         private Dictionary<GameObject, Tower> gameObjectTowerDictionary;
-
 
         private void OnEnable()
         {

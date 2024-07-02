@@ -1,14 +1,13 @@
-using System;
 using GameSystemsCookbook;
 using UnityEngine;
 
 namespace DefenseNetwork.Modules.TowerModule.Scripts.Scripts
 {
-    public class TowerManager : MonoBehaviour
+    public class TowerDeployer : MonoBehaviour
     {
         [Header("Channel")] 
-        [SerializeField] private Vector2EventChannelSO missileTowerDeployPositionEventChannel;
         [SerializeField] private Vector2EventChannelSO bulletDeployPositionEventChannel;
+        [SerializeField] private Vector2EventChannelSO missileTowerDeployPositionEventChannel;
         [Space] 
         [SerializeField] private GameObject bulletTowerPrefab;
         [SerializeField] private GameObject missileTowerPrefab;
