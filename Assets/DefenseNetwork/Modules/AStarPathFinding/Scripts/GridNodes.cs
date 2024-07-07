@@ -1,6 +1,7 @@
-﻿using UnityEngine;
+﻿using DefenseNetwork.AStarPathFinding.Scripts;
+using UnityEngine;
 
-namespace DefenseNetwork.AStarPathFinding.Scripts
+namespace DefenseNetwork.Modules.AStarPathFinding.Scripts
 {
     public class GridNodes
     {

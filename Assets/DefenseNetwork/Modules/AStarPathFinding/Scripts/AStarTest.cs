@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using DefenseNetwork.Modules.AStarPathFinding.Scripts;
+using UnityEngine;
 
 namespace DefenseNetwork.AStarPathFinding.Scripts
 {
@@ -6,32 +7,32 @@ namespace DefenseNetwork.AStarPathFinding.Scripts
     {
         [SerializeField] private Map map;
     
-        private PathManager pathManager;
+        private AStarPathBuilder aStarPathBuilder;
         private Camera mainCamera;
-
         private void Start()
         {
             mainCamera = Camera.main;
-            pathManager = new PathManager(map);
+            map.SetupPathTilemap();
+            aStarPathBuilder = new AStarPathBuilder(map);
         }
 
         private void Update()
         {
             if (Input.GetKeyDown(KeyCode.S))
             {
-                pathManager.ClearPath();
-                pathManager.SetStartPosition(GetMouseWorldPosition());
+                aStarPathBuilder.ClearPath();
+                aStarPathBuilder.SetStartPosition(GetMouseWorldPosition());
             }
 
             if (Input.GetKeyDown(KeyCode.E))
             {
-                pathManager.ClearPath();
-                pathManager.SetEndPosition(GetMouseWorldPosition());
+                aStarPathBuilder.ClearPath();
+                aStarPathBuilder.SetEndPosition(GetMouseWorldPosition());
             }
 
             if (Input.GetKeyDown(KeyCode.U))
             {
-                pathManager.VisualizePath();
+                aStarPathBuilder.VisualizePath();
             }
         }
 

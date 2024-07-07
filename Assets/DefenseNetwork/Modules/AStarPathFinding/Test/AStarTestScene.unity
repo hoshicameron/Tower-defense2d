@@ -857,8 +857,8 @@ MonoBehaviour:
     CollisionTilemap: {fileID: 571327351}
     UnWalkableTileArray:
     - {fileID: 11400000, guid: aad3a662ab507c04da7b6bd6faafdcf6, type: 2}
-    StartPathTile: {fileID: 0}
-    EndPathTile: {fileID: 0}
+    StartPathTile: {fileID: 11400000, guid: 79b2078ae12b1884fbce929fe0eea111, type: 2}
+    EndPathTile: {fileID: 11400000, guid: 18dfec4cec30ea94aa4f7ad68043a311, type: 2}
 --- !u!4 &1610588706
 Transform:
   m_ObjectHideFlags: 0

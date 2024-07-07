@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
+using DefenseNetwork.AStarPathFinding.Scripts;
 using UnityEngine;
 
-namespace DefenseNetwork.AStarPathFinding.Scripts
+namespace DefenseNetwork.Modules.AStarPathFinding.Scripts
 {
     public static class AStar
     {

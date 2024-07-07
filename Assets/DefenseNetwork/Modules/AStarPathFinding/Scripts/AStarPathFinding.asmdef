@@ -1,0 +1,16 @@
+{
+    "name": "AStarPathFinding",
+    "rootNamespace": "",
+    "references": [
+        "GUID:50c7081e62efd31438e250d4c416ad7b"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

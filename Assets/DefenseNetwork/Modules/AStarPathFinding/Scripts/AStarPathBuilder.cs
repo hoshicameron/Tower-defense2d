@@ -1,17 +1,18 @@
 ﻿using System.Collections.Generic;
+using DefenseNetwork.AStarPathFinding.Scripts;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-namespace DefenseNetwork.AStarPathFinding.Scripts
+namespace DefenseNetwork.Modules.AStarPathFinding.Scripts
 {
-    public class PathManager
+    public class AStarPathBuilder
     {
         private readonly Map map;
         private Vector3Int startGridPosition;
         private Vector3Int endGridPosition;
         private Stack<Vector3> pathStack;
 
-        public PathManager(Map map)
+        public AStarPathBuilder(Map map)
         {
             this.map = map;
             this.map.AddObstacles();
@@ -45,7 +46,8 @@ namespace DefenseNetwork.AStarPathFinding.Scripts
                     gridPosition = Map.InvalidPosition;
                     return;
                 }
-                map.PathTilemap.SetTile(gridPosition, tile);
+
+                if (tile != null) map.PathTilemap.SetTile(gridPosition, tile);
             }
             else
             {
@@ -54,7 +56,7 @@ namespace DefenseNetwork.AStarPathFinding.Scripts
             }
         }
 
-        public Stack<Vector3> CalculatePath()
+        public Stack<Vector3> CreatePath()
         {
             if (startGridPosition == Map.InvalidPosition || endGridPosition == Map.InvalidPosition)
                 return null;
@@ -64,7 +66,7 @@ namespace DefenseNetwork.AStarPathFinding.Scripts
 
         public void VisualizePath()
         {
-            pathStack = CalculatePath();
+            pathStack = CreatePath();
             if (pathStack == null) return;
 
             foreach (var worldPosition in pathStack)

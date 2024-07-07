@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace DefenseNetwork.AStarPathFinding.Scripts
+namespace DefenseNetwork.Modules.AStarPathFinding.Scripts
 {
     public class Node : IComparable<Node>
     {

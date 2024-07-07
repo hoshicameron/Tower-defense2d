@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 using Object = UnityEngine.Object;
 
-namespace DefenseNetwork.AStarPathFinding.Scripts
+namespace DefenseNetwork.Modules.AStarPathFinding.Scripts
 {
     [Serializable]
     public class Map
@@ -17,7 +17,7 @@ namespace DefenseNetwork.AStarPathFinding.Scripts
         [SerializeField] public Tilemap CollisionTilemap;
         [Header("Restriction Tiles")]
         [SerializeField] public TileBase[] UnWalkableTileArray;
-        [Header("TileVisualization")]
+        [Header("Tile Visualization")]
         [SerializeField] public Tile StartPathTile;
         [SerializeField] public Tile EndPathTile;
         
@@ -66,6 +66,8 @@ namespace DefenseNetwork.AStarPathFinding.Scripts
                 {
                     AStarMovementPenalty[x, y] = defaultMovementPenalty;
 
+                    if (CollisionTilemap == null) continue;
+                    
                     var tile = CollisionTilemap.GetTile(
                         new Vector3Int(x + LowerBounds.x, y + LowerBounds.y, 0));
 
