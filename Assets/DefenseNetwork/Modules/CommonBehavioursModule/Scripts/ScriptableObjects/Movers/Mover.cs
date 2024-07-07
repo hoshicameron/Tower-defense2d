@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace DefenseNetwork.Modules.TowerModule.SubModules.WeaponModule.Scripts.Internal.ScriptableObjects.Functionality.Movers
+namespace DefenseNetwork.Modules.CommonBehavioursModule.Scripts.ScriptableObjects.Movers
 {
     public abstract class Mover : ScriptableObject
     {

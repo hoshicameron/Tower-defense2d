@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace DefenseNetwork.Modules.TowerModule.SubModules.WeaponModule.Scripts.Internal.ScriptableObjects.Functionality.Rotators
+namespace DefenseNetwork.Modules.CommonBehavioursModule.Scripts.ScriptableObjects.Rotators
 {
     [CreateAssetMenu(fileName = "New Instant Rotator" , menuName = "Gameplay/Funcs/Instant Rotator")]
     public class DirectRotator : RotatorBase

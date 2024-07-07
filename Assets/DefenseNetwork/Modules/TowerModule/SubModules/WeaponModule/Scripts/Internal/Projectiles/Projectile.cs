@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections;
+using DefenseNetwork.Modules.CommonBehavioursModule.Scripts.ScriptableObjects.Movers;
+using DefenseNetwork.Modules.CommonBehavioursModule.Scripts.ScriptableObjects.Rotators;
+using DefenseNetwork.Modules.CommonBehavioursModule.Scripts.ScriptableObjects.Sensors;
 using DefenseNetwork.Modules.TowerModule.SubModules.WeaponModule.Scripts.Internal.ScriptableObjects.Data;
-using DefenseNetwork.Modules.TowerModule.SubModules.WeaponModule.Scripts.Internal.ScriptableObjects.Functionality.Movers;
 using DefenseNetwork.Modules.TowerModule.SubModules.WeaponModule.Scripts.Internal.ScriptableObjects.Functionality.Rotators;
-using DefenseNetwork.Modules.TowerModule.SubModules.WeaponModule.Scripts.Internal.ScriptableObjects.Functionality.Sensors;
 using UnityEngine;
 
 namespace Modules.TowerModule.SubModules.WeaponModule.Scripts.Internal.Projectiles

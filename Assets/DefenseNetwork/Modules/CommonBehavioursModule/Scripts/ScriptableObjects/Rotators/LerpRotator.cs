@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using DefenseNetwork.Modules.CommonBehavioursModule.Scripts.ScriptableObjects.Rotators;
+using UnityEngine;
 
 namespace DefenseNetwork.Modules.TowerModule.SubModules.WeaponModule.Scripts.Internal.ScriptableObjects.Functionality.Rotators
 {

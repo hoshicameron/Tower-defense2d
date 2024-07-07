@@ -44,11 +44,11 @@ TagManager:
   - name: Ground
     uniqueID: 3425164297
     locked: 0
-  - name: Details
-    uniqueID: 1278991531
-    locked: 0
   - name: Path
     uniqueID: 2067082879
+    locked: 0
+  - name: Details
+    uniqueID: 1278991531
     locked: 0
   - name: TowerSpot
     uniqueID: 1817415529

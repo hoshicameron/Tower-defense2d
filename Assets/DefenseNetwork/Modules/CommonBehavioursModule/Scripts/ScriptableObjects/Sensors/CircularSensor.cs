@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace DefenseNetwork.Modules.TowerModule.SubModules.WeaponModule.Scripts.Internal.ScriptableObjects.Functionality.Sensors
+namespace DefenseNetwork.Modules.CommonBehavioursModule.Scripts.ScriptableObjects.Sensors
 {
     [CreateAssetMenu(fileName = "Circular Sensor", menuName = "Gameplay/Funcs/Circular Sensor")]
     public class CircularSensor : SensorBase

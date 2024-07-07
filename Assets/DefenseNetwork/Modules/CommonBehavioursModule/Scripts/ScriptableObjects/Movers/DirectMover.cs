@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace DefenseNetwork.Modules.TowerModule.SubModules.WeaponModule.Scripts.Internal.ScriptableObjects.Functionality.Movers
+namespace DefenseNetwork.Modules.CommonBehavioursModule.Scripts.ScriptableObjects.Movers
 {
     [CreateAssetMenu(fileName = "Direct Mover", menuName = "Gameplay/Funcs/Direct Mover")]
     public class DirectMover : Mover

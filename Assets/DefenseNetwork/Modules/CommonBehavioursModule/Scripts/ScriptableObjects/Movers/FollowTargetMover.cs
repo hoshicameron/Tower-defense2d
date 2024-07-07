@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace DefenseNetwork.Modules.TowerModule.SubModules.WeaponModule.Scripts.Internal.ScriptableObjects.Functionality.Movers
+namespace DefenseNetwork.Modules.CommonBehavioursModule.Scripts.ScriptableObjects.Movers
 {
     [CreateAssetMenu(fileName = "FollowTarget Mover", menuName = "Gameplay/Funcs/FollowTarget Mover")]
     public class FollowTargetMover : Mover
