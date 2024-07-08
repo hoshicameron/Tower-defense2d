@@ -7,7 +7,7 @@ namespace GameSystemsCookbook
     /// This event channel broadcasts and carries PathResponseDO payload.
     /// </summary>
     [CreateAssetMenu(fileName = "PathResponseEventChannelSO", menuName = "Events/PathResponseEventChannelSO")]
-    public class PathResponseEventChannelSO : GenericEventChannelSO<PathResponseDO>
+    public class PathResponseEventChannelSO : GenericEventChannelSO<PathResponseDTO>
     {
         
     }

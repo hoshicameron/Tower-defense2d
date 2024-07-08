@@ -28,10 +28,10 @@ namespace DefenseNetwork.Modules.AStarPathFinding.Scripts
             requestPathEventChannel.OnEventRaised -= PathRequested;
         }
 
-        private void PathRequested(PathRequestDO pathRequestDo)
+        private void PathRequested(PathRequestDTO pathRequestDto)
         {
-            pathBuilder.SetStartPosition(pathRequestDo.StartPosition);
-            pathBuilder.SetEndPosition(pathRequestDo.EndPosition);
+            pathBuilder.SetStartPosition(pathRequestDto.StartPosition);
+            pathBuilder.SetEndPosition(pathRequestDto.EndPosition);
             var path = pathBuilder.CreatePath();
             pathBuilder.VisualizePath();
             if (path == null)
@@ -41,9 +41,9 @@ namespace DefenseNetwork.Modules.AStarPathFinding.Scripts
             }
             
             responsePathEventChannel.RaiseEvent(
-                new PathResponseDO
+                new PathResponseDTO
                 {
-                    RequestID = pathRequestDo.RequestID,
+                    RequestID = pathRequestDto.RequestID,
                     PathPoints = path.ToList()
                 });
         }

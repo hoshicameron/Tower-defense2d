@@ -294,7 +294,7 @@ MonoBehaviour:
   - {x: -3, y: 0, z: 0}
   - {x: 3, y: 5, z: 0}
   - {x: 10, y: -6, z: 0}
-  enemyPrefab: {fileID: 9066740485112953397, guid: 4afebdae2e2bf5f49a0c6e10aa6de5ff, type: 3}
+  enemyPrefab: {fileID: 1171699227415123472, guid: 9f61204396e0c2643942d8a1998a1589, type: 3}
 --- !u!4 &571551198
 Transform:
   m_ObjectHideFlags: 0

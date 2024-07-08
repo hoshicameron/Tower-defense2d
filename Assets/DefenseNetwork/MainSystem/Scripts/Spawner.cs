@@ -29,18 +29,18 @@ namespace DefenseNetwork.MainSystem.Scripts
             responsePathEventChannel.OnEventRaised -= PathCreated;
         }
 
-        private void PathCreated(PathResponseDO pathResponseDo)
+        private void PathCreated(PathResponseDTO pathResponseDto)
         {
-            if(string.Compare(requestID, pathResponseDo.RequestID, StringComparison.Ordinal) != 0)
+            if(string.Compare(requestID, pathResponseDto.RequestID, StringComparison.Ordinal) != 0)
                 return;
             
-            movementPath = pathResponseDo.PathPoints;
+            movementPath = pathResponseDto.PathPoints;
         }
 
         private void Start()
         {
             requestID = Guid.NewGuid().ToString();
-            requestPathEventChannel.RaiseEvent(new PathRequestDO
+            requestPathEventChannel.RaiseEvent(new PathRequestDTO
             {
                 RequestID = requestID,
                 StartPosition = startPoint.position,

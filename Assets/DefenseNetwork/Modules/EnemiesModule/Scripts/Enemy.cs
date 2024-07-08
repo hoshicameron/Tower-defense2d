@@ -1,19 +1,22 @@
 ﻿using System.Collections.Generic;
+using DefenseNetwork.Core.EventChannels.DataObjects;
+using DefenseNetwork.Modules.CommonBehavioursModule.Scripts.ScriptableObjects;
 using DefenseNetwork.Modules.CommonBehavioursModule.Scripts.ScriptableObjects.Movers;
 using DefenseNetwork.Modules.CommonBehavioursModule.Scripts.ScriptableObjects.Rotators;
 using DefenseNetwork.Modules.EnemiesModule.Scripts.ScriptableObjects.Data;
 using GameSystemsCookbook;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Serialization;
 
 namespace DefenseNetwork.Modules.EnemiesModule.Scripts
 {
-    
     public class Enemy : MonoBehaviour
     {
         [FormerlySerializedAs("enemyReachedTarget")]
         [Header("Event Channel")] 
-        [SerializeField] private VoidEventChannelSO enemyReachedPlayerBaseEvent;
+        [SerializeField] private VoidEventChannelSO reachedPlayerBaseEventChannel;
+        [SerializeField] private HitEventChannelSO hitEventChannel;
         
         [Space] [Header("Data")] 
         [SerializeField] private EnemyDataSO enemyDataSo;
@@ -27,10 +30,39 @@ namespace DefenseNetwork.Modules.EnemiesModule.Scripts
         [SerializeField] private DirectionalRotator directionalRotatorType;
         [SerializeField] private float rotationOffset;
 
+        public UnityEvent<int, int> OnhealthChanged;
+
+        private HealthBehaviour health;
         private List<Vector3> movementPath;
         private DirectionalMover directionalMover;
         private DirectionalRotator directionalRotator;
         private int currentWaypointIndex;
+        private void OnEnable()
+        {
+            health = ScriptableObject.CreateInstance<HealthBehaviour>();
+            health.OnHealthChanged += HealthChanged;
+            health.OnDeath += Death;
+            health.Initialize(enemyDataSo.Health);
+            
+            hitEventChannel.OnEventRaised += Hit;
+        }
+        private void OnDisable()
+        {
+            hitEventChannel.OnEventRaised -= Hit;
+            health.OnDeath -= Death;
+            health.OnHealthChanged -= HealthChanged;
+        }
+        
+        private void HealthChanged(int currentHealth, int maxHealth) => OnhealthChanged?.Invoke(currentHealth,maxHealth);
+        private void Death() => Destroy(gameObject);
+
+        private void Hit(HitDTO hitData)
+        {
+            if(hitData.hittedObject == gameObject)
+                health.TakeDamage(hitData.damage);
+        }
+
+
         public void Initialize(List<Vector3> path)
         {
             movementPath = path;
@@ -67,7 +99,7 @@ namespace DefenseNetwork.Modules.EnemiesModule.Scripts
             }
             else
             {
-                enemyReachedPlayerBaseEvent.RaiseEvent();
+                reachedPlayerBaseEventChannel.RaiseEvent();
                 Destroy(gameObject);
             }
         }
