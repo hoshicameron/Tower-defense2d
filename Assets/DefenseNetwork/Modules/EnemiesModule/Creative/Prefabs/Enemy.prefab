@@ -91,13 +91,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb05bc36d2994220a9541aef12a61ca0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyReachedPlayerBaseEvent: {fileID: 11400000, guid: dbaf71c7003d0f8478c5fcef1ce46135, type: 2}
+  reachedPlayerBaseEventChannel: {fileID: 11400000, guid: dbaf71c7003d0f8478c5fcef1ce46135, type: 2}
+  hitEventChannel: {fileID: 11400000, guid: 10873237d104ac140a24ae58ad3d1bc8, type: 2}
   enemyDataSo: {fileID: 0}
   spriteRenderer: {fileID: 6235027211226348386}
   bodyTransform: {fileID: 122265280369909719}
   directionalMoverType: {fileID: 11400000, guid: 195f78390cde0cc41ac23024619efba3, type: 2}
   directionalRotatorType: {fileID: 11400000, guid: 4c0a30d6f6b0741428514d5a7d43ba8d, type: 2}
   rotationOffset: 0
+  OnhealthChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &5599999393892216539
 GameObject:
   m_ObjectHideFlags: 0
