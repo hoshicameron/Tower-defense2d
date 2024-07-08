@@ -1,22 +1,22 @@
 ﻿using System.Collections.Generic;
 using DefenseNetwork.Modules.CommonBehavioursModule.Scripts.ScriptableObjects.Rotators;
 using DefenseNetwork.Modules.TowerModule.SubModules.WeaponModule.Scripts.Internal.ScriptableObjects.Data;
-using DefenseNetwork.Modules.TowerModule.SubModules.WeaponModule.Scripts.Internal.ScriptableObjects.Functionality.Rotators;
 using Modules.TowerModule.SubModules.WeaponModule.Scripts.Internal.ScriptableObjects.Functionality;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace DefenseNetwork.Modules.TowerModule.SubModules.WeaponModule.Scripts.Internal
 {
     [RequireComponent(typeof(SpriteRenderer))]
     public class Weapon : MonoBehaviour
     {
-        [SerializeField] private RotatorBase rotatorType;
+        [FormerlySerializedAs("rotatorType")] [SerializeField] private TargetRotator targetRotatorType;
         [SerializeField] private WeaponDataSO weaponDataSo;
         [SerializeField] private SpriteRenderer spriteRenderer;
         [SerializeField] private List<Transform> projectileSpawnPositions;
 
         private Transform target;
-        private RotatorBase rotator;
+        private TargetRotator targetRotator;
         private Spawner projectileSpawner;
         private Coroutine shootRoutine;
 
@@ -35,8 +35,8 @@ namespace DefenseNetwork.Modules.TowerModule.SubModules.WeaponModule.Scripts.Int
 
         private void Initialize()
         {
-            rotator = (RotatorBase)ScriptableObject.CreateInstance(rotatorType.GetType());
-            rotator.Initialize(transform, weaponDataSo.TurnSpeed);
+            targetRotator = (TargetRotator)ScriptableObject.CreateInstance(targetRotatorType.GetType());
+            targetRotator.Initialize(transform, weaponDataSo.TurnSpeed);
 
             projectileSpawner = ScriptableObject.CreateInstance<Spawner>();
             projectileSpawner.Initialize(projectileSpawnPositions , weaponDataSo.ProjectilePrefab);
@@ -55,8 +55,8 @@ namespace DefenseNetwork.Modules.TowerModule.SubModules.WeaponModule.Scripts.Int
                 StartShooting();
         }
 
-        private void RotateTowardsTarget() => rotator.Rotate(target, Time.deltaTime);
-        private bool IsFacingTarget() => target != null && rotator.IsFacingTarget(target);
+        private void RotateTowardsTarget() => targetRotator.Rotate(target, Time.deltaTime);
+        private bool IsFacingTarget() => target != null && targetRotator.IsFacingTarget(target);
         public void SetTarget(Transform newTarget) => target = newTarget;
         public void RemoveTarget() => target = null;
         private void StartShooting()

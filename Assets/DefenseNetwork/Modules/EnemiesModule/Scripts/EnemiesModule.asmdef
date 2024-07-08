@@ -1,3 +1,4 @@
 {
-	"name": "EnemiesModule"
+	"name": "EnemiesModule",
+	"references":[ "GUID:fc0dd6a45887d2143b1073104a385a00", "GUID:50c7081e62efd31438e250d4c416ad7b" ]
 }

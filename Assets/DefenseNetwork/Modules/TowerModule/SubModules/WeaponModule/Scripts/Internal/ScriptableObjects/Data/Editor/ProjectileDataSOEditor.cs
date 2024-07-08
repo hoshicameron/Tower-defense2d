@@ -17,8 +17,8 @@ namespace DefenseNetwork.Modules.TowerModule.SubModules.WeaponModule.Scripts.Int
         {
             base.OnInspectorGUI();
 
-            if (projectileDataSo == null)
-                return;
+            if (projectileDataSo == null)  return;
+            
             var texture = AssetPreview.GetAssetPreview(projectileDataSo.Sprite);
             GUILayout.Space(10f);
             GUILayout.Label("Sprite Preview:");

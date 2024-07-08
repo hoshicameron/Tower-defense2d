@@ -4,24 +4,24 @@ using DefenseNetwork.Modules.CommonBehavioursModule.Scripts.ScriptableObjects.Mo
 using DefenseNetwork.Modules.CommonBehavioursModule.Scripts.ScriptableObjects.Rotators;
 using DefenseNetwork.Modules.CommonBehavioursModule.Scripts.ScriptableObjects.Sensors;
 using DefenseNetwork.Modules.TowerModule.SubModules.WeaponModule.Scripts.Internal.ScriptableObjects.Data;
-using DefenseNetwork.Modules.TowerModule.SubModules.WeaponModule.Scripts.Internal.ScriptableObjects.Functionality.Rotators;
 using UnityEngine;
+using UnityEngine.Serialization;
 
-namespace Modules.TowerModule.SubModules.WeaponModule.Scripts.Internal.Projectiles
+namespace DefenseNetwork.Modules.TowerModule.SubModules.WeaponModule.Scripts.Internal.Projectiles
 {
     public class Projectile : MonoBehaviour
     {
         [SerializeField] private SpriteRenderer spriteRenderer;
         [SerializeField] private ProjectileDataSO projectileDataSo;
-        [SerializeField] private Mover movingType;
+        [SerializeField] private TargetMover movingType;
         [SerializeField] private SensorBase sensorType;
-        [SerializeField] private RotatorBase rotatorType;
+        [FormerlySerializedAs("rotatorType")] [SerializeField] private TargetRotator targetRotatorType;
         [SerializeField] private Collider2D collider;
 
         public event Action<GameObject> onCollide;
-        private Mover mover;
+        private TargetMover targetMover;
         private SensorBase sensor;
-        private RotatorBase rotator;
+        private TargetRotator targetRotator;
         private Transform target;
 
         private IEnumerator Start()
@@ -33,16 +33,16 @@ namespace Modules.TowerModule.SubModules.WeaponModule.Scripts.Internal.Projectil
         public void Initialize(Transform target)
         {
             this.target = target;
-            mover = (Mover)ScriptableObject.CreateInstance(movingType.GetType());
-            mover.Initialize(target, transform, projectileDataSo.Speed);
+            targetMover = (TargetMover)ScriptableObject.CreateInstance(movingType.GetType());
+            targetMover.Initialize(transform, projectileDataSo.Speed, target);
             
             sensor = (SensorBase)ScriptableObject.CreateInstance(sensorType.GetType());
             sensor.Initialize(collider,projectileDataSo.DetectionLayer,Collide);
 
-            if (rotatorType != null)
+            if (targetRotatorType != null)
             {
-                rotator = (RotatorBase)ScriptableObject.CreateInstance(rotatorType.GetType());
-                rotator.Initialize(transform,projectileDataSo.RotationSpeed);
+                targetRotator = (TargetRotator)ScriptableObject.CreateInstance(targetRotatorType.GetType());
+                targetRotator.Initialize(transform,projectileDataSo.RotationSpeed);
             }
         }
         private void Collide(GameObject collider)
@@ -59,10 +59,10 @@ namespace Modules.TowerModule.SubModules.WeaponModule.Scripts.Internal.Projectil
         
         private void Update()
         {
-            mover.Move(Time.deltaTime);
+            targetMover.Move(Time.deltaTime);
             
             if (target == null) return;
-            if (rotator != null) rotator.Rotate(target, Time.deltaTime);
+            if (targetRotator != null) targetRotator.Rotate(target, Time.deltaTime);
         }
 
         private void OnValidate()

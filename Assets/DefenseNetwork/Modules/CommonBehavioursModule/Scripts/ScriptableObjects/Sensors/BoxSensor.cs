@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace DefenseNetwork.Modules.CommonBehavioursModule.Scripts.ScriptableObjects.Sensors
 {
-    [CreateAssetMenu(fileName = "Box Sensor", menuName = "Gameplay/Funcs/Box Sensor")]
+    [CreateAssetMenu(fileName = "Box Sensor", menuName = "Gameplay/Behaviours/Sensors/Box Sensor")]
     public class BoxSensor : SensorBase
     {
         private BoxCollider2D boxCollider2D;

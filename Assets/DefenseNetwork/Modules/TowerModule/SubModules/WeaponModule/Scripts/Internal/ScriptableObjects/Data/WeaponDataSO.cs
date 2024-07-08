@@ -1,4 +1,4 @@
-﻿using Modules.TowerModule.SubModules.WeaponModule.Scripts.Internal.Projectiles;
+﻿using DefenseNetwork.Modules.TowerModule.SubModules.WeaponModule.Scripts.Internal.Projectiles;
 using UnityEngine;
 
 namespace DefenseNetwork.Modules.TowerModule.SubModules.WeaponModule.Scripts.Internal.ScriptableObjects.Data

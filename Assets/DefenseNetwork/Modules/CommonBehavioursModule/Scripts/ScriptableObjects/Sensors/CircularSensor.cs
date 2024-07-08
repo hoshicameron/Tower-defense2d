@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace DefenseNetwork.Modules.CommonBehavioursModule.Scripts.ScriptableObjects.Sensors
 {
-    [CreateAssetMenu(fileName = "Circular Sensor", menuName = "Gameplay/Funcs/Circular Sensor")]
+    [CreateAssetMenu(fileName = "Circular Sensor", menuName = "Gameplay/Behaviours/Sensors/Circular Sensor")]
     public class CircularSensor : SensorBase
     {
         private CircleCollider2D circleCollider2D;
