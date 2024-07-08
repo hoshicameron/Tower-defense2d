@@ -99,9 +99,22 @@ MonoBehaviour:
   directionalMoverType: {fileID: 11400000, guid: 195f78390cde0cc41ac23024619efba3, type: 2}
   directionalRotatorType: {fileID: 11400000, guid: 4c0a30d6f6b0741428514d5a7d43ba8d, type: 2}
   rotationOffset: 0
-  OnhealthChanged:
+  onHealthChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1585976534435826771}
+        m_TargetAssemblyTypeName: DefenseNetwork.Modules.UIModule.GamePlay.EnemyHealthView.Scripts.EnemyHealthView,
+          Assembly-CSharp
+        m_MethodName: SetHealthSlider
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5599999393892216539
 GameObject:
   m_ObjectHideFlags: 0
@@ -131,7 +144,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 8196433907820844964}
   m_Father: {fileID: 3410035980594719528}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!212 &6235027211226348386
@@ -186,3 +200,144 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1001 &2950750788646900054
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 122265280369909719}
+    m_Modifications:
+    - target: {fileID: 3536135715030815131, guid: 08e7fbf6f38725148b95e8937c539ccb, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3536135715030815131, guid: 08e7fbf6f38725148b95e8937c539ccb, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3536135715030815131, guid: 08e7fbf6f38725148b95e8937c539ccb, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3536135715030815131, guid: 08e7fbf6f38725148b95e8937c539ccb, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0.23339999
+      objectReference: {fileID: 0}
+    - target: {fileID: 3536135715030815131, guid: 08e7fbf6f38725148b95e8937c539ccb, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6434721390387021554, guid: 08e7fbf6f38725148b95e8937c539ccb, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6434721390387021554, guid: 08e7fbf6f38725148b95e8937c539ccb, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6434721390387021554, guid: 08e7fbf6f38725148b95e8937c539ccb, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6434721390387021554, guid: 08e7fbf6f38725148b95e8937c539ccb, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6434721390387021554, guid: 08e7fbf6f38725148b95e8937c539ccb, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6434721390387021554, guid: 08e7fbf6f38725148b95e8937c539ccb, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6434721390387021554, guid: 08e7fbf6f38725148b95e8937c539ccb, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6434721390387021554, guid: 08e7fbf6f38725148b95e8937c539ccb, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0.1989
+      objectReference: {fileID: 0}
+    - target: {fileID: 6434721390387021554, guid: 08e7fbf6f38725148b95e8937c539ccb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6434721390387021554, guid: 08e7fbf6f38725148b95e8937c539ccb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6434721390387021554, guid: 08e7fbf6f38725148b95e8937c539ccb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6434721390387021554, guid: 08e7fbf6f38725148b95e8937c539ccb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6434721390387021554, guid: 08e7fbf6f38725148b95e8937c539ccb, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6434721390387021554, guid: 08e7fbf6f38725148b95e8937c539ccb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6434721390387021554, guid: 08e7fbf6f38725148b95e8937c539ccb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6434721390387021554, guid: 08e7fbf6f38725148b95e8937c539ccb, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6434721390387021554, guid: 08e7fbf6f38725148b95e8937c539ccb, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.5115
+      objectReference: {fileID: 0}
+    - target: {fileID: 6434721390387021554, guid: 08e7fbf6f38725148b95e8937c539ccb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6434721390387021554, guid: 08e7fbf6f38725148b95e8937c539ccb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6434721390387021554, guid: 08e7fbf6f38725148b95e8937c539ccb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6735778329949681698, guid: 08e7fbf6f38725148b95e8937c539ccb, type: 3}
+      propertyPath: m_Name
+      value: "\u064DEnemy-Health-View"
+      objectReference: {fileID: 0}
+    - target: {fileID: 8543485098515052288, guid: 08e7fbf6f38725148b95e8937c539ccb, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8543485098515052288, guid: 08e7fbf6f38725148b95e8937c539ccb, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 08e7fbf6f38725148b95e8937c539ccb, type: 3}
+--- !u!114 &1585976534435826771 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4535592616345443589, guid: 08e7fbf6f38725148b95e8937c539ccb, type: 3}
+  m_PrefabInstance: {fileID: 2950750788646900054}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98ea042cfe8944faa37bc637b24954ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!224 &8196433907820844964 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 6434721390387021554, guid: 08e7fbf6f38725148b95e8937c539ccb, type: 3}
+  m_PrefabInstance: {fileID: 2950750788646900054}
+  m_PrefabAsset: {fileID: 0}

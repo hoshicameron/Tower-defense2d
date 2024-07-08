@@ -52,6 +52,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: WhiteSoldierEnemy
       objectReference: {fileID: 0}
+    - target: {fileID: 4285069473880677590, guid: 4afebdae2e2bf5f49a0c6e10aa6de5ff, type: 3}
+      propertyPath: m_Size.x
+      value: 0.8979503
+      objectReference: {fileID: 0}
+    - target: {fileID: 4285069473880677590, guid: 4afebdae2e2bf5f49a0c6e10aa6de5ff, type: 3}
+      propertyPath: m_Size.y
+      value: 0.77485156
+      objectReference: {fileID: 0}
     - target: {fileID: 6235027211226348386, guid: 4afebdae2e2bf5f49a0c6e10aa6de5ff, type: 3}
       propertyPath: m_Sprite
       value: 

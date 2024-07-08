@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: -1593018473
   m_SortingLayer: 5
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 5ac3e90091edd51499febc590a8446f0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f4f56e90d4f0f57499ac3a0c83c8094b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -92,6 +92,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1864996604960522445, guid: 4afebdae2e2bf5f49a0c6e10aa6de5ff, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3410035980594719528, guid: 4afebdae2e2bf5f49a0c6e10aa6de5ff, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -134,20 +138,40 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3750614002273228835, guid: 4afebdae2e2bf5f49a0c6e10aa6de5ff, type: 3}
       propertyPath: m_Name
-      value: GreenAirPlaneEnemy
+      value: WhiteAirPlaneEnemy
       objectReference: {fileID: 0}
     - target: {fileID: 3750614002273228835, guid: 4afebdae2e2bf5f49a0c6e10aa6de5ff, type: 3}
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 4285069473880677590, guid: 4afebdae2e2bf5f49a0c6e10aa6de5ff, type: 3}
+      propertyPath: m_Size.x
+      value: 1.4844384
+      objectReference: {fileID: 0}
+    - target: {fileID: 4285069473880677590, guid: 4afebdae2e2bf5f49a0c6e10aa6de5ff, type: 3}
+      propertyPath: m_Size.y
+      value: 1.3035098
+      objectReference: {fileID: 0}
     - target: {fileID: 6235027211226348386, guid: 4afebdae2e2bf5f49a0c6e10aa6de5ff, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 26d63d5c519b67c46b76911cc1740274, type: 3}
+      objectReference: {fileID: 21300000, guid: 384108e0db027df48ab5d6584939a4e4, type: 3}
+    - target: {fileID: 6801458377925174870, guid: 4afebdae2e2bf5f49a0c6e10aa6de5ff, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6801458377925174870, guid: 4afebdae2e2bf5f49a0c6e10aa6de5ff, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8196433907820844964, guid: 4afebdae2e2bf5f49a0c6e10aa6de5ff, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 9066740485112953397, guid: 4afebdae2e2bf5f49a0c6e10aa6de5ff, type: 3}
       propertyPath: enemyDataSo
       value: 
-      objectReference: {fileID: 11400000, guid: eed2ace488931bc4681ccc92ff925694, type: 2}
+      objectReference: {fileID: 11400000, guid: 16bb856d138cbd746bccec3d8faf9ffe, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:

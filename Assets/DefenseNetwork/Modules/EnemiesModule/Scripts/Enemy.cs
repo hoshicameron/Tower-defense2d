@@ -30,7 +30,9 @@ namespace DefenseNetwork.Modules.EnemiesModule.Scripts
         [SerializeField] private DirectionalRotator directionalRotatorType;
         [SerializeField] private float rotationOffset;
 
-        public UnityEvent<int, int> OnhealthChanged;
+        [Space]
+        [Header("Events")]
+        public UnityEvent<int, int> onHealthChanged;
 
         private HealthBehaviour health;
         private List<Vector3> movementPath;
@@ -53,7 +55,7 @@ namespace DefenseNetwork.Modules.EnemiesModule.Scripts
             health.OnHealthChanged -= HealthChanged;
         }
         
-        private void HealthChanged(int currentHealth, int maxHealth) => OnhealthChanged?.Invoke(currentHealth,maxHealth);
+        private void HealthChanged(int currentHealth, int maxHealth) => onHealthChanged?.Invoke(currentHealth,maxHealth);
         private void Death() => Destroy(gameObject);
 
         private void Hit(HitDTO hitData)

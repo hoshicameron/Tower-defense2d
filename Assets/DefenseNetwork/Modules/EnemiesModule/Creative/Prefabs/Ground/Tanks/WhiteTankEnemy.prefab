@@ -104,6 +104,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1864996604960522445, guid: 4afebdae2e2bf5f49a0c6e10aa6de5ff, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3410035980594719528, guid: 4afebdae2e2bf5f49a0c6e10aa6de5ff, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -148,6 +152,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: WhiteTankEnemy
       objectReference: {fileID: 0}
+    - target: {fileID: 4285069473880677590, guid: 4afebdae2e2bf5f49a0c6e10aa6de5ff, type: 3}
+      propertyPath: m_Size.x
+      value: 1.5393496
+      objectReference: {fileID: 0}
     - target: {fileID: 5599999393892216539, guid: 4afebdae2e2bf5f49a0c6e10aa6de5ff, type: 3}
       propertyPath: m_Name
       value: Body
@@ -156,6 +164,18 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: f06f51647fcb4004d92439998676d09a, type: 3}
+    - target: {fileID: 6801458377925174870, guid: 4afebdae2e2bf5f49a0c6e10aa6de5ff, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6801458377925174870, guid: 4afebdae2e2bf5f49a0c6e10aa6de5ff, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8196433907820844964, guid: 4afebdae2e2bf5f49a0c6e10aa6de5ff, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 9066740485112953397, guid: 4afebdae2e2bf5f49a0c6e10aa6de5ff, type: 3}
       propertyPath: enemyDataSo
       value: 

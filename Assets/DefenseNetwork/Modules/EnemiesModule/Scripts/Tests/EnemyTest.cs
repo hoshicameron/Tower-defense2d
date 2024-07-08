@@ -22,7 +22,6 @@ namespace DefenseNetwork.Modules.EnemiesModule.Scripts.Tests
 
         private void Update()
         {
-            if (enemy.gameObject != null)   return;
             
             if(Input.GetKeyDown(KeyCode.Space))
                 hitEventChannelSo.RaiseEvent(new HitDTO { hittedObject = enemy.gameObject, damage = 2 });

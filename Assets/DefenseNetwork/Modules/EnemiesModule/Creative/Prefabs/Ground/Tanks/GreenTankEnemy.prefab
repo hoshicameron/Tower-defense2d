@@ -104,6 +104,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1864996604960522445, guid: 4afebdae2e2bf5f49a0c6e10aa6de5ff, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3410035980594719528, guid: 4afebdae2e2bf5f49a0c6e10aa6de5ff, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -148,6 +152,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GreenTankEnemy
       objectReference: {fileID: 0}
+    - target: {fileID: 4285069473880677590, guid: 4afebdae2e2bf5f49a0c6e10aa6de5ff, type: 3}
+      propertyPath: m_Size.x
+      value: 1.5722213
+      objectReference: {fileID: 0}
     - target: {fileID: 5599999393892216539, guid: 4afebdae2e2bf5f49a0c6e10aa6de5ff, type: 3}
       propertyPath: m_Name
       value: Body
@@ -156,6 +164,34 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 28acfc0ff160a7e488db646ce7b0131d, type: 3}
+    - target: {fileID: 6801458377925174870, guid: 4afebdae2e2bf5f49a0c6e10aa6de5ff, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6801458377925174870, guid: 4afebdae2e2bf5f49a0c6e10aa6de5ff, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8196433907820844964, guid: 4afebdae2e2bf5f49a0c6e10aa6de5ff, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8196433907820844964, guid: 4afebdae2e2bf5f49a0c6e10aa6de5ff, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8196433907820844964, guid: 4afebdae2e2bf5f49a0c6e10aa6de5ff, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8196433907820844964, guid: 4afebdae2e2bf5f49a0c6e10aa6de5ff, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8196433907820844964, guid: 4afebdae2e2bf5f49a0c6e10aa6de5ff, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9066740485112953397, guid: 4afebdae2e2bf5f49a0c6e10aa6de5ff, type: 3}
       propertyPath: enemyDataSo
       value: 
