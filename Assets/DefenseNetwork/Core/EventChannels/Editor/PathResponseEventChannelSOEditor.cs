@@ -1,9 +1,10 @@
-﻿using UnityEditor;
+﻿using DefenseNetwork.Core.EventChannels.DataObjects;
+using UnityEditor;
 
 namespace GameSystemsCookbook
 {
     [CustomEditor(typeof(PathResponseEventChannelSO))]
-    public class PathResponseEventChannelSOEditor : GenericEventChannelSOEditor<PathResponseEventChannelSO>
+    public class PathResponseEventChannelSOEditor : GenericEventChannelSOEditor<PathResponseDTO>
     {
         
     }

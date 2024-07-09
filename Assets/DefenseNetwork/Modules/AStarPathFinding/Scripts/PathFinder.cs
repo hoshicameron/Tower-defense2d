@@ -43,8 +43,6 @@ namespace DefenseNetwork.Modules.AStarPathFinding.Scripts
             pathBuilder.SetStartPosition(pathRequestDto.StartPosition);
             pathBuilder.SetEndPosition(pathRequestDto.EndPosition);
             var path = pathBuilder.CreatePath();
-            pathBuilder.VisualizePath();
-            
             if (path == null)
             {
                 Debug.LogError("There is no path between Start and End position!!!");

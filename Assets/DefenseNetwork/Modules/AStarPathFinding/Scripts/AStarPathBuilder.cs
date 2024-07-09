@@ -61,7 +61,7 @@ namespace DefenseNetwork.Modules.AStarPathFinding.Scripts
             if (startGridPosition == Map.InvalidPosition || endGridPosition == Map.InvalidPosition)
                 return null;
 
-            return AStar.BuildPath(map, startGridPosition, endGridPosition);
+            return AStar.BuildPathOrthogonal(map, startGridPosition, endGridPosition);
         }
 
         public void VisualizePath()

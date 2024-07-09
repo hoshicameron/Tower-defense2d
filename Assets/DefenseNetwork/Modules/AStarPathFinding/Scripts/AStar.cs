@@ -1,12 +1,23 @@
 ﻿using System.Collections.Generic;
 using DefenseNetwork.AStarPathFinding.Scripts;
+using DefenseNetwork.Modules.AStarPathFinding.Scripts.Enums;
 using UnityEngine;
 
 namespace DefenseNetwork.Modules.AStarPathFinding.Scripts
 {
     public static class AStar
     {
-        public static Stack<Vector3> BuildPath(Map map,Vector3Int startGridPosition, Vector3Int targetGridPosition)
+        public static Stack<Vector3> BuildPathOrthogonal(Map map, Vector3Int startGridPosition, Vector3Int targetGridPosition)
+        {
+            return BuildPath(map, startGridPosition, targetGridPosition, MovementType.Orthogonal);
+        }
+
+        public static Stack<Vector3> BuildPathOrthogonalDiagonal(Map map, Vector3Int startGridPosition,
+            Vector3Int targetGridPosition)
+        {
+            return BuildPath(map, startGridPosition, targetGridPosition, MovementType.OrthogonalAndDiagonal);
+        }
+        private static Stack<Vector3> BuildPath(Map map,Vector3Int startGridPosition, Vector3Int targetGridPosition , MovementType movementType)
         {
             startGridPosition -= map.LowerBounds;
             targetGridPosition -= map.LowerBounds;
@@ -20,7 +31,7 @@ namespace DefenseNetwork.Modules.AStarPathFinding.Scripts
             var startNode = gridNodes.GetGridNode(startGridPosition.x, startGridPosition.y);
             var targetNode = gridNodes.GetGridNode(targetGridPosition.x, targetGridPosition.y);
 
-            var endPathNode = FindShortestPath(startNode, targetNode, gridNodes, openNodeList, closedNodesHashSet, map);
+            var endPathNode = FindShortestPath(startNode, targetNode, gridNodes, openNodeList, closedNodesHashSet, map , movementType);
 
             return endPathNode != null ? CreatePathStack(endPathNode, map) : null;
         }
@@ -47,7 +58,7 @@ namespace DefenseNetwork.Modules.AStarPathFinding.Scripts
         }
 
         private static Node FindShortestPath(Node startNode, Node targetNode, GridNodes gridNodes, List<Node> openNodeList,
-            HashSet<Node> closedNodesHashSet, Map map)
+            HashSet<Node> closedNodesHashSet, Map map, MovementType movementType)
         {
             openNodeList.Add(startNode);
 
@@ -64,26 +75,28 @@ namespace DefenseNetwork.Modules.AStarPathFinding.Scripts
                 closedNodesHashSet.Add(currentNode);
 
                 EvaluateCurrentNodeNeighbours(currentNode, targetNode, gridNodes, openNodeList, closedNodesHashSet,
-                    map);
+                    map, movementType);
             }
 
             return null;
         }
 
         private static void EvaluateCurrentNodeNeighbours(Node currentNode, Node targetNode, GridNodes gridNodes, List<Node> openNodeList,
-            HashSet<Node> closedNodesHashSet, Map map)
+            HashSet<Node> closedNodesHashSet, Map map, MovementType movementType)
         {
             var currentNodeGridPosition = currentNode.gridPosition;
 
-            Node validNeighbourNode;
             for (var i = -1; i <=  1; i++)
             {
                 for (var j = -1; j <= 1; j++)
                 {
                     if(i == 0 && j == 0)
                         continue;
-
-                    validNeighbourNode = GetValidNodeNeighbour(currentNodeGridPosition.x + i,
+                    
+                    if (movementType == MovementType.Orthogonal && i != 0 && j != 0)
+                        continue;
+                    
+                    var validNeighbourNode = GetValidNodeNeighbour(currentNodeGridPosition.x + i,
                         currentNodeGridPosition.y + j, gridNodes, closedNodesHashSet, map);
 
                     if (validNeighbourNode == null) continue;
@@ -91,7 +104,7 @@ namespace DefenseNetwork.Modules.AStarPathFinding.Scripts
                     var movementPenaltyForGridSpace = map.AStarMovementPenalty[validNeighbourNode.gridPosition.x,
                         validNeighbourNode.gridPosition.y];
                     
-                    var newCostToNeighbour = currentNode.GCost + GetDistance(currentNode, validNeighbourNode)
+                    var newCostToNeighbour = currentNode.GCost + GetDistance(currentNode, validNeighbourNode, movementType)
                         + movementPenaltyForGridSpace;
                     
 
@@ -100,7 +113,7 @@ namespace DefenseNetwork.Modules.AStarPathFinding.Scripts
                     if (newCostToNeighbour >= validNeighbourNode.GCost && isValidNeighbourInOpenList) continue;
                     
                     validNeighbourNode.GCost = newCostToNeighbour;
-                    validNeighbourNode.HCost = GetDistance(validNeighbourNode, targetNode);
+                    validNeighbourNode.HCost = GetDistance(validNeighbourNode, targetNode, movementType);
                     validNeighbourNode.parentNode = currentNode;
                             
                     if (!isValidNeighbourInOpenList)
@@ -109,11 +122,14 @@ namespace DefenseNetwork.Modules.AStarPathFinding.Scripts
             }
         }
 
-        private static int GetDistance(Node nodeA, Node nodeB)
+        private static int GetDistance(Node nodeA, Node nodeB, MovementType movementType)
         {
             var dstX = Mathf.Abs(nodeA.gridPosition.x - nodeB.gridPosition.x);
             var dstY = Mathf.Abs(nodeA.gridPosition.y - nodeB.gridPosition.y);
 
+            if (movementType == MovementType.Orthogonal)
+                return 10 * (dstX + dstY);
+            
             return dstX > dstY ? 14 * dstY + 10 * (dstX - dstY) : 14 * dstX + 10 * (dstY - dstX);
         }
 

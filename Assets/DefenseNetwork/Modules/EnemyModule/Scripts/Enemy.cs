@@ -17,6 +17,7 @@ namespace DefenseNetwork.Modules.EnemyModule.Scripts
         [Header("Event Channel")] 
         [SerializeField] private VoidEventChannelSO reachedPlayerBaseEventChannel;
         [SerializeField] private HitEventChannelSO hitEventChannel;
+        [SerializeField] private GameObjectEventChannelSO enemyDestroyedEventChannel;
         
         [Space] [Header("Data")] 
         [SerializeField] private EnemyDataSO enemyDataSo;
@@ -56,7 +57,11 @@ namespace DefenseNetwork.Modules.EnemyModule.Scripts
         }
         
         private void HealthChanged(int currentHealth, int maxHealth) => onHealthChanged?.Invoke(currentHealth,maxHealth);
-        private void Death() => Destroy(gameObject);
+        private void Death()
+        {
+            enemyDestroyedEventChannel.RaiseEvent(gameObject);
+            Destroy(gameObject);
+        }
 
         private void Hit(HitDTO hitData)
         {
@@ -102,7 +107,7 @@ namespace DefenseNetwork.Modules.EnemyModule.Scripts
             else
             {
                 reachedPlayerBaseEventChannel.RaiseEvent();
-                Destroy(gameObject);
+                Death();
             }
         }
 

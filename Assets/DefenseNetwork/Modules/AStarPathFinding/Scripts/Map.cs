@@ -34,7 +34,7 @@ namespace DefenseNetwork.Modules.AStarPathFinding.Scripts
         public void SetupPathTilemap()
         {
             PathTilemap = Object.Instantiate(Tilemap, Grid.transform);
-            PathTilemap.GetComponent<TilemapRenderer>().sortingOrder = Tilemap.GetComponent<TilemapRenderer>().sortingOrder +1;
+            PathTilemap.GetComponent<TilemapRenderer>().enabled = false;
             PathTilemap.gameObject.tag = "Untagged";
         }
         

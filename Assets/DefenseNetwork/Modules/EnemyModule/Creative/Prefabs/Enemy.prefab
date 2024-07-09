@@ -93,6 +93,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   reachedPlayerBaseEventChannel: {fileID: 11400000, guid: dbaf71c7003d0f8478c5fcef1ce46135, type: 2}
   hitEventChannel: {fileID: 11400000, guid: 10873237d104ac140a24ae58ad3d1bc8, type: 2}
+  enemyDestroyedEventChannel: {fileID: 11400000, guid: 475832e6bc8622240af902b617abb43a, type: 2}
   enemyDataSo: {fileID: 0}
   spriteRenderer: {fileID: 6235027211226348386}
   bodyTransform: {fileID: 122265280369909719}
