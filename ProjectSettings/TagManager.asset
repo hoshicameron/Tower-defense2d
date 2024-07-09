@@ -62,3 +62,6 @@ TagManager:
   - name: TowerUI
     uniqueID: 1741036223
     locked: 0
+  - name: EnemyUI
+    uniqueID: 3692096213
+    locked: 0

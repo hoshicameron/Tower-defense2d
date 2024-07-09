@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace DefenseNetwork.Modules.EnemiesModule.Scripts.ScriptableObjects.Data
+namespace DefenseNetwork.Modules.EnemyModule.Scripts.ScriptableObjects.Data
 {
     [CreateAssetMenu(fileName = "New EnemyData", menuName = "Gameplay/Data/Enemy Data", order = 0)]
     public class EnemyDataSO : ScriptableObject

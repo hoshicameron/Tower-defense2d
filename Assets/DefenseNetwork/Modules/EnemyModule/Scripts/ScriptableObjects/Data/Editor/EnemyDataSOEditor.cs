@@ -1,8 +1,7 @@
-﻿using System;
-using UnityEditor;
+﻿using UnityEditor;
 using UnityEngine;
 
-namespace DefenseNetwork.Modules.EnemiesModule.Scripts.ScriptableObjects.Data.Editor
+namespace DefenseNetwork.Modules.EnemyModule.Scripts.ScriptableObjects.Data.Editor
 {
     [CustomEditor(typeof(EnemyDataSO))]
     public class EnemyDataSOEditor : UnityEditor.Editor

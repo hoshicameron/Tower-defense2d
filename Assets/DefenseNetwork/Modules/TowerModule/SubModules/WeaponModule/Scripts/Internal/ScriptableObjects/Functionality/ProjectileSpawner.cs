@@ -4,9 +4,9 @@ using System.Linq;
 using DefenseNetwork.Modules.TowerModule.SubModules.WeaponModule.Scripts.Internal.Projectiles;
 using UnityEngine;
 
-namespace Modules.TowerModule.SubModules.WeaponModule.Scripts.Internal.ScriptableObjects.Functionality
+namespace DefenseNetwork.Modules.TowerModule.SubModules.WeaponModule.Scripts.Internal.ScriptableObjects.Functionality
 {
-    public class Spawner : ScriptableObject
+    public class ProjectileSpawner : ScriptableObject
     {
         private List<Transform> projectileSpawnPoints;
         private Projectile projectilePrefab;

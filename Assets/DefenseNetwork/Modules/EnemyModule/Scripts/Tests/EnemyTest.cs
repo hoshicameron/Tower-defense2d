@@ -1,10 +1,9 @@
-using System;
 using System.Collections.Generic;
 using DefenseNetwork.Core.EventChannels.DataObjects;
 using GameSystemsCookbook;
 using UnityEngine;
 
-namespace DefenseNetwork.Modules.EnemiesModule.Scripts.Tests
+namespace DefenseNetwork.Modules.EnemyModule.Scripts.Tests
 {
     public class EnemyTest : MonoBehaviour
     {
@@ -24,7 +23,7 @@ namespace DefenseNetwork.Modules.EnemiesModule.Scripts.Tests
         {
             
             if(Input.GetKeyDown(KeyCode.Space))
-                hitEventChannelSo.RaiseEvent(new HitDTO { hittedObject = enemy.gameObject, damage = 2 });
+                hitEventChannelSo.RaiseEvent(new HitDTO { HittedObject = enemy.gameObject, Damage = 2 });
         }
     }
 }

@@ -3,13 +3,13 @@ using DefenseNetwork.Core.EventChannels.DataObjects;
 using DefenseNetwork.Modules.CommonBehavioursModule.Scripts.ScriptableObjects;
 using DefenseNetwork.Modules.CommonBehavioursModule.Scripts.ScriptableObjects.Movers;
 using DefenseNetwork.Modules.CommonBehavioursModule.Scripts.ScriptableObjects.Rotators;
-using DefenseNetwork.Modules.EnemiesModule.Scripts.ScriptableObjects.Data;
+using DefenseNetwork.Modules.EnemyModule.Scripts.ScriptableObjects.Data;
 using GameSystemsCookbook;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Serialization;
 
-namespace DefenseNetwork.Modules.EnemiesModule.Scripts
+namespace DefenseNetwork.Modules.EnemyModule.Scripts
 {
     public class Enemy : MonoBehaviour
     {
@@ -60,8 +60,8 @@ namespace DefenseNetwork.Modules.EnemiesModule.Scripts
 
         private void Hit(HitDTO hitData)
         {
-            if(hitData.hittedObject == gameObject)
-                health.TakeDamage(hitData.damage);
+            if(hitData.HittedObject == gameObject)
+                health.TakeDamage(hitData.Damage);
         }
 
 

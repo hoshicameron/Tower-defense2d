@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using DefenseNetwork.Modules.CommonBehavioursModule.Scripts.ScriptableObjects.Rotators;
 using DefenseNetwork.Modules.TowerModule.SubModules.WeaponModule.Scripts.Internal.ScriptableObjects.Data;
-using Modules.TowerModule.SubModules.WeaponModule.Scripts.Internal.ScriptableObjects.Functionality;
+using DefenseNetwork.Modules.TowerModule.SubModules.WeaponModule.Scripts.Internal.ScriptableObjects.Functionality;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -17,7 +17,7 @@ namespace DefenseNetwork.Modules.TowerModule.SubModules.WeaponModule.Scripts.Int
 
         private Transform target;
         private TargetRotator targetRotator;
-        private Spawner projectileSpawner;
+        private ProjectileSpawner projectileProjectileSpawner;
         private Coroutine shootRoutine;
 
         public bool IsShooting { get; private set; }
@@ -38,8 +38,8 @@ namespace DefenseNetwork.Modules.TowerModule.SubModules.WeaponModule.Scripts.Int
             targetRotator = (TargetRotator)ScriptableObject.CreateInstance(targetRotatorType.GetType());
             targetRotator.Initialize(transform, weaponDataSo.TurnSpeed);
 
-            projectileSpawner = ScriptableObject.CreateInstance<Spawner>();
-            projectileSpawner.Initialize(projectileSpawnPositions , weaponDataSo.ProjectilePrefab);
+            projectileProjectileSpawner = ScriptableObject.CreateInstance<ProjectileSpawner>();
+            projectileProjectileSpawner.Initialize(projectileSpawnPositions , weaponDataSo.ProjectilePrefab);
         }
 
         private void Update()
@@ -62,7 +62,7 @@ namespace DefenseNetwork.Modules.TowerModule.SubModules.WeaponModule.Scripts.Int
         private void StartShooting()
         {
             if(IsShooting)  return;
-            shootRoutine ??= StartCoroutine(projectileSpawner.ShootRoutine(target, weaponDataSo.DelayBetweenShoots));
+            shootRoutine ??= StartCoroutine(projectileProjectileSpawner.ShootRoutine(target, weaponDataSo.DelayBetweenShoots));
             IsShooting = true;
         }
 
