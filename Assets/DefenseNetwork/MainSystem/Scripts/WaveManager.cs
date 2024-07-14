@@ -79,12 +79,12 @@ namespace DefenseNetwork.MainSystem.Scripts
         
         private void AddEnemyToActiveList(GameObject enemy)
         {
+            enemy.name += activeEnemies.Count;
             activeEnemies.Add(enemy);
         }
 
         private void HandleEnemyDestroyed(GameObject destroyedEnemy)
         {
-            Debug.Log($"Enemy: {destroyedEnemy.name} destroyed!");
             activeEnemies.Remove(destroyedEnemy);
         
             if (activeEnemies.Count == 0 && !isSpawning)

@@ -8,7 +8,7 @@ namespace DefenseNetwork.Modules.TowerModule.SubModules.WeaponModule.Scripts.Int
     {
         [field:SerializeField] public float TurnSpeed { get; private set; } = 10.0f;
         [field:SerializeField] public float DelayBetweenShoots { get; private set; } = 5;
-        [field:SerializeField] public Projectile ProjectilePrefab { get; private set; }
+        [field:SerializeField] public ProjectileBase BulletPrefab { get; private set; }
         [field:SerializeField] public Sprite Sprite { get; private set; }
     }
 }

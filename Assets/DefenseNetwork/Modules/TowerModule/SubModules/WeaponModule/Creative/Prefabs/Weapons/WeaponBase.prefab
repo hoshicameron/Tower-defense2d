@@ -72,7 +72,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1593018473
-  m_SortingLayer: 1
+  m_SortingLayer: 5
   m_SortingOrder: 1
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -97,7 +97,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a610ed44bcae4d45b5d888ba872a7dbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotatorType: {fileID: 0}
-  weaponDataSo: {fileID: 0}
+  targetRotatorTemplate: {fileID: 11400000, guid: e09317f120f84b84382e849c97a15a85, type: 2}
+  projectileSpawnerTemplate: {fileID: 11400000, guid: b3bde328e60a9fe4fa84e2533337d21e, type: 2}
   spriteRenderer: {fileID: 5798617794516551685}
   projectileSpawnPositions: []
+  weaponDataSo: {fileID: 0}

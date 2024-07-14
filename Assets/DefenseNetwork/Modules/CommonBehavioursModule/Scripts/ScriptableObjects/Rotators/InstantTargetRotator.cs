@@ -7,6 +7,8 @@ namespace DefenseNetwork.Modules.CommonBehavioursModule.Scripts.ScriptableObject
     {
         public override void Rotate(Transform target, float deltaTime, float rotationOffset = 90f)
         {
+            if(target== null)   return;
+            
             var direction = target.position - rotationPoint.position;
             var angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - rotationOffset;
             rotationPoint.rotation = Quaternion.Euler(0f, 0f, angle);

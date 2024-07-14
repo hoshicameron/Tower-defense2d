@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <TurnSpeed>k__BackingField: 10
   <DelayBetweenShoots>k__BackingField: 0.9
-  <ProjectilePrefab>k__BackingField: {fileID: 3630195854333113602, guid: 0160346c2465f9242a805402e7e1dbca, type: 3}
+  <BulletPrefab>k__BackingField: {fileID: 3630195854333113602, guid: 0160346c2465f9242a805402e7e1dbca, type: 3}
   <Sprite>k__BackingField: {fileID: 21300000, guid: df3158204b0d1be45963d56cd6922e10, type: 3}

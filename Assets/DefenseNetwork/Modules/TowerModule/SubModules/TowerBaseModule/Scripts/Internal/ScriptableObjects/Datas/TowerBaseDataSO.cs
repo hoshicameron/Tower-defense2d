@@ -5,7 +5,6 @@ namespace DefenseNetwork.Modules.TowerModule.SubModules.TowerBaseModule.Scripts.
     [CreateAssetMenu(fileName = "New TowerBaseData", menuName = "Gameplay/Data/TowerBaseData")]
     public class TowerBaseDataSO : ScriptableObject
     {
-         [field:SerializeField] public float Range { get; private set; } = 5;
          [field:SerializeField] public Sprite BaseSprite { get; private set; }
          [field:SerializeField] public LayerMask DetectionLayer { get; private set; }
     }

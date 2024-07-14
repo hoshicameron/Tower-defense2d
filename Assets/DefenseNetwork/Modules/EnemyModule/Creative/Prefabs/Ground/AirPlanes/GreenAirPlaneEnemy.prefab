@@ -180,6 +180,10 @@ PrefabInstance:
       propertyPath: bodyTransform
       value: 
       objectReference: {fileID: 6481868568443345589}
+    - target: {fileID: 9066740485112953397, guid: 4afebdae2e2bf5f49a0c6e10aa6de5ff, type: 3}
+      propertyPath: directionalMoverTemplate
+      value: 
+      objectReference: {fileID: 11400000, guid: 195f78390cde0cc41ac23024619efba3, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:

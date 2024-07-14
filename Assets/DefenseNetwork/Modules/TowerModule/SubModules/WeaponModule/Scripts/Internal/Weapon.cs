@@ -2,22 +2,34 @@
 using DefenseNetwork.Modules.CommonBehavioursModule.Scripts.ScriptableObjects.Rotators;
 using DefenseNetwork.Modules.TowerModule.SubModules.WeaponModule.Scripts.Internal.ScriptableObjects.Data;
 using DefenseNetwork.Modules.TowerModule.SubModules.WeaponModule.Scripts.Internal.ScriptableObjects.Functionality;
+using JetBrains.Annotations;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace DefenseNetwork.Modules.TowerModule.SubModules.WeaponModule.Scripts.Internal
 {
     [RequireComponent(typeof(SpriteRenderer))]
     public class Weapon : MonoBehaviour
     {
-        [FormerlySerializedAs("rotatorType")] [SerializeField] private TargetRotator targetRotatorType;
-        [SerializeField] private WeaponDataSO weaponDataSo;
+        [Header("Behaviours")]
+        [SerializeField] private TargetRotator targetRotatorTemplate;
+
+        [SerializeField] private ProjectileSpawner projectileSpawnerTemplate;
+        
+        [Space]
+        [Header("Components")]
         [SerializeField] private SpriteRenderer spriteRenderer;
+        
+        [Space]
+        [Header("Projectiles Spawn Position")]
         [SerializeField] private List<Transform> projectileSpawnPositions;
+        
+        [Space]
+        [Header("Data")]
+        [SerializeField] private WeaponDataSO weaponDataSo;
 
         private Transform target;
         private TargetRotator targetRotator;
-        private ProjectileSpawner projectileProjectileSpawner;
+        private ProjectileSpawner projectileSpawner;
         private Coroutine shootRoutine;
 
         public bool IsShooting { get; private set; }
@@ -35,43 +47,49 @@ namespace DefenseNetwork.Modules.TowerModule.SubModules.WeaponModule.Scripts.Int
 
         private void Initialize()
         {
-            targetRotator = (TargetRotator)ScriptableObject.CreateInstance(targetRotatorType.GetType());
+            targetRotator = Instantiate(targetRotatorTemplate);
             targetRotator.Initialize(transform, weaponDataSo.TurnSpeed);
 
-            projectileProjectileSpawner = ScriptableObject.CreateInstance<ProjectileSpawner>();
-            projectileProjectileSpawner.Initialize(projectileSpawnPositions , weaponDataSo.ProjectilePrefab);
+            projectileSpawner = Instantiate(projectileSpawnerTemplate);
+            projectileSpawner.Initialize(projectileSpawnPositions , weaponDataSo.BulletPrefab, weaponDataSo.DelayBetweenShoots);
         }
 
         private void Update()
         {
-            if (target == null)
-            {
-                StopShooting();
-                return;
-            }
-            
+            if(target == null)  return;
+                
             RotateTowardsTarget();
+            
             if(IsFacingTarget())
                 StartShooting();
         }
 
         private void RotateTowardsTarget() => targetRotator.Rotate(target, Time.deltaTime);
-        private bool IsFacingTarget() => target != null && targetRotator.IsFacingTarget(target);
-        public void SetTarget(Transform newTarget) => target = newTarget;
-        public void RemoveTarget() => target = null;
+        private bool IsFacingTarget() => targetRotator.IsFacingTarget(target);
+        public void SetTarget([CanBeNull] Transform newTarget)
+        {
+            if (newTarget == null)  StopShooting();
+            
+            target = newTarget;
+            projectileSpawner.SetTarget(target);
+        }
+
+        private void RemoveTarget()
+        {
+            target = null;
+        }
+
         private void StartShooting()
         {
             if(IsShooting)  return;
-            shootRoutine ??= StartCoroutine(projectileProjectileSpawner.ShootRoutine(target, weaponDataSo.DelayBetweenShoots));
+            shootRoutine ??= StartCoroutine(projectileSpawner.ShootRoutine());
             IsShooting = true;
         }
 
         private void StopShooting()
         {
-            if(!IsShooting) return;
-            if (shootRoutine == null) return;
-            
-            StopCoroutine(shootRoutine);
+            if (shootRoutine != null)
+                StopCoroutine(shootRoutine);
             shootRoutine = null;
             IsShooting = false;
         }

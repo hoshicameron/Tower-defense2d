@@ -83,6 +83,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: ff43e8da7fc0c2a418c4fa1ab2946f4d, type: 2}
     - target: {fileID: 3826140810939711435, guid: 68bfdfa8270999845be218f26c6d43e6, type: 3}
+      propertyPath: targetRotatorType
+      value: 
+      objectReference: {fileID: 11400000, guid: e09317f120f84b84382e849c97a15a85, type: 2}
+    - target: {fileID: 3826140810939711435, guid: 68bfdfa8270999845be218f26c6d43e6, type: 3}
       propertyPath: projectileSpawnPositions.Array.size
       value: 2
       objectReference: {fileID: 0}

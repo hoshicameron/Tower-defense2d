@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f43cbda481ef4fba90d43f0f2df35209, type: 3}
   m_Name: GraySoldierEnemyData
   m_EditorClassIdentifier: 
-  <Speed>k__BackingField: 5
+  <Speed>k__BackingField: 2
   <RotationSpeed>k__BackingField: 5
   <Health>k__BackingField: 25
   <Sprite>k__BackingField: {fileID: 21300000, guid: 136f9b20527aa5d4d9d78eea2dbb5716, type: 3}

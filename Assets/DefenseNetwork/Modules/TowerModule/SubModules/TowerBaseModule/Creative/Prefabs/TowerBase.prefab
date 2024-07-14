@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2694971630091453483}
   - component: {fileID: 4991232339360143092}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71,7 +71,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1593018473
-  m_SortingLayer: 1
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: f74a5d99d7257d143acfe6a0844f70ca, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -94,7 +94,10 @@ GameObject:
   m_Component:
   - component: {fileID: 7146887969687681131}
   - component: {fileID: 4818517572100633206}
-  m_Layer: 0
+  - component: {fileID: 2012490392663837382}
+  - component: {fileID: 4319139394748914060}
+  - component: {fileID: 5919364703510061986}
+  m_Layer: 2
   m_Name: TowerBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -130,15 +133,85 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 459963932a7d4cfeae23a7182cb4e2a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  towerBaseDataSo: {fileID: 11400000, guid: 84608d04555da9a488832f3a561a362a, type: 2}
   bodyRenderer: {fileID: 4991232339360143092}
-  sensorType: {fileID: 0}
   onTargetDetected:
     m_PersistentCalls:
       m_Calls: []
-  onTargetOutOfRange:
-    m_PersistentCalls:
-      m_Calls: []
+  towerBaseDataSo: {fileID: 11400000, guid: 84608d04555da9a488832f3a561a362a, type: 2}
+--- !u!50 &2012490392663837382
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6470910382749638580}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!58 &4319139394748914060
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6470910382749638580}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 6.5
+--- !u!114 &5919364703510061986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6470910382749638580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b61c89f51a034a29a19e1d7891e47e93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6861497225829475333
 GameObject:
   m_ObjectHideFlags: 0
@@ -148,7 +221,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4599096905794694542}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: WeaponAttachBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}

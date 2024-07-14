@@ -13,7 +13,6 @@ namespace DefenseNetwork.Modules.EnemyModule.Scripts
 {
     public class Enemy : MonoBehaviour
     {
-        [FormerlySerializedAs("enemyReachedTarget")]
         [Header("Event Channel")] 
         [SerializeField] private VoidEventChannelSO reachedPlayerBaseEventChannel;
         [SerializeField] private HitEventChannelSO hitEventChannel;
@@ -27,9 +26,11 @@ namespace DefenseNetwork.Modules.EnemyModule.Scripts
         [SerializeField] private Transform bodyTransform;
 
         [Space] [Header("Behaviours")] 
-        [SerializeField] private DirectionalMover directionalMoverType;
-        [SerializeField] private DirectionalRotator directionalRotatorType;
+        [SerializeField] private DirectionalMover directionalMoverTemplate;
+        [SerializeField] private DirectionalRotator directionalRotatorTemplate;
+        [SerializeField] private HealthBehaviour healthTemplate;
         [SerializeField] private float rotationOffset;
+        
 
         [Space]
         [Header("Events")]
@@ -42,7 +43,7 @@ namespace DefenseNetwork.Modules.EnemyModule.Scripts
         private int currentWaypointIndex;
         private void OnEnable()
         {
-            health = ScriptableObject.CreateInstance<HealthBehaviour>();
+            health = Instantiate(healthTemplate);
             health.OnHealthChanged += HealthChanged;
             health.OnDeath += Death;
             health.Initialize(enemyDataSo.Health);
@@ -76,15 +77,15 @@ namespace DefenseNetwork.Modules.EnemyModule.Scripts
             transform.position = movementPath[0];
             currentWaypointIndex++;
 
-            if (directionalMoverType != null)
+            if (directionalMoverTemplate != null)
             {
-                directionalMover = (DirectionalMover)ScriptableObject.CreateInstance(directionalMoverType.GetType());
+                directionalMover = (DirectionalMover)ScriptableObject.CreateInstance(directionalMoverTemplate.GetType());
                 directionalMover.Initialize(transform, enemyDataSo.Speed);
             }
 
-            if (directionalRotatorType != null)
+            if (directionalRotatorTemplate != null)
             {
-                directionalRotator = (DirectionalRotator)ScriptableObject.CreateInstance(directionalRotatorType.GetType());
+                directionalRotator = (DirectionalRotator)ScriptableObject.CreateInstance(directionalRotatorTemplate.GetType());
                 directionalRotator.Initialize(bodyTransform, enemyDataSo.RotationSpeed);
             }
         }

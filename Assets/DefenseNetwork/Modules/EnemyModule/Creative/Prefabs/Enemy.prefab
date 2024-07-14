@@ -97,8 +97,9 @@ MonoBehaviour:
   enemyDataSo: {fileID: 0}
   spriteRenderer: {fileID: 6235027211226348386}
   bodyTransform: {fileID: 122265280369909719}
-  directionalMoverType: {fileID: 11400000, guid: 195f78390cde0cc41ac23024619efba3, type: 2}
-  directionalRotatorType: {fileID: 11400000, guid: 4c0a30d6f6b0741428514d5a7d43ba8d, type: 2}
+  directionalMoverTemplate: {fileID: 11400000, guid: 195f78390cde0cc41ac23024619efba3, type: 2}
+  directionalRotatorTemplate: {fileID: 11400000, guid: 4c0a30d6f6b0741428514d5a7d43ba8d, type: 2}
+  healthTemplate: {fileID: 11400000, guid: e7c0c012c738e894d9e4915cdc36a565, type: 2}
   rotationOffset: 0
   onHealthChanged:
     m_PersistentCalls:

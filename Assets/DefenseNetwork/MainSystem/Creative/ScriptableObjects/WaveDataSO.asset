@@ -12,3 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06e33f4853b04e859f9e572c613f8cac, type: 3}
   m_Name: WaveDataSO
   m_EditorClassIdentifier: 
+  <Waves>k__BackingField:
+  - <SpawnInfos>k__BackingField:
+    - <EnemyToSpawn>k__BackingField: {fileID: 1880789894201258090, guid: 9e47f3957f232924783978df56ec86f7, type: 3}
+      <Count>k__BackingField: 20
+      <DelayBetweenSpawns>k__BackingField: 1
+      <DelayAfterGroup>k__BackingField: 1

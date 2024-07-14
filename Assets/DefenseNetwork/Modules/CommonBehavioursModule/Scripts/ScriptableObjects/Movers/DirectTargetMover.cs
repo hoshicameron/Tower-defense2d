@@ -16,7 +16,7 @@ namespace DefenseNetwork.Modules.CommonBehavioursModule.Scripts.ScriptableObject
 
         public override void Move(float deltaTime)
         {
-            if (transformToMove == null || target == null) return;
+            if (transformToMove == null) return;
             
             transformToMove.Translate(direction * (speed * deltaTime));
         }

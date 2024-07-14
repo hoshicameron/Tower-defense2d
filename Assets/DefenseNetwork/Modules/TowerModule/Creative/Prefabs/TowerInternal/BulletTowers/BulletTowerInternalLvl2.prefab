@@ -50,7 +50,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5752359742241676939, guid: 4d84a314c06f04449bc9f415c82b691c, type: 3}
       propertyPath: m_Name
-      value: BulletTowerLvl2
+      value: BulletTowerInternalLvl2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -73,6 +73,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2869728033368228885}
     m_Modifications:
+    - target: {fileID: 5581075272989534956, guid: bae58411c66c75b4cb1492d1c6ff6b39, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.21
+      objectReference: {fileID: 0}
+    - target: {fileID: 5722634055253003288, guid: bae58411c66c75b4cb1492d1c6ff6b39, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.216
+      objectReference: {fileID: 0}
     - target: {fileID: 7946969184692699903, guid: bae58411c66c75b4cb1492d1c6ff6b39, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

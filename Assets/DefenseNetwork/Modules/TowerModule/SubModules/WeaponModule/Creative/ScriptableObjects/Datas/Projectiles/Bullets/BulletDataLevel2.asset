@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BulletDataLevel2
   m_EditorClassIdentifier: 
   <LifeTime>k__BackingField: 5
-  <Speed>k__BackingField: 10
+  <Speed>k__BackingField: 20
   <Damage>k__BackingField: 7
   <RotationSpeed>k__BackingField: 0
   <DetectionLayer>k__BackingField:

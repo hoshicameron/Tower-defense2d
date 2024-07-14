@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using DefenseNetwork.Modules.TowerModule.SubModules.WeaponModule.Scripts.Internal.Projectiles;
 using UnityEngine;
 
@@ -9,24 +8,27 @@ namespace DefenseNetwork.Modules.TowerModule.SubModules.WeaponModule.Scripts.Int
     public class ProjectileSpawner : ScriptableObject
     {
         private List<Transform> projectileSpawnPoints;
-        private Projectile projectilePrefab;
+        private ProjectileBase bulletPrefab;
+        private float delay;
+        private Transform target;
 
-        public void Initialize(List<Transform> spawnPoints, Projectile projectileToSpawn )
+        public void Initialize(List<Transform> spawnPoints, ProjectileBase bulletToSpawn,float ShootDelay )
         {
             projectileSpawnPoints = spawnPoints;
-            projectilePrefab = projectileToSpawn;
+            bulletPrefab = bulletToSpawn;
+            delay = ShootDelay;
         }
 
-        public IEnumerator ShootRoutine(Transform target, float delay)
+        public void SetTarget(Transform targetTosShoot) => target = targetTosShoot;
+        public IEnumerator ShootRoutine()
         {
             var wait = new WaitForSeconds(delay);
             while (true)
             {
-                foreach (var newProjectile in 
-                         projectileSpawnPoints.Select(spawnPoint => 
-                             Instantiate(projectilePrefab, spawnPoint.position, Quaternion.identity)))
+                foreach (var spawnPoint in projectileSpawnPoints)
                 {
-                    newProjectile.Initialize(target);
+                    var newProjectile = Instantiate(bulletPrefab, spawnPoint.position, Quaternion.identity);
+                    newProjectile.Initialize(target, spawnPoint);
                 }
 
                 yield return wait;
