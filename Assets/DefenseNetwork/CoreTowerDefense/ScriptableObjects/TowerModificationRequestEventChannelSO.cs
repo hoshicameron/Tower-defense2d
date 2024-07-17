@@ -1,4 +1,5 @@
 ﻿using DefenseNetwork.Core.EventChannels.DataObjects;
+using DefenseNetwork.CoreTowerDefense.DataRequestObjects;
 using UnityEngine;
 
 namespace GameSystemsCookbook
@@ -7,7 +8,7 @@ namespace GameSystemsCookbook
     /// This event channel broadcasts and carries TowerUpgradeRequest payload.
     /// </summary>
     [CreateAssetMenu(fileName = "TowerModificationRequestEventChannelSO", menuName = "Events/TowerModificationRequestEventChannelSO")]
-    public class TowerModificationRequestEventChannelSO : GenericEventChannelSO<TowerModificationRequestDTO>
+    public class TowerModificationRequestEventChannelSO : GenericEventChannelSO<TowerModificationRequest>
     {
         
     }

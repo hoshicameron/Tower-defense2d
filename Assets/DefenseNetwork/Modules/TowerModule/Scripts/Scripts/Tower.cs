@@ -1,6 +1,7 @@
 using System;
 using DefenseNetwork.Core.EventChannels.DataObjects;
 using DefenseNetwork.Core.EventChannels.DataObjects.Enums;
+using DefenseNetwork.CoreTowerDefense.DataRequestObjects;
 using DefenseNetwork.Modules.TowerModule.Scripts.Scripts.ScriptableObjects;
 using GameSystemsCookbook;
 using UnityEngine;
@@ -60,7 +61,7 @@ namespace DefenseNetwork.Modules.TowerModule.Scripts.Scripts
 
         public void UpgradeTower()
         {
-            var upgradeRequest = new TowerModificationRequestDTO
+            var upgradeRequest = new TowerModificationRequest
             {
                 Cost = towerDataSo.Upgrades[towerLevel].UpgradeCost,
                 Operation = TowerOperation.Upgrade
@@ -89,7 +90,7 @@ namespace DefenseNetwork.Modules.TowerModule.Scripts.Scripts
 
         public void SellTower()
         {
-            var sellRequest = new TowerModificationRequestDTO
+            var sellRequest = new TowerModificationRequest
             {
                 Cost = towerDataSo.Upgrades[towerLevel].SellIncome,
                 Operation = TowerOperation.Sell

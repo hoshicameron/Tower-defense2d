@@ -13,14 +13,13 @@ namespace DefenseNetwork.Modules.UIModule.GamePlay.TowerSpotView.Scripts
         [Header("Event Channel")]
         [SerializeField] private GameObjectEventChannelSO towerSelectionChannel;
         
-        [Space]
-        [Header("UI")]
+        [Space] [Header("UI")]
         [SerializeField] private CanvasGroup towerSpotCanvas;
         [SerializeField] private RectTransform towerDeployPanel;
         [SerializeField] private Button closeButton;
         [SerializeField] private TowerDeployButton towerDeployButtonPrefab;
-        [Space]
-        [Header("Data")] 
+        
+        [Space] [Header("Data")] 
         [SerializeField] private TowerSpotDataSO towerSpotDataSo;
 
         [Space] [Header("Events")] 

@@ -46,4 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerDeployRequestEventChannel: {fileID: 11400000, guid: 301468f16135b454eb6ea3b36d1085ee, type: 2}
   towerDeploySuccessChannel: {fileID: 11400000, guid: 029329836a19fee448042ce57629a45c, type: 2}
+  towerModificationRequestChannel: {fileID: 11400000, guid: e327f5ef7427b06478bed267105bf365, type: 2}
+  goldUpdateEventChannel: {fileID: 11400000, guid: e97ec824434d0a9469b008e729900865, type: 2}
+  enemyDestroyedRewardEventChannel: {fileID: 11400000, guid: b3c693ee252d47f42af82e611ef941b0, type: 2}
   initialGold: 200

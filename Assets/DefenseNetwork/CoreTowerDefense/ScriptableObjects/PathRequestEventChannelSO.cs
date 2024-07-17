@@ -1,4 +1,5 @@
 ﻿using DefenseNetwork.Core.EventChannels.DataObjects;
+using DefenseNetwork.CoreTowerDefense.Requests;
 using UnityEngine;
 
 namespace GameSystemsCookbook
@@ -7,7 +8,7 @@ namespace GameSystemsCookbook
     /// This event channel broadcasts and carries PathRequestDO payload.
     /// </summary>
     [CreateAssetMenu(fileName = "PathRequestEventChannelSO", menuName = "Events/PathRequestEventChannelSO")]
-    public class PathRequestEventChannelSO : GenericEventChannelSO<PathRequestDTO>
+    public class PathRequestEventChannelSO : GenericEventChannelSO<PathRequest>
     {
         
     }

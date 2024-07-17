@@ -17737,7 +17737,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74af9f45a4704e2da7d5572bd59084df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  towerSpotDeployPositionEventChannel: {fileID: 11400000, guid: fe07c4bcf70318a43a721e74bfc41904, type: 2}
+  towerSpotDeployPositionEventChannel: {fileID: 11400000, guid: 95d973409d60ddf4abeee15e1bf6e61b, type: 2}
   towerSpotPrefab: {fileID: 8000744944568625245, guid: 563f403efbfaf4b4f8e177c1a0d7c77d, type: 3}
 --- !u!4 &1516492390
 Transform:
@@ -17783,8 +17783,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc682806b68edb04eb74ece7757e15a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletDeployPositionEventChannel: {fileID: 11400000, guid: 5a8f41b10408716488d0d0f30b551afe, type: 2}
-  missileTowerDeployPositionEventChannel: {fileID: 11400000, guid: 0eb470abcc8979b419dce9556ada9143, type: 2}
+  towerDeployChannel: {fileID: 11400000, guid: 029329836a19fee448042ce57629a45c, type: 2}
   bulletTowerPrefab: {fileID: 4846813566057244275, guid: 95820de97c0d5f640bf0178272f34653, type: 3}
   missileTowerPrefab: {fileID: 1932436626237114805, guid: 343bbd324edc54747bf5680784d6eafe, type: 3}
 --- !u!4 &1612787033

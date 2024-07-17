@@ -1,12 +1,10 @@
-﻿using System;
-using DefenseNetwork.Core.EventChannels.DataObjects.Enums;
+﻿using DefenseNetwork.Core.EventChannels.DataObjects.Enums;
 using UnityEngine;
 
-namespace DefenseNetwork.Core.EventChannels.DataObjects
+namespace DefenseNetwork.CoreTowerDefense.DataRequestObjects
 {
-    public struct TowerDeployRequestDTO
+    public struct TowerDeployRequest
     {
-        
         public Vector2 DeployPosition { get; set; }
         public int DeployCost { get; set; }
         public TowerType TowerType { get; set; }

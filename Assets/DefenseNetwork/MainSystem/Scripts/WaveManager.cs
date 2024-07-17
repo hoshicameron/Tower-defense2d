@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using DefenseNetwork.Core.EventChannels.DataObjects;
+using DefenseNetwork.CoreTowerDefense.DataRequestObjects;
 using DefenseNetwork.MainSystem.Scripts.ScriptableObjects;
 using GameSystemsCookbook;
 using UnityEngine;
@@ -63,7 +64,7 @@ namespace DefenseNetwork.MainSystem.Scripts
             {
                 for (var i = 0; i < spawnInfo.Count; i++)
                 {
-                    enemySpawnRequestChannel.RaiseEvent(new EnemySpawnRequestDTO 
+                    enemySpawnRequestChannel.RaiseEvent(new EnemySpawnRequest 
                     { 
                         EnemyToSpawn = spawnInfo.EnemyToSpawn,
                         onEnemySpawned = AddEnemyToActiveList

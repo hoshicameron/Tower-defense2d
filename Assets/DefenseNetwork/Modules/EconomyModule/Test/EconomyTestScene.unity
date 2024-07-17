@@ -469,6 +469,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TowerDeployer
       objectReference: {fileID: 0}
+    - target: {fileID: 3936844227096837255, guid: 4af714be7216ae94f99b679221264180, type: 3}
+      propertyPath: "towerDeploy\u064FSuccessChannel"
+      value: 
+      objectReference: {fileID: 11400000, guid: 029329836a19fee448042ce57629a45c, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -579,14 +583,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4320054496991416125, guid: cc6b78a0805ca36418c7ec9e10a30aaf, type: 3}
-      propertyPath: goldUpdateEventChannel
-      value: 
-      objectReference: {fileID: 11400000, guid: e97ec824434d0a9469b008e729900865, type: 2}
-    - target: {fileID: 4320054496991416125, guid: cc6b78a0805ca36418c7ec9e10a30aaf, type: 3}
-      propertyPath: towerModificationRequestChannel
-      value: 
-      objectReference: {fileID: 11400000, guid: e327f5ef7427b06478bed267105bf365, type: 2}
     - target: {fileID: 8891404514561627619, guid: cc6b78a0805ca36418c7ec9e10a30aaf, type: 3}
       propertyPath: m_Name
       value: EconomyManager

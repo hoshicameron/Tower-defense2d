@@ -17,3 +17,4 @@ MonoBehaviour:
   <Health>k__BackingField: 20
   <Sprite>k__BackingField: {fileID: 21300000, guid: 8e0313b6651c8be47973a5a9cb0a73d9, type: 3}
   <LayerName>k__BackingField: GroundEnemy
+  <RewardGoldAmount>k__BackingField: 5

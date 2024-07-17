@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using DefenseNetwork.Core.EventChannels.DataObjects;
+using DefenseNetwork.CoreTowerDefense.DataRequestObjects;
 using GameSystemsCookbook;
 using UnityEngine;
 
@@ -31,12 +32,12 @@ namespace DefenseNetwork.Modules.EnemyModule.Scripts
             enemySpawnRequestChannel.OnEventRaised -= SpawnEnemy;
         }
 
-        private void SpawnEnemy(EnemySpawnRequestDTO spawnRequestDto)
+        private void SpawnEnemy(EnemySpawnRequest spawnRequest)
         {
             
-            var newEnemy = Instantiate(gameObjectEnemyDict[spawnRequestDto.EnemyToSpawn], transform.position, Quaternion.identity);
+            var newEnemy = Instantiate(gameObjectEnemyDict[spawnRequest.EnemyToSpawn], transform.position, Quaternion.identity);
             newEnemy.Initialize(pathRequester.CurrentPath);
-            spawnRequestDto.onEnemySpawned?.Invoke(newEnemy.gameObject);
+            spawnRequest.onEnemySpawned?.Invoke(newEnemy.gameObject);
         }
 
         private void Start()

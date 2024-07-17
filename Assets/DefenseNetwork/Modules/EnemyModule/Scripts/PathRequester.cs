@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using DefenseNetwork.Core.EventChannels.DataObjects;
+using DefenseNetwork.CoreTowerDefense.Requests;
 using GameSystemsCookbook;
 using UnityEngine;
 
@@ -28,7 +29,7 @@ namespace DefenseNetwork.Modules.EnemyModule.Scripts
         private void RequestPath()
         {
             var requestID = Guid.NewGuid().ToString();
-            requestPathEventChannel.RaiseEvent(new PathRequestDTO
+            requestPathEventChannel.RaiseEvent(new PathRequest
             {
                 RequestID = requestID,
                 StartPosition = startPoint.position,

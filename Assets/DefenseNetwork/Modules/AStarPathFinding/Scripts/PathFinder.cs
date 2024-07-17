@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using DefenseNetwork.Core.EventChannels.DataObjects;
+using DefenseNetwork.CoreTowerDefense.Requests;
 using GameSystemsCookbook;
 using UnityEngine;
 
@@ -30,18 +31,18 @@ namespace DefenseNetwork.Modules.AStarPathFinding.Scripts
             requestPathEventChannel.OnEventRaised -= PathRequested;
         }
 
-        private void PathRequested(PathRequestDTO pathRequestDto)
+        private void PathRequested(PathRequest pathRequest)
         {
-            var cacheKey = (pathRequestDto.StartPosition, pathRequestDto.EndPosition);
+            var cacheKey = (pathRequest.StartPosition, pathRequest.EndPosition);
             
             if (pathCache.TryGetValue(cacheKey, out var cachedPath))
             {
-                SendPathResponse(pathRequestDto.RequestID, cachedPath);
+                SendPathResponse(pathRequest.RequestID, cachedPath);
                 return;
             }
             
-            pathBuilder.SetStartPosition(pathRequestDto.StartPosition);
-            pathBuilder.SetEndPosition(pathRequestDto.EndPosition);
+            pathBuilder.SetStartPosition(pathRequest.StartPosition);
+            pathBuilder.SetEndPosition(pathRequest.EndPosition);
             var path = pathBuilder.CreatePath();
             if (path == null)
             {
@@ -51,7 +52,7 @@ namespace DefenseNetwork.Modules.AStarPathFinding.Scripts
 
             var pathList = path.ToList();
             pathCache[cacheKey] = pathList;
-            SendPathResponse(pathRequestDto.RequestID, pathList);
+            SendPathResponse(pathRequest.RequestID, pathList);
         }
         private void SendPathResponse(string requestID, List<Vector3> path)
         {

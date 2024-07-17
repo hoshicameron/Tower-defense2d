@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using DefenseNetwork.Core.EventChannels.DataObjects;
+using DefenseNetwork.CoreTowerDefense.DataTransferObjects;
 using DefenseNetwork.Modules.CommonBehavioursModule.Scripts.ScriptableObjects.Sensors;
 using DefenseNetwork.Modules.TowerModule.SubModules.WeaponModule.Scripts.Internal.ScriptableObjects.Data;
 using GameSystemsCookbook;

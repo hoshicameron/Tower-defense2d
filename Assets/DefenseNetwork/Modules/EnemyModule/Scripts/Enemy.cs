@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using DefenseNetwork.Core.EventChannels.DataObjects;
+using DefenseNetwork.CoreTowerDefense.DataTransferObjects;
 using DefenseNetwork.Modules.CommonBehavioursModule.Scripts.ScriptableObjects;
 using DefenseNetwork.Modules.CommonBehavioursModule.Scripts.ScriptableObjects.Movers;
 using DefenseNetwork.Modules.CommonBehavioursModule.Scripts.ScriptableObjects.Rotators;
@@ -7,7 +8,6 @@ using DefenseNetwork.Modules.EnemyModule.Scripts.ScriptableObjects.Data;
 using GameSystemsCookbook;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.Serialization;
 
 namespace DefenseNetwork.Modules.EnemyModule.Scripts
 {

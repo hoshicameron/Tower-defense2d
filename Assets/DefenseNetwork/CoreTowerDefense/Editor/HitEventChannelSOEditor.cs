@@ -1,4 +1,5 @@
 ﻿using DefenseNetwork.Core.EventChannels.DataObjects;
+using DefenseNetwork.CoreTowerDefense.DataTransferObjects;
 using UnityEditor;
 
 namespace GameSystemsCookbook

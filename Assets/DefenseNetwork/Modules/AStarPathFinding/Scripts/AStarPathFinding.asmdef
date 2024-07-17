@@ -2,7 +2,8 @@
     "name": "AStarPathFinding",
     "rootNamespace": "",
     "references": [
-        "GUID:50c7081e62efd31438e250d4c416ad7b"
+        "GUID:50c7081e62efd31438e250d4c416ad7b",
+        "GUID:9f447afce7e79854391524121b0cafde"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

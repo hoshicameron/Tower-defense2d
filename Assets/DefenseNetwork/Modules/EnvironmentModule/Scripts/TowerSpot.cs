@@ -1,6 +1,7 @@
 using System;
 using DefenseNetwork.Core.EventChannels.DataObjects;
 using DefenseNetwork.Core.EventChannels.DataObjects.Enums;
+using DefenseNetwork.CoreTowerDefense.DataRequestObjects;
 using GameSystemsCookbook;
 using UnityEngine;
 using UnityEngine.Events;
@@ -22,7 +23,7 @@ namespace DefenseNetwork.Modules.EnvironmentModule.Scripts
 
         public void DeployMissileTower(int cost)
         {
-            var deployRequest = new TowerDeployRequestDTO
+            var deployRequest = new TowerDeployRequest
             {
                 TowerType = TowerType.MissileTower,
                 DeployCost = cost,
@@ -35,7 +36,7 @@ namespace DefenseNetwork.Modules.EnvironmentModule.Scripts
         
         public void DeployBulletTower(int cost)
         {
-            var deployRequest = new TowerDeployRequestDTO
+            var deployRequest = new TowerDeployRequest
             {
                 TowerType = TowerType.BulletTower,
                 DeployCost = cost,

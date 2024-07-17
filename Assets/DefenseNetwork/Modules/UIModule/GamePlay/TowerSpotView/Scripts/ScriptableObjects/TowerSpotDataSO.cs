@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using DefenseNetwork.Modules.UIModule.GamePlay.TowerSpotView.Scripts.Enums;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace DefenseNetwork.Modules.UIModule.GamePlay.TowerSpotView.Scripts.ScriptableObjects
 {
@@ -13,10 +14,11 @@ namespace DefenseNetwork.Modules.UIModule.GamePlay.TowerSpotView.Scripts.Scripta
         [Serializable]
         public class TowerData
         {
-            public string name;
-            public int DeployCost;
-            public Sprite TowerSprite;
-            public TowerType Type;
+            public string Name { get; private set; }
+            public int DeployCost { get; private set; }
+            public Sprite TowerSprite { get; private set; }
+            public TowerType Type { get; private set; }
+            public string Description { get; private set; }
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace DefenseNetwork.Core.EventChannels.DataObjects
+namespace DefenseNetwork.CoreTowerDefense.DataTransferObjects
 {
     public struct HitDTO
     {

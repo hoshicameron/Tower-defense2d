@@ -1,6 +1,7 @@
 ﻿using System;
 using DefenseNetwork.Core.EventChannels.DataObjects;
 using DefenseNetwork.Core.EventChannels.DataObjects.Enums;
+using DefenseNetwork.CoreTowerDefense.DataRequestObjects;
 using GameSystemsCookbook;
 using UnityEngine;
 
@@ -54,7 +55,7 @@ namespace DefenseNetwork.Modules.EconomyModule.Scripts
             AddGold(rewardAmount);
         }
         
-        private void HandleTowerModificationRequest(TowerModificationRequestDTO request)
+        private void HandleTowerModificationRequest(TowerModificationRequest request)
         {
             switch (request.Operation)
             {
@@ -78,7 +79,7 @@ namespace DefenseNetwork.Modules.EconomyModule.Scripts
             }
         }
 
-        private void HandleTowerDeployRequest(TowerDeployRequestDTO request)
+        private void HandleTowerDeployRequest(TowerDeployRequest request)
         {
             if (CanAfford(request.DeployCost))
             {

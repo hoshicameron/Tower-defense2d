@@ -1,9 +1,9 @@
 ﻿using System;
 using UnityEngine;
 
-namespace DefenseNetwork.Core.EventChannels.DataObjects
+namespace DefenseNetwork.CoreTowerDefense.DataRequestObjects
 {
-    public struct EnemySpawnRequestDTO
+    public struct EnemySpawnRequest
     {
         public GameObject EnemyToSpawn { get; set; }
         public Action<GameObject> onEnemySpawned { get; set; }

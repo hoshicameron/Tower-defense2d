@@ -1,6 +1,7 @@
 using System;
 using DefenseNetwork.Core.EventChannels.DataObjects;
 using DefenseNetwork.Core.EventChannels.DataObjects.Enums;
+using DefenseNetwork.CoreTowerDefense.DataRequestObjects;
 using GameSystemsCookbook;
 using UnityEngine;
 
@@ -9,7 +10,7 @@ namespace DefenseNetwork.Modules.TowerModule.Scripts.Scripts
     public class TowerDeployer : MonoBehaviour
     {
         [Header("Channel")] 
-        [SerializeField] private TowerDeployRequestEventChannelSO towerDeployChannel;
+        [SerializeField] private TowerDeployRequestEventChannelSO towerDeployُSuccessChannel;
         
         [Space] 
         [SerializeField] private GameObject bulletTowerPrefab;
@@ -17,15 +18,15 @@ namespace DefenseNetwork.Modules.TowerModule.Scripts.Scripts
 
         private void OnEnable()
         {
-            towerDeployChannel.OnEventRaised += HandleTowerDeployRequest;
+            towerDeployُSuccessChannel.OnEventRaised += HandleTowerDeployRequest;
         }
         
         private void OnDisable()
         {
-            towerDeployChannel.OnEventRaised -= HandleTowerDeployRequest;
+            towerDeployُSuccessChannel.OnEventRaised -= HandleTowerDeployRequest;
         }
 
-        private void HandleTowerDeployRequest(TowerDeployRequestDTO request)
+        private void HandleTowerDeployRequest(TowerDeployRequest request)
         {
             switch (request.TowerType)
             {
