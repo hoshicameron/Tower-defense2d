@@ -17,6 +17,7 @@ namespace DefenseNetwork.Modules.EnemyModule.Scripts
         [SerializeField] private VoidEventChannelSO reachedPlayerBaseEventChannel;
         [SerializeField] private HitEventChannelSO hitEventChannel;
         [SerializeField] private GameObjectEventChannelSO enemyDestroyedEventChannel;
+        [SerializeField] private IntEventChannelSO enemyDestroyedRewardEventChannel;
         
         [Space] [Header("Data")] 
         [SerializeField] private EnemyDataSO enemyDataSo;
@@ -61,6 +62,7 @@ namespace DefenseNetwork.Modules.EnemyModule.Scripts
         private void Death()
         {
             enemyDestroyedEventChannel.RaiseEvent(gameObject);
+            enemyDestroyedRewardEventChannel.RaiseEvent(enemyDataSo.RewardGoldAmount);
             Destroy(gameObject);
         }
 
@@ -108,7 +110,8 @@ namespace DefenseNetwork.Modules.EnemyModule.Scripts
             else
             {
                 reachedPlayerBaseEventChannel.RaiseEvent();
-                Death();
+                enemyDestroyedEventChannel.RaiseEvent(gameObject);
+                Destroy(gameObject);
             }
         }
 

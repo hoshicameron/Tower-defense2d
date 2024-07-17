@@ -1,3 +1,6 @@
+using System;
+using DefenseNetwork.Core.EventChannels.DataObjects;
+using DefenseNetwork.Core.EventChannels.DataObjects.Enums;
 using GameSystemsCookbook;
 using UnityEngine;
 using UnityEngine.Events;
@@ -7,9 +10,8 @@ namespace DefenseNetwork.Modules.EnvironmentModule.Scripts
     public class TowerSpot : MonoBehaviour
     {
         [Header("Channel")] 
-        [SerializeField] private IntEventChannelSO modifyPointsEventChannel;
-        [SerializeField] private Vector2EventChannelSO missileTowerDeployPositionEventChannel;
-        [SerializeField] private Vector2EventChannelSO bulletDeployPositionEventChannel;
+        [SerializeField] private TowerDeployRequestEventChannelSO towerDeployRequestEventChannel;
+        
         [Header("Events")]
         [SerializeField] public UnityEvent onTowerSpotSelected;
         
@@ -20,17 +22,45 @@ namespace DefenseNetwork.Modules.EnvironmentModule.Scripts
 
         public void DeployMissileTower(int cost)
         {
-            modifyPointsEventChannel.RaiseEvent(-cost);
-            missileTowerDeployPositionEventChannel.RaiseEvent(transform.position);
+            var deployRequest = new TowerDeployRequestDTO
+            {
+                TowerType = TowerType.MissileTower,
+                DeployCost = cost,
+                DeployPosition = transform.position
+            };
+            deployRequest.OnRequestResult += HandleDeployResult;
+            towerDeployRequestEventChannel.RaiseEvent(deployRequest);
             
-            Destroy(gameObject);
         }
         
         public void DeployBulletTower(int cost)
         {
-            modifyPointsEventChannel.RaiseEvent(-cost);
-            bulletDeployPositionEventChannel.RaiseEvent(transform.position);
-            Destroy(gameObject);
+            var deployRequest = new TowerDeployRequestDTO
+            {
+                TowerType = TowerType.BulletTower,
+                DeployCost = cost,
+                DeployPosition = new Vector2Int((int)transform.position.x, (int)transform.position.y),
+
+            };
+            
+            deployRequest.OnRequestResult += HandleDeployResult;
+            towerDeployRequestEventChannel.RaiseEvent(deployRequest);
+        }
+
+        private void HandleDeployResult(RequestResult result, string message)
+        {
+            switch(result)
+            {
+                case RequestResult.Succeed:
+                    Debug.Log($"Success: {message}");
+                    Destroy(gameObject);
+                    break;
+                case RequestResult.Failure:
+                    Debug.Log($"Failure: {message}");
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(result), result, null);
+            }
         }
     }
 }

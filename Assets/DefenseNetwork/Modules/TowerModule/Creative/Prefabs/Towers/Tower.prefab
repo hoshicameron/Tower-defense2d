@@ -91,9 +91,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60f03e554593ea14d95d8a214bc2302d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  modifyPointEventChannel: {fileID: 11400000, guid: 73a97d96c1cf48f4ca168109486d272a, type: 2}
-  updatePointEventChannel: {fileID: 11400000, guid: e97ec824434d0a9469b008e729900865, type: 2}
-  towerSpotDeployPositionEventChannel: {fileID: 11400000, guid: fe07c4bcf70318a43a721e74bfc41904, type: 2}
+  towerModifyChannel: {fileID: 11400000, guid: e327f5ef7427b06478bed267105bf365, type: 2}
+  goldUpdateEventChannel: {fileID: 11400000, guid: e97ec824434d0a9469b008e729900865, type: 2}
+  towerSpotDeployPositionEventChannel: {fileID: 11400000, guid: 95d973409d60ddf4abeee15e1bf6e61b, type: 2}
   towerDataSo: {fileID: 0}
   onTowerSelected:
     m_PersistentCalls:

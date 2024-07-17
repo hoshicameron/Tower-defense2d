@@ -10,6 +10,7 @@ namespace DefenseNetwork.Modules.EnemyModule.Scripts.ScriptableObjects.Data
         [field:SerializeField] public int Health { get; private set; }
         [field:SerializeField] public Sprite Sprite { get; private set; }
         [field:SerializeField] public string LayerName { get; private set; }
+        [field:SerializeField] public int RewardGoldAmount { get; private set; }
         
         public int EnemyLayer => LayerMask.NameToLayer(LayerName);
     }
