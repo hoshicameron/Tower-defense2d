@@ -11,8 +11,7 @@ namespace DefenseNetwork.Modules.EnemyModule.Scripts
     {
         [Header("EventChannel")]
         [SerializeField] private PathRequestEventChannelSO requestPathEventChannel;
-        [SerializeField] private PathResponseEventChannelSO responsePathEventChannel;
-        
+
         [Space]
         [Header("Positions")]
         [SerializeField] private Transform startPoint;
@@ -28,28 +27,19 @@ namespace DefenseNetwork.Modules.EnemyModule.Scripts
 
         private void RequestPath()
         {
-            var requestID = Guid.NewGuid().ToString();
-            requestPathEventChannel.RaiseEvent(new PathRequest
+            var pathRequest = new PathRequest
             {
-                RequestID = requestID,
                 StartPosition = startPoint.position,
                 EndPosition = endPoint.position
-            });
+            };
+            pathRequest.OnRequestResult += HandlePathResult; 
+            
+            requestPathEventChannel.RaiseEvent(pathRequest);
         }
 
-        private void OnEnable()
+        private void HandlePathResult(List<Vector3> pathPoints)
         {
-            responsePathEventChannel.OnEventRaised += OnPathReceived;
-        }
-
-        private void OnDisable()
-        {
-            responsePathEventChannel.OnEventRaised -= OnPathReceived;
-        }
-
-        private void OnPathReceived(PathResponseDTO response)
-        {
-            CurrentPath = response.PathPoints;
+            CurrentPath = pathPoints;
             OnPathUpdated?.Invoke();
         }
     }

@@ -11,7 +11,7 @@ namespace DefenseNetwork.Modules.AStarPathFinding.Scripts
     {
         [Header("Channel")] 
         [SerializeField] private PathRequestEventChannelSO requestPathEventChannel;
-        [SerializeField] private PathResponseEventChannelSO responsePathEventChannel;
+        
 
         [Space] [Header("Path")] 
         [SerializeField] private Map map;
@@ -37,7 +37,7 @@ namespace DefenseNetwork.Modules.AStarPathFinding.Scripts
             
             if (pathCache.TryGetValue(cacheKey, out var cachedPath))
             {
-                SendPathResponse(pathRequest.RequestID, cachedPath);
+                pathRequest.InvokeResult(cachedPath);
                 return;
             }
             
@@ -52,16 +52,9 @@ namespace DefenseNetwork.Modules.AStarPathFinding.Scripts
 
             var pathList = path.ToList();
             pathCache[cacheKey] = pathList;
-            SendPathResponse(pathRequest.RequestID, pathList);
+            
+            pathRequest.InvokeResult(pathList);
         }
-        private void SendPathResponse(string requestID, List<Vector3> path)
-        {
-            responsePathEventChannel.RaiseEvent(
-                new PathResponseDTO
-                {
-                    RequestID = requestID,
-                    PathPoints = path
-                });
-        }
+       
     }
 }

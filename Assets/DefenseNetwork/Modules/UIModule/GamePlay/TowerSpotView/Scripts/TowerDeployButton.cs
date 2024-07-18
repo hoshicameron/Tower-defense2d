@@ -1,5 +1,5 @@
 ﻿using System;
-using DefenseNetwork.Modules.UIModule.GamePlay.TowerSpotView.Scripts.Enums;
+using DefenseNetwork.Core.EventChannels.DataObjects.Enums;
 using GameSystemsCookbook;
 using TMPro;
 using UnityEngine;

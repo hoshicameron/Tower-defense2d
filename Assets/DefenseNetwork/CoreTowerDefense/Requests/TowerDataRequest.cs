@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using DefenseNetwork.Core.EventChannels.DataObjects.Enums;
-using UnityEngine;
+﻿using System.Collections.Generic;
 
 namespace DefenseNetwork.CoreTowerDefense.Requests
 {
@@ -14,19 +11,6 @@ namespace DefenseNetwork.CoreTowerDefense.Requests
         {
             OnRequestResult?.Invoke(availableTowers);
         }
-        
-        [Serializable]
-        public struct TowerData : ITowerData
-        {
-            public string Name { get; private set; }
-            public int DeployCost { get; private set; }
-            public int UpgradeCost { get; private set; }
-            public GameObject Prefab{ get; private set; }
-            public TowerType Type { get; private set; }
-            public Sprite Sprite{ get; private set; }
-            public string Description { get; private set; }
-            
-            public int SellIncome => DeployCost - (int)(DeployCost * 0.2f);
-        }
+
     }
 }

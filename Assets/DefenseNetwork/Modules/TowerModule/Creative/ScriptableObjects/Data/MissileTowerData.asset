@@ -12,11 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa97a0a5ca3646a4bbf85f332176d743, type: 3}
   m_Name: MissileTowerData
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: MissileTowerData
   <Upgrades>k__BackingField:
-  - DeployCost: 100
-    UpgradeCost: 150
-    Prefab: {fileID: 1768766476918054524, guid: 8b576756487afc74a9fa2f5605c076c2, type: 3}
-  - DeployCost: 150
-    UpgradeCost: 0
-    Prefab: {fileID: 1589910012338350844, guid: 9c644075f1854454691bc6a68f602f95, type: 3}
+  - <Name>k__BackingField: MssileData Level 1
+    <DeployCost>k__BackingField: 120
+    <UpgradeCost>k__BackingField: 180
+    <Prefab>k__BackingField: {fileID: 1768766476918054524, guid: 8b576756487afc74a9fa2f5605c076c2, type: 3}
+    <Type>k__BackingField: 1
+    <Sprite>k__BackingField: {fileID: 21300000, guid: 8ba8f1079abb2a243a85783a1b793498, type: 3}
+    <Description>k__BackingField: 
+  - <Name>k__BackingField: MssileData Level 2
+    <DeployCost>k__BackingField: 180
+    <UpgradeCost>k__BackingField: 0
+    <Prefab>k__BackingField: {fileID: 1589910012338350844, guid: 9c644075f1854454691bc6a68f602f95, type: 3}
+    <Type>k__BackingField: 0
+    <Sprite>k__BackingField: {fileID: 21300000, guid: fecef8dc76022ad48aa6910d65a134e8, type: 3}
+    <Description>k__BackingField: 

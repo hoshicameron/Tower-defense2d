@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using DefenseNetwork.Modules.TowerModule.Scripts.Scripts.Enums;
+using DefenseNetwork.Core.EventChannels.DataObjects.Enums;
 using UnityEngine;
 
 namespace DefenseNetwork.Modules.TowerModule.Scripts.Scripts.ScriptableObjects
@@ -10,18 +10,18 @@ namespace DefenseNetwork.Modules.TowerModule.Scripts.Scripts.ScriptableObjects
     {
         [field:SerializeField] public List<TowerData> Upgrades { get; private set; }
 
-        public TowerData BaseTowerData => Upgrades[0];
+        public ITowerData BaseTowerData => Upgrades[0];
 
         [Serializable]
-        public struct TowerData
+        public struct TowerData : ITowerData
         {
-            public string Name { get; private set; }
-            public int DeployCost { get; private set; }
-            public int UpgradeCost { get; private set; }
-            public GameObject Prefab{ get; private set; }
-            public TowerType Type { get; private set; }
-            public Sprite Sprite{ get; private set; }
-            public string Description { get; private set; }
+            [field:SerializeField] public string Name { get; private set; }
+            [field:SerializeField] public int DeployCost { get; private set; }
+            [field:SerializeField] public int UpgradeCost { get; private set; }
+            [field:SerializeField] public GameObject Prefab{ get; private set; }
+            [field:SerializeField] public TowerType Type { get; private set; }
+            [field:SerializeField] public Sprite Sprite{ get; private set; }
+            [field:SerializeField] public string Description { get; private set; }
             
             public int SellIncome => DeployCost - (int)(DeployCost * 0.2f);
         }

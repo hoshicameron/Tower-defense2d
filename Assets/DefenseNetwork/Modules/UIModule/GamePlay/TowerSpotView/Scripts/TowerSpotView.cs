@@ -1,10 +1,12 @@
-﻿using System.Linq;
-using DefenseNetwork.Modules.UIModule.GamePlay.TowerSpotView.Scripts.Enums;
-using DefenseNetwork.Modules.UIModule.GamePlay.TowerSpotView.Scripts.ScriptableObjects;
+﻿using System.Collections.Generic;
+using System.Linq;
+using DefenseNetwork.Core.EventChannels.DataObjects.Enums;
+using DefenseNetwork.CoreTowerDefense.Requests;
 using GameSystemsCookbook;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
+using Utilities;
 
 namespace DefenseNetwork.Modules.UIModule.GamePlay.TowerSpotView.Scripts
 {
@@ -12,6 +14,7 @@ namespace DefenseNetwork.Modules.UIModule.GamePlay.TowerSpotView.Scripts
     {
         [Header("Event Channel")]
         [SerializeField] private GameObjectEventChannelSO towerSelectionChannel;
+        [SerializeField] private TowerDataRequestEventChannelSO towerDataRequestEventChannel;
         
         [Space] [Header("UI")]
         [SerializeField] private CanvasGroup towerSpotCanvas;
@@ -19,13 +22,11 @@ namespace DefenseNetwork.Modules.UIModule.GamePlay.TowerSpotView.Scripts
         [SerializeField] private Button closeButton;
         [SerializeField] private TowerDeployButton towerDeployButtonPrefab;
         
-        [Space] [Header("Data")] 
-        [SerializeField] private TowerSpotDataSO towerSpotDataSo;
-
         [Space] [Header("Events")] 
         public UnityEvent<int> onBulletTowerDeployButtonClicked;
         public UnityEvent<int> onMissileTowerDeployButtonClicked;
-        
+
+        private List<ITowerData> towerDatas;
         private void OnEnable()
         {
             towerSelectionChannel.OnEventRaised += TowerSelected;
@@ -46,26 +47,29 @@ namespace DefenseNetwork.Modules.UIModule.GamePlay.TowerSpotView.Scripts
         {
             HideTowerSpotPanel();
             closeButton.onClick.AddListener(HideTowerSpotPanel);
-            DestroyAllChildren(towerDeployPanel);
-            InstantiateTowerDeployButtons();
+            var towerDataRequest = new TowerDataRequest();
+            towerDataRequest.OnRequestResult += UpdateUI;
+            towerDataRequestEventChannel.RaiseEvent(towerDataRequest);
         }
 
-        private void InstantiateTowerDeployButtons()
+        private void UpdateUI(List<ITowerData> availableTowers)
         {
-            foreach (var towerData in towerSpotDataSo.AvailableTowers)
+            towerDatas = availableTowers;
+            towerDeployPanel.DestroyAllChildren();
+            foreach (var towerData in towerDatas)
             {
                 var deployButton = Instantiate(towerDeployButtonPrefab, towerDeployPanel, false);
-                deployButton.UpdateUI(towerData.TowerSprite, towerData.DeployCost, towerData.Type);
+                deployButton.UpdateUI(towerData.Sprite, towerData.DeployCost, towerData.Type);
                 deployButton.onClick += DeployButtonClicked;
             }
         }
 
         private void DeployButtonClicked(TowerType towerType)
         {
-            var deployCost = towerSpotDataSo.AvailableTowers.FirstOrDefault(data => data.Type == towerType)!.DeployCost;
+            var deployCost = towerDatas.FirstOrDefault(data => data.Type == towerType)!.DeployCost;
             switch (towerType)
             {
-                case TowerType.ProjectileTower:
+                case TowerType.BulletTower:
                     onBulletTowerDeployButtonClicked?.Invoke(deployCost);
                     break;
                 case TowerType.MissileTower:
@@ -74,14 +78,6 @@ namespace DefenseNetwork.Modules.UIModule.GamePlay.TowerSpotView.Scripts
             }
         }
 
-        private void DestroyAllChildren(RectTransform parent)
-        {
-            for (var i = parent.childCount - 1; i >= 0; i--)
-            {
-                DestroyImmediate(parent.transform.GetChild(i).gameObject);
-            }
-        }
-        
         private void HideTowerSpotPanel()
         {
             towerSpotCanvas.alpha = 0;

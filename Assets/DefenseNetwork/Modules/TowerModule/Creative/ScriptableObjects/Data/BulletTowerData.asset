@@ -12,17 +12,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa97a0a5ca3646a4bbf85f332176d743, type: 3}
   m_Name: BulletTowerData
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: BulletTowerData
   <Upgrades>k__BackingField:
-  - DeployCost: 80
-    UpgradeCost: 100
-    Prefab: {fileID: 4999238328709557064, guid: da9873d0ee0a5c4418799f4637fc7e08, type: 3}
-  - DeployCost: 100
-    UpgradeCost: 120
-    Prefab: {fileID: 6203536190290867645, guid: 5a6903141041a9b41a95cad141fa3144, type: 3}
-  - DeployCost: 120
-    UpgradeCost: 150
-    Prefab: {fileID: 6203536190290867645, guid: 04df94c0b642d0a459d1f21a310646d7, type: 3}
-  - DeployCost: 150
-    UpgradeCost: 0
-    Prefab: {fileID: 6203536190290867645, guid: 0977496a3b3b2b84d9894ebaa8779ccc, type: 3}
+  - <Name>k__BackingField: BulletData Level 1
+    <DeployCost>k__BackingField: 80
+    <UpgradeCost>k__BackingField: 100
+    <Prefab>k__BackingField: {fileID: 4999238328709557064, guid: da9873d0ee0a5c4418799f4637fc7e08, type: 3}
+    <Type>k__BackingField: 0
+    <Sprite>k__BackingField: {fileID: 21300000, guid: 668f8c795642312468997e9e42cbeda5, type: 3}
+    <Description>k__BackingField: 
+  - <Name>k__BackingField: BulletData Level 2
+    <DeployCost>k__BackingField: 100
+    <UpgradeCost>k__BackingField: 120
+    <Prefab>k__BackingField: {fileID: 6203536190290867645, guid: 5a6903141041a9b41a95cad141fa3144, type: 3}
+    <Type>k__BackingField: 0
+    <Sprite>k__BackingField: {fileID: 21300000, guid: df3158204b0d1be45963d56cd6922e10, type: 3}
+    <Description>k__BackingField: 
+  - <Name>k__BackingField: BulletData Level 3
+    <DeployCost>k__BackingField: 120
+    <UpgradeCost>k__BackingField: 150
+    <Prefab>k__BackingField: {fileID: 6203536190290867645, guid: 04df94c0b642d0a459d1f21a310646d7, type: 3}
+    <Type>k__BackingField: 0
+    <Sprite>k__BackingField: {fileID: 21300000, guid: ed0825f46a7a9b74b818095b91b1bb4e, type: 3}
+    <Description>k__BackingField: 
+  - <Name>k__BackingField: BulletData Level 4
+    <DeployCost>k__BackingField: 150
+    <UpgradeCost>k__BackingField: 0
+    <Prefab>k__BackingField: {fileID: 6203536190290867645, guid: 0977496a3b3b2b84d9894ebaa8779ccc, type: 3}
+    <Type>k__BackingField: 0
+    <Sprite>k__BackingField: {fileID: 21300000, guid: ff797d2e2c2a5164d8fc114c14d972b4, type: 3}
+    <Description>k__BackingField: 

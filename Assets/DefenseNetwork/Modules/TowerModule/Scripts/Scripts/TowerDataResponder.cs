@@ -1,7 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using DefenseNetwork.Core.EventChannels.DataObjects;
-using DefenseNetwork.Core.EventChannels.DataObjects.Enums;
+using System.Linq;
+using DefenseNetwork.CoreTowerDefense.Requests;
 using DefenseNetwork.Modules.TowerModule.Scripts.Scripts.ScriptableObjects;
 using GameSystemsCookbook;
 using UnityEngine;
@@ -10,7 +9,7 @@ namespace DefenseNetwork.Modules.TowerModule.Scripts.Scripts
 {
     public class TowerDataResponder : MonoBehaviour
     {
-        /*[Header("Event Channel")] 
+        [Header("Event Channel")] 
         [SerializeField] private TowerDataRequestEventChannelSO towerDataRequestEventChannel;
 
         [Space] [Header("Data")] 
@@ -21,13 +20,15 @@ namespace DefenseNetwork.Modules.TowerModule.Scripts.Scripts
             towerDataRequestEventChannel.OnEventRaised += HandleDataRequest;
         }
 
-        private void HandleDataRequest(TowerDataRequestDTO request)
+        private void OnDisable()
         {
-            foreach (var towerData in availableTowersDataSo.GetTowersType())
-            {
-                
-            }
-            request.InvokeResult();
-        }*/
+            towerDataRequestEventChannel.OnEventRaised -= HandleDataRequest;
+        }
+
+        private void HandleDataRequest(TowerDataRequest request)
+        {
+            var towers = availableTowersDataSo.GetTowersType().ToList();
+            request.InvokeResult(towers);
+        }
     }
 }
