@@ -6,7 +6,10 @@ namespace DefenseNetwork.MainSystem.Scripts.ScriptableObjects
     [CreateAssetMenu(fileName = "New WaveDataSO", menuName = "Gameplay/Data/WaveDataSO", order = 0)]
     public class WaveDataSO : ScriptableObject
     {
+        [field:SerializeField] public float DelayBetweenWaves { get; private set; } = 4.0f;
         [field:SerializeField] public List<WaveData> Waves { get; set; }
+
+        public int TotalWaves => Waves.Count;
 
         [System.Serializable]
         public class WaveData

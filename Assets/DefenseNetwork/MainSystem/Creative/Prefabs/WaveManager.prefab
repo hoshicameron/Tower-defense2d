@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &888808869283863580
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7378882080882706102}
+  - component: {fileID: 8611278953372588805}
+  m_Layer: 0
+  m_Name: WaveManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7378882080882706102
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 888808869283863580}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8611278953372588805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 888808869283863580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f964d772a84d44c098019359e3c75206, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waveStartEventChannel: {fileID: 11400000, guid: 4180b256c0328424c94d7cf202fe7b31, type: 2}
+  waveEndEventChannel: {fileID: 11400000, guid: 992f9993b5fb3c24f9fb227fe24adc3b, type: 2}
+  enemySpawnRequestChannel: {fileID: 11400000, guid: 063bc2fbf32160a4794fbe6284016a2f, type: 2}
+  enemyDestroyedEventChannel: {fileID: 11400000, guid: 475832e6bc8622240af902b617abb43a, type: 2}
+  waveProgressEventChannel: {fileID: 11400000, guid: 695f5efe7885c564b8432c6dfb4d34a6, type: 2}
+  pauseEventChannel: {fileID: 11400000, guid: 0896a102b9908de45a3d2fa944a5c77e, type: 2}
+  resumeEventChannel: {fileID: 11400000, guid: 3cebabdd6a6633242887de4a1b157e8d, type: 2}
+  waveData: {fileID: 11400000, guid: 8db446a374f825345bd2c8eb3e11c00b, type: 2}
