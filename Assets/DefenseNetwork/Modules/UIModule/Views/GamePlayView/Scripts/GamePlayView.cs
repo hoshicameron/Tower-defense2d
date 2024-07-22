@@ -16,9 +16,6 @@ namespace DefenseNetwork.Modules.UIModule.Views.GamePlayView.Scripts
         [SerializeField] private GameStateEventChannelSO gameStateEventChannel;
         [SerializeField] private GameObjectEventChannelSO selectionChannel;
 
-        [Space] 
-        [SerializeField] private Button closeTowerViewsButton;
-        
         [Space] [Header("Header Panel")] 
         [SerializeField] private TextMeshProUGUI playerHealthText;
         [SerializeField] private TextMeshProUGUI waveText;
@@ -32,14 +29,7 @@ namespace DefenseNetwork.Modules.UIModule.Views.GamePlayView.Scripts
             waveDataEventChannel.OnEventRaised += UpdateWaveText;
             
             pauseButton.onClick.AddListener(() => gameStateEventChannel.RaiseEvent(GameState.Paused));
-            closeTowerViewsButton.onClick.AddListener(CloseAllViews);
         }
-
-        private void CloseAllViews()
-        {
-            selectionChannel.RaiseEvent(gameObject);
-        }
-
         private void OnDisable()
         {
             goldEventChannel.OnEventRaised -= UpdateGoldText;

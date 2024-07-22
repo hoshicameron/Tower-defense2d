@@ -2,7 +2,7 @@
 
 namespace DefenseNetwork.Modules.EnemyModule.Scripts.ScriptableObjects.Data
 {
-    [CreateAssetMenu(fileName = "New EnemyData", menuName = "Gameplay/Data/Enemy Data", order = 0)]
+    [CreateAssetMenu(fileName = "New EnemyData", menuName = "Gameplay/Data/Enemy Data")]
     public class EnemyDataSO : ScriptableObject
     {
         [field:SerializeField] public float Speed { get; private set; }

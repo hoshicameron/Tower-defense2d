@@ -6,8 +6,8 @@ namespace DefenseNetwork.Modules.CommonBehavioursModule.Scripts.ScriptableObject
     [CreateAssetMenu(fileName = "HealthBehaviour", menuName = "Gameplay/Behaviours/HealthBehaviour")]
     public class HealthBehaviour : ScriptableObject
     {
-        public event Action<int, int> OnHealthChanged;
-        public event Action OnDeath;
+        public event Action<int, int> onHealthChanged;
+        public event Action onDeath;
 
         private int currentHealth;
 
@@ -17,7 +17,7 @@ namespace DefenseNetwork.Modules.CommonBehavioursModule.Scripts.ScriptableObject
             set
             {
                 currentHealth = value;
-                OnHealthChanged?.Invoke(currentHealth,maxHealth);
+                onHealthChanged?.Invoke(currentHealth,maxHealth);
             }
         }
         private int maxHealth;
@@ -33,7 +33,7 @@ namespace DefenseNetwork.Modules.CommonBehavioursModule.Scripts.ScriptableObject
             
             if (currentHealth == 0)
             {
-                OnDeath?.Invoke();
+                onDeath?.Invoke();
             }
         }
 

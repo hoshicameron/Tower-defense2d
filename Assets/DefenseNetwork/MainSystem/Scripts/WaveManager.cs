@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using DefenseNetwork.Core.EventChannels.DataObjects;
 using DefenseNetwork.CoreTowerDefense.DataRequestObjects;
 using DefenseNetwork.CoreTowerDefense.Enums;
 using DefenseNetwork.CoreTowerDefense.ScriptableObjects;
@@ -14,12 +13,12 @@ namespace DefenseNetwork.MainSystem.Scripts
     public class WaveManager : MonoBehaviour
     {
         [Header("Event Channel")]
-        [SerializeField] private VoidEventChannelSO waveStartEventChannel;
         [SerializeField] private VoidEventChannelSO waveEndEventChannel;
         [SerializeField] private EnemySpawnRequestChannelSO enemySpawnRequestChannel;
         [SerializeField] private GameObjectEventChannelSO enemyDestroyedEventChannel;
         [SerializeField] private StringEventChannelSO waveProgressEventChannel;
         [SerializeField] private GameStateEventChannelSO gameStateEventChannel;
+        [SerializeField] private VoidEventChannelSO startGameChannel;
         
         [Space]
         [Header("Data")]
@@ -42,11 +41,17 @@ namespace DefenseNetwork.MainSystem.Scripts
             Initialize();
             enemyDestroyedEventChannel.OnEventRaised += HandleEnemyDestroyed;
             gameStateEventChannel.OnEventRaised += HandleGameStateChange;
+            startGameChannel.OnEventRaised += StartSpawnEnemies;
         }
         private void OnDisable()
         {
             enemyDestroyedEventChannel.OnEventRaised -= HandleEnemyDestroyed;
             gameStateEventChannel.OnEventRaised -= HandleGameStateChange;
+        }
+        
+        private void StartSpawnEnemies()
+        {
+            StartNextWave();
         }
         
         private void HandleGameStateChange(GameState state)
@@ -82,14 +87,8 @@ namespace DefenseNetwork.MainSystem.Scripts
 
             currentWaveIndex++;
             ResetWaveState();
-            waveStartEventChannel.RaiseEvent();
+            
             waveProgressEventChannel.RaiseEvent(GetWaveProgressString());
-            StartCoroutine(DelayCoRoutine());
-        }
-
-        private IEnumerator DelayCoRoutine()
-        {
-            yield return new WaitForSeconds(waveData.DelayBetweenWaves);
             currentWaveCoroutine = StartCoroutine(SpawnWave(waveData.Waves[currentWaveIndex]));
         }
 
@@ -114,7 +113,6 @@ namespace DefenseNetwork.MainSystem.Scripts
                 yield return new WaitForSeconds(spawnInfo.DelayAfterGroup);
             }
             isSpawning = false;
-            //currentSpawnInfoIndex = 0; 
         }
         
         private void AddEnemyToActiveList(GameObject enemy)

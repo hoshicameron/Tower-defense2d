@@ -119,11 +119,6 @@ namespace DefenseNetwork.Modules.TowerModule.Scripts.Scripts
             }
         }
 
-        /*private void OnMouseUp()
-        {
-            Select();
-        }*/
-
         public void Select()
         {
             if (!IsTowerAtMaxLevel())

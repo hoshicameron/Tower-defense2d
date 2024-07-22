@@ -50,8 +50,8 @@ namespace DefenseNetwork.Modules.EnemyModule.Scripts
         private void OnEnable()
         {
             health = Instantiate(healthTemplate);
-            health.OnHealthChanged += HealthChanged;
-            health.OnDeath += Death;
+            health.onHealthChanged += HealthChanged;
+            health.onDeath += Death;
             health.Initialize(enemyDataSo.Health);
             
             hitEventChannel.OnEventRaised += Hit;
@@ -61,8 +61,8 @@ namespace DefenseNetwork.Modules.EnemyModule.Scripts
         private void OnDisable()
         {
             hitEventChannel.OnEventRaised -= Hit;
-            health.OnDeath -= Death;
-            health.OnHealthChanged -= HealthChanged;
+            health.onDeath -= Death;
+            health.onHealthChanged -= HealthChanged;
             
             gameStateEventChannel.OnEventRaised -= HandleGameStateChange;
         }
