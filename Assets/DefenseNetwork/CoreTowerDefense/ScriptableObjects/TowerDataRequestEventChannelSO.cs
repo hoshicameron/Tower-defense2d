@@ -1,12 +1,11 @@
-﻿using DefenseNetwork.Core.EventChannels.DataObjects;
-using DefenseNetwork.CoreTowerDefense.DataRequestObjects;
-using DefenseNetwork.CoreTowerDefense.Requests;
+﻿using DefenseNetwork.CoreTowerDefense.Requests;
+using GameSystemsCookbook;
 using UnityEngine;
 
-namespace GameSystemsCookbook
+namespace DefenseNetwork.CoreTowerDefense.ScriptableObjects
 {
     /// <summary>
-    /// This event channel broadcasts and carries Boolean payload.
+    /// This event channel broadcasts and carries TowerDataRequest payload.
     /// </summary>
     
     [CreateAssetMenu(fileName = "TowerDataEventChannelSO", menuName = "Events/TowerDataEventChannelSO")]

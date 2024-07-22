@@ -128,7 +128,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -0.007019043, y: -0.02999878}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 2.5, y: 2.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &5864286847764370402
@@ -152,7 +152,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 1741036223
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_TargetDisplay: 0
 --- !u!114 &1694910333307991406
 MonoBehaviour:
@@ -176,7 +176,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &1646886759260297586
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -206,7 +206,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b80eeb4ea912409ba966e154ca566fe0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  towerSelectionChannel: {fileID: 11400000, guid: 3412f1b6749d63247a2dc9c82bf28f51, type: 2}
+  selectionChannel: {fileID: 11400000, guid: 2cef63e433daaf945b009fa24fd3ebe6, type: 2}
   towerSpotCanvas: {fileID: 3276335944569961479}
   closeButton: {fileID: 5107133939514799290}
   sellButton: {fileID: 4251092982708289594}

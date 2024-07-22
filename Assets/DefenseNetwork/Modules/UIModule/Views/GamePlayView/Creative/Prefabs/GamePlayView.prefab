@@ -52,7 +52,7 @@ Canvas:
   m_GameObject: {fileID: 228249402180698132}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -121,7 +121,9 @@ MonoBehaviour:
   goldEventChannel: {fileID: 11400000, guid: e97ec824434d0a9469b008e729900865, type: 2}
   playerHealthEventChannel: {fileID: 11400000, guid: abd3f8ea14b454546b82a06b2c189266, type: 2}
   waveDataEventChannel: {fileID: 11400000, guid: 695f5efe7885c564b8432c6dfb4d34a6, type: 2}
-  pauseGameEventChannel: {fileID: 11400000, guid: 0896a102b9908de45a3d2fa944a5c77e, type: 2}
+  gameStateEventChannel: {fileID: 11400000, guid: 3cf8db33b991c04439e69513c2b375b0, type: 2}
+  selectionChannel: {fileID: 11400000, guid: 2cef63e433daaf945b009fa24fd3ebe6, type: 2}
+  closeTowerViewsButton: {fileID: 0}
   playerHealthText: {fileID: 5019522080924767307}
   waveText: {fileID: 3500583675243518103}
   goldText: {fileID: 4939538365778569162}
@@ -229,7 +231,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvasGroup: {fileID: 7055099682018648260}
-  winChannel: {fileID: 11400000, guid: 611397c38b145234d92acf4f2463cfe2, type: 2}
+  gameStateEventChannel: {fileID: 11400000, guid: 3cf8db33b991c04439e69513c2b375b0, type: 2}
   exitToMenuEventChannel: {fileID: 11400000, guid: 461ead66bfef1544a9be62d9bd9d41f1, type: 2}
   continueGameEventChannel: {fileID: 11400000, guid: 721434c053b5ff5459d52dd3beeeb221, type: 2}
   continueButton: {fileID: 8561548398227480346}
@@ -415,8 +417,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvasGroup: {fileID: 333783093952121843}
-  pauseGameEventChannel: {fileID: 11400000, guid: 0896a102b9908de45a3d2fa944a5c77e, type: 2}
-  resumeGameEventChannel: {fileID: 11400000, guid: 3cebabdd6a6633242887de4a1b157e8d, type: 2}
+  gameStateEventChannel: {fileID: 11400000, guid: 3cf8db33b991c04439e69513c2b375b0, type: 2}
   musicChannel: {fileID: 11400000, guid: 237b685cd3cf992459988326c4e0d392, type: 2}
   sfxChannel: {fileID: 11400000, guid: 308e1aa0674ac074689632b69d32df18, type: 2}
   exitToMenuEventChannel: {fileID: 11400000, guid: 461ead66bfef1544a9be62d9bd9d41f1, type: 2}
@@ -529,7 +530,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvasGroup: {fileID: 2880673191479309169}
-  loseChannel: {fileID: 11400000, guid: 2d1ee6294a2c71240a771f77ebb6b27f, type: 2}
+  gameStateEventChannel: {fileID: 11400000, guid: 3cf8db33b991c04439e69513c2b375b0, type: 2}
   exitToMenuEventChannel: {fileID: 11400000, guid: 461ead66bfef1544a9be62d9bd9d41f1, type: 2}
   restartLevelEventChannel: {fileID: 11400000, guid: 26947a5a533733a4d96a49eb6b9cd63c, type: 2}
   retryButton: {fileID: 6843886212375028458}
@@ -1567,7 +1568,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 490}
+  m_SizeDelta: {x: 0, y: 152.9961}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!1001 &220680068814301710
 PrefabInstance:
@@ -2282,6 +2283,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player-Health-Text
       objectReference: {fileID: 0}
+    - target: {fileID: 2287768987470196148, guid: 9049c717d9c116442b6497aa14dba90b, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 96.198
+      objectReference: {fileID: 0}
     - target: {fileID: 3461043747582037491, guid: 9049c717d9c116442b6497aa14dba90b, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 4.1888123
@@ -2290,6 +2295,18 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: e93e13bd9ca98504997033bc32fe4cd1, type: 3}
+    - target: {fileID: 8471957653898796754, guid: 9049c717d9c116442b6497aa14dba90b, type: 3}
+      propertyPath: m_fontSize
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 8471957653898796754, guid: 9049c717d9c116442b6497aa14dba90b, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 8471957653898796754, guid: 9049c717d9c116442b6497aa14dba90b, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2345,7 +2362,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 637582316652950515, guid: 9049c717d9c116442b6497aa14dba90b, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 200
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 637582316652950515, guid: 9049c717d9c116442b6497aa14dba90b, type: 3}
       propertyPath: m_SizeDelta.y
@@ -2407,14 +2424,42 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gold-Text
       objectReference: {fileID: 0}
+    - target: {fileID: 2287768987470196148, guid: 9049c717d9c116442b6497aa14dba90b, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 174.7764
+      objectReference: {fileID: 0}
+    - target: {fileID: 3461043747582037491, guid: 9049c717d9c116442b6497aa14dba90b, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 87.7265
+      objectReference: {fileID: 0}
     - target: {fileID: 3461043747582037491, guid: 9049c717d9c116442b6497aa14dba90b, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 4.1888123
+      value: 8.0704
       objectReference: {fileID: 0}
     - target: {fileID: 4640459245597207987, guid: 9049c717d9c116442b6497aa14dba90b, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 2141af367426b404480dd11447f38bc6, type: 3}
+    - target: {fileID: 8471957653898796754, guid: 9049c717d9c116442b6497aa14dba90b, type: 3}
+      propertyPath: m_text
+      value: 1200
+      objectReference: {fileID: 0}
+    - target: {fileID: 8471957653898796754, guid: 9049c717d9c116442b6497aa14dba90b, type: 3}
+      propertyPath: m_fontSize
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 8471957653898796754, guid: 9049c717d9c116442b6497aa14dba90b, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 8471957653898796754, guid: 9049c717d9c116442b6497aa14dba90b, type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8471957653898796754, guid: 9049c717d9c116442b6497aa14dba90b, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2595,7 +2640,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 637582316652950515, guid: 9049c717d9c116442b6497aa14dba90b, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 234.3187
+      value: 250
       objectReference: {fileID: 0}
     - target: {fileID: 637582316652950515, guid: 9049c717d9c116442b6497aa14dba90b, type: 3}
       propertyPath: m_SizeDelta.y
@@ -2659,7 +2704,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2287768987470196148, guid: 9049c717d9c116442b6497aa14dba90b, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 124.8482
+      value: 140.53
       objectReference: {fileID: 0}
     - target: {fileID: 2287768987470196148, guid: 9049c717d9c116442b6497aa14dba90b, type: 3}
       propertyPath: m_SizeDelta.y
@@ -2675,7 +2720,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3461043747582037491, guid: 9049c717d9c116442b6497aa14dba90b, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 92.0287
+      value: 89.6426
       objectReference: {fileID: 0}
     - target: {fileID: 3461043747582037491, guid: 9049c717d9c116442b6497aa14dba90b, type: 3}
       propertyPath: m_SizeDelta.y
@@ -2695,7 +2740,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3461043747582037491, guid: 9049c717d9c116442b6497aa14dba90b, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 7.9713
+      value: 10.357391
       objectReference: {fileID: 0}
     - target: {fileID: 3461043747582037491, guid: 9049c717d9c116442b6497aa14dba90b, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -2715,11 +2760,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8471957653898796754, guid: 9049c717d9c116442b6497aa14dba90b, type: 3}
       propertyPath: m_fontSize
-      value: 41
+      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 8471957653898796754, guid: 9049c717d9c116442b6497aa14dba90b, type: 3}
       propertyPath: m_fontSizeBase
-      value: 41
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 8471957653898796754, guid: 9049c717d9c116442b6497aa14dba90b, type: 3}
+      propertyPath: m_enableWordWrapping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8471957653898796754, guid: 9049c717d9c116442b6497aa14dba90b, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

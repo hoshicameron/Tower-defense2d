@@ -99,6 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEventChannel: {fileID: 11400000, guid: 10873237d104ac140a24ae58ad3d1bc8, type: 2}
+  gameStateEventChannel: {fileID: 11400000, guid: 3cf8db33b991c04439e69513c2b375b0, type: 2}
   spriteRenderer: {fileID: 3864688550702489331}
   collider: {fileID: 0}
   sensorTemplate: {fileID: 0}

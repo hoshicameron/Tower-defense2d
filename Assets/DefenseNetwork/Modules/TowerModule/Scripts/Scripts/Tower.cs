@@ -1,16 +1,16 @@
 using System;
-using DefenseNetwork.Core.EventChannels.DataObjects;
-using DefenseNetwork.Core.EventChannels.DataObjects.Enums;
 using DefenseNetwork.CoreTowerDefense.DataRequestObjects;
+using DefenseNetwork.CoreTowerDefense.Enums;
+using DefenseNetwork.CoreTowerDefense.ScriptableObjects;
+using DefenseNetwork.Modules.CommonBehavioursModule.Scripts.Interfaces;
 using DefenseNetwork.Modules.TowerModule.Scripts.Scripts.ScriptableObjects;
 using GameSystemsCookbook;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.Serialization;
 
 namespace DefenseNetwork.Modules.TowerModule.Scripts.Scripts
 {
-    public class Tower : MonoBehaviour
+    public class Tower : MonoBehaviour, ISelectable
     {
         [Header("Channel")] 
         [SerializeField] private TowerModificationRequestEventChannelSO towerModifyChannel;
@@ -119,12 +119,12 @@ namespace DefenseNetwork.Modules.TowerModule.Scripts.Scripts
             }
         }
 
-        private void OnMouseUp()
+        /*private void OnMouseUp()
         {
-            TowerSelected();
-        }
+            Select();
+        }*/
 
-        private void TowerSelected()
+        public void Select()
         {
             if (!IsTowerAtMaxLevel())
                 onTowerSelected?.Invoke(towerDataSo.Upgrades[towerLevel].UpgradeCost);

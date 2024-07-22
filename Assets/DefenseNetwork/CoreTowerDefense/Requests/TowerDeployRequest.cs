@@ -1,4 +1,5 @@
 ﻿using DefenseNetwork.Core.EventChannels.DataObjects.Enums;
+using DefenseNetwork.CoreTowerDefense.Enums;
 using UnityEngine;
 
 namespace DefenseNetwork.CoreTowerDefense.DataRequestObjects

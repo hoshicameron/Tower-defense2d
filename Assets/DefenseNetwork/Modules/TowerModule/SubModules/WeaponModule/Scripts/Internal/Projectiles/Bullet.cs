@@ -22,6 +22,8 @@ namespace DefenseNetwork.Modules.TowerModule.SubModules.WeaponModule.Scripts.Int
         
         protected override void Update()
         {
+            if(canMove == false)    return;
+            
             directionalMover.Move(Time.deltaTime);
             sensor.Detect();
         }

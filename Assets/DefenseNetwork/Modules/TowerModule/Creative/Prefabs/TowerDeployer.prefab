@@ -44,6 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc682806b68edb04eb74ece7757e15a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  towerDeployChannel: {fileID: 11400000, guid: 029329836a19fee448042ce57629a45c, type: 2}
+  "towerDeploy\u064FSuccessChannel": {fileID: 11400000, guid: 029329836a19fee448042ce57629a45c, type: 2}
   bulletTowerPrefab: {fileID: 4846813566057244275, guid: 95820de97c0d5f640bf0178272f34653, type: 3}
   missileTowerPrefab: {fileID: 1932436626237114805, guid: 343bbd324edc54747bf5680784d6eafe, type: 3}

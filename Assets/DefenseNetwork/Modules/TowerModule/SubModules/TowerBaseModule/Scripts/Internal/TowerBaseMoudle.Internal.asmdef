@@ -2,7 +2,9 @@
     "name": "TowerBaseMoudle.Internal",
     "rootNamespace": "",
     "references": [
-        "GUID:94b7cdd5a70be2743898287b07edc668"
+        "GUID:94b7cdd5a70be2743898287b07edc668",
+        "GUID:50c7081e62efd31438e250d4c416ad7b",
+        "GUID:9f447afce7e79854391524121b0cafde"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

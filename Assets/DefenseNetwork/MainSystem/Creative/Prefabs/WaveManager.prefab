@@ -49,6 +49,5 @@ MonoBehaviour:
   enemySpawnRequestChannel: {fileID: 11400000, guid: 063bc2fbf32160a4794fbe6284016a2f, type: 2}
   enemyDestroyedEventChannel: {fileID: 11400000, guid: 475832e6bc8622240af902b617abb43a, type: 2}
   waveProgressEventChannel: {fileID: 11400000, guid: 695f5efe7885c564b8432c6dfb4d34a6, type: 2}
-  pauseEventChannel: {fileID: 11400000, guid: 0896a102b9908de45a3d2fa944a5c77e, type: 2}
-  resumeEventChannel: {fileID: 11400000, guid: 3cebabdd6a6633242887de4a1b157e8d, type: 2}
+  gameStateEventChannel: {fileID: 11400000, guid: 3cf8db33b991c04439e69513c2b375b0, type: 2}
   waveData: {fileID: 11400000, guid: 8db446a374f825345bd2c8eb3e11c00b, type: 2}

@@ -1,9 +1,9 @@
-﻿using DefenseNetwork.Core.EventChannels.DataObjects;
-using DefenseNetwork.CoreTowerDefense.DataRequestObjects;
-using DefenseNetwork.CoreTowerDefense.Requests;
+﻿using DefenseNetwork.CoreTowerDefense.Requests;
+using DefenseNetwork.CoreTowerDefense.ScriptableObjects;
+using GameSystemsCookbook;
 using UnityEditor;
 
-namespace GameSystemsCookbook
+namespace DefenseNetwork.CoreTowerDefense.Editor
 {
     [CustomEditor(typeof(TowerDataRequestEventChannelSO))]
     public class TowerDataRequestEventChannelSOEditor : GenericEventChannelSOEditor<TowerDataRequest>

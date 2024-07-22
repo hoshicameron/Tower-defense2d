@@ -1,4 +1,6 @@
-﻿using GameSystemsCookbook;
+﻿using DefenseNetwork.CoreTowerDefense.Enums;
+using DefenseNetwork.CoreTowerDefense.ScriptableObjects;
+using GameSystemsCookbook;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,8 +13,12 @@ namespace DefenseNetwork.Modules.UIModule.Views.GamePlayView.Scripts
         [SerializeField] private IntEventChannelSO goldEventChannel;
         [SerializeField] private IntEventChannelSO playerHealthEventChannel;
         [SerializeField] private StringEventChannelSO waveDataEventChannel;
-        [SerializeField] private VoidEventChannelSO pauseGameEventChannel;
+        [SerializeField] private GameStateEventChannelSO gameStateEventChannel;
+        [SerializeField] private GameObjectEventChannelSO selectionChannel;
 
+        [Space] 
+        [SerializeField] private Button closeTowerViewsButton;
+        
         [Space] [Header("Header Panel")] 
         [SerializeField] private TextMeshProUGUI playerHealthText;
         [SerializeField] private TextMeshProUGUI waveText;
@@ -25,9 +31,15 @@ namespace DefenseNetwork.Modules.UIModule.Views.GamePlayView.Scripts
             playerHealthEventChannel.OnEventRaised += UpdatePlayerHealthText;
             waveDataEventChannel.OnEventRaised += UpdateWaveText;
             
-            pauseButton.onClick.AddListener(() => pauseGameEventChannel.RaiseEvent());
+            pauseButton.onClick.AddListener(() => gameStateEventChannel.RaiseEvent(GameState.Paused));
+            closeTowerViewsButton.onClick.AddListener(CloseAllViews);
         }
-        
+
+        private void CloseAllViews()
+        {
+            selectionChannel.RaiseEvent(gameObject);
+        }
+
         private void OnDisable()
         {
             goldEventChannel.OnEventRaised -= UpdateGoldText;

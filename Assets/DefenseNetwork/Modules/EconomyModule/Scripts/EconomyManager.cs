@@ -1,7 +1,7 @@
 ﻿using System;
-using DefenseNetwork.Core.EventChannels.DataObjects;
-using DefenseNetwork.Core.EventChannels.DataObjects.Enums;
 using DefenseNetwork.CoreTowerDefense.DataRequestObjects;
+using DefenseNetwork.CoreTowerDefense.Enums;
+using DefenseNetwork.CoreTowerDefense.ScriptableObjects;
 using GameSystemsCookbook;
 using UnityEngine;
 
@@ -32,7 +32,7 @@ namespace DefenseNetwork.Modules.EconomyModule.Scripts
 
         private void Awake()
         {
-            currentGold = initialGold;
+            CurrentGold = initialGold;
         }
 
         private void OnEnable()

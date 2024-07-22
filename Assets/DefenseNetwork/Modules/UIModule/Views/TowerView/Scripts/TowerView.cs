@@ -1,14 +1,15 @@
-﻿using GameSystemsCookbook;
+﻿using DefenseNetwork.Modules.UIModule.GamePlay.TowerView.Scripts;
+using GameSystemsCookbook;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-namespace DefenseNetwork.Modules.UIModule.GamePlay.TowerView.Scripts
+namespace DefenseNetwork.Modules.UIModule.Views.TowerView.Scripts
 {
     public class TowerView : MonoBehaviour
     {
         [Header("Event Channel")]
-        [SerializeField] private GameObjectEventChannelSO towerSelectionChannel;
+        [SerializeField] private GameObjectEventChannelSO selectionChannel;
         [Header("UI")]
         [SerializeField] private CanvasGroup towerSpotCanvas;
         [SerializeField] private Button closeButton;
@@ -20,12 +21,12 @@ namespace DefenseNetwork.Modules.UIModule.GamePlay.TowerView.Scripts
 
         private void OnEnable()
         {
-            towerSelectionChannel.OnEventRaised += TowerSelected;
+            selectionChannel.OnEventRaised += TowerSelected;
         }
 
         private void OnDisable()
         {
-            towerSelectionChannel.OnEventRaised -= TowerSelected;
+            selectionChannel.OnEventRaised -= TowerSelected;
         }
 
         private void Start()
@@ -66,7 +67,7 @@ namespace DefenseNetwork.Modules.UIModule.GamePlay.TowerView.Scripts
             towerSpotCanvas.alpha = 1;
             towerSpotCanvas.interactable = true;
             towerSpotCanvas.blocksRaycasts = true;
-            towerSelectionChannel.RaiseEvent(gameObject);
+            selectionChannel.RaiseEvent(gameObject);
         }
 
         public void ShowTowerPanelWithUpgrade(int upgradeCost)

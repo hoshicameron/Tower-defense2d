@@ -230,7 +230,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 1741036223
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!114 &8923163681893701292
 MonoBehaviour:
@@ -254,7 +254,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &8288562131139437053
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -284,7 +284,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d18c84708fa24541bd7332497e581103, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  towerSelectionChannel: {fileID: 11400000, guid: f0f85dda4b51b294595ad618bfd4f842, type: 2}
+  selectionChannel: {fileID: 11400000, guid: 2cef63e433daaf945b009fa24fd3ebe6, type: 2}
   towerDataRequestEventChannel: {fileID: 11400000, guid: 1ad679481de80d943808832b4de55971, type: 2}
   towerSpotCanvas: {fileID: 8261307168301390227}
   towerDeployPanel: {fileID: 9007928957381173075}

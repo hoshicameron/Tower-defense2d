@@ -1,14 +1,16 @@
 using System;
-using DefenseNetwork.Core.EventChannels.DataObjects;
 using DefenseNetwork.Core.EventChannels.DataObjects.Enums;
 using DefenseNetwork.CoreTowerDefense.DataRequestObjects;
-using GameSystemsCookbook;
+using DefenseNetwork.CoreTowerDefense.Enums;
+using DefenseNetwork.CoreTowerDefense.ScriptableObjects;
+using DefenseNetwork.Modules.CommonBehavioursModule.Scripts.Interfaces;
 using UnityEngine;
 using UnityEngine.Events;
 
+
 namespace DefenseNetwork.Modules.EnvironmentModule.Scripts
 {
-    public class TowerSpot : MonoBehaviour
+    public class TowerSpot : MonoBehaviour, ISelectable
     {
         [Header("Channel")] 
         [SerializeField] private TowerDeployRequestEventChannelSO towerDeployRequestEventChannel;
@@ -16,7 +18,7 @@ namespace DefenseNetwork.Modules.EnvironmentModule.Scripts
         [Header("Events")]
         [SerializeField] public UnityEvent onTowerSpotSelected;
         
-        private void OnMouseUp()
+        public void Select()
         {
             onTowerSpotSelected?.Invoke();
         }

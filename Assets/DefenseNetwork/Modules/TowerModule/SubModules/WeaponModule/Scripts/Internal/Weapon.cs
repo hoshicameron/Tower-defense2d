@@ -1,4 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using DefenseNetwork.CoreTowerDefense.Enums;
+using DefenseNetwork.CoreTowerDefense.ScriptableObjects;
 using DefenseNetwork.Modules.CommonBehavioursModule.Scripts.ScriptableObjects.Rotators;
 using DefenseNetwork.Modules.TowerModule.SubModules.WeaponModule.Scripts.Internal.ScriptableObjects.Data;
 using DefenseNetwork.Modules.TowerModule.SubModules.WeaponModule.Scripts.Internal.ScriptableObjects.Functionality;
@@ -10,7 +13,10 @@ namespace DefenseNetwork.Modules.TowerModule.SubModules.WeaponModule.Scripts.Int
     [RequireComponent(typeof(SpriteRenderer))]
     public class Weapon : MonoBehaviour
     {
-        [Header("Behaviours")]
+        [Header("Event Channel")] [SerializeField]
+        private GameStateEventChannelSO gameStateEventChannel;
+        
+        [Space][Header("Behaviours")]
         [SerializeField] private TargetRotator targetRotatorTemplate;
 
         [SerializeField] private ProjectileSpawner projectileSpawnerTemplate;
@@ -32,12 +38,42 @@ namespace DefenseNetwork.Modules.TowerModule.SubModules.WeaponModule.Scripts.Int
         private ProjectileSpawner projectileSpawner;
         private Coroutine shootRoutine;
 
+        private bool isWeaponOperational = true;
+
         public bool IsShooting { get; private set; }
 
         private void Awake()
         {
             if (spriteRenderer == null)
                 spriteRenderer = GetComponent<SpriteRenderer>();
+        }
+
+        private void OnEnable()
+        {
+            gameStateEventChannel.OnEventRaised += HandleGameStateChange;
+        }
+
+        private void OnDisable()
+        {
+            gameStateEventChannel.OnEventRaised -= HandleGameStateChange;
+        }
+
+        private void HandleGameStateChange(GameState state)
+        {
+            switch (state)
+            {
+                case GameState.Playing:
+                    isWeaponOperational = true;
+                    break;
+                case GameState.Paused:
+                case GameState.Won:
+                case GameState.Lost:
+                    isWeaponOperational = false;
+                    StopShooting();
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(state), state, null);
+            }
         }
 
         private void Start()
@@ -56,6 +92,7 @@ namespace DefenseNetwork.Modules.TowerModule.SubModules.WeaponModule.Scripts.Int
 
         private void Update()
         {
+            if(isWeaponOperational == false)    return;
             if(target == null)  return;
                 
             RotateTowardsTarget();

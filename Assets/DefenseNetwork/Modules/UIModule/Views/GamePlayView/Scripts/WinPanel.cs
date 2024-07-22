@@ -1,4 +1,6 @@
-﻿using GameSystemsCookbook;
+﻿using DefenseNetwork.CoreTowerDefense.Enums;
+using DefenseNetwork.CoreTowerDefense.ScriptableObjects;
+using GameSystemsCookbook;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,7 +9,7 @@ namespace DefenseNetwork.Modules.UIModule.Views.GamePlayView.Scripts
     public class WinPanel : HidablePanel
     {
         [Space] [Header("Event Channel")] 
-        [SerializeField] private VoidEventChannelSO winChannel;
+        [SerializeField] private GameStateEventChannelSO gameStateEventChannel;
         [SerializeField] private VoidEventChannelSO exitToMenuEventChannel;
         [SerializeField] private VoidEventChannelSO continueGameEventChannel;
             
@@ -18,12 +20,17 @@ namespace DefenseNetwork.Modules.UIModule.Views.GamePlayView.Scripts
         private void OnEnable()
         {
             Initialize();
-            winChannel.OnEventRaised += Show;
+            gameStateEventChannel.OnEventRaised += HandleGameStateChange;
         }
 
         private void OnDisable()
         {
-            winChannel.OnEventRaised -= Show;
+            gameStateEventChannel.OnEventRaised -= HandleGameStateChange;
+        }
+        
+        private void HandleGameStateChange(GameState state)
+        {
+            if(state == GameState.Won)   Show();
         }
 
         private void Initialize()

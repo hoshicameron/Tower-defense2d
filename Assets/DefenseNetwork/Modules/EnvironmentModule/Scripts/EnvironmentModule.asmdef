@@ -1,4 +1,18 @@
 {
-	"name": "EnvironmentModule",
-	"references":[ "GUID:50c7081e62efd31438e250d4c416ad7b", "GUID:9f447afce7e79854391524121b0cafde" ]
+    "name": "EnvironmentModule",
+    "rootNamespace": "",
+    "references": [
+        "GUID:50c7081e62efd31438e250d4c416ad7b",
+        "GUID:9f447afce7e79854391524121b0cafde",
+        "GUID:fc0dd6a45887d2143b1073104a385a00"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
 }

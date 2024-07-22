@@ -1,4 +1,7 @@
-﻿using GameSystemsCookbook;
+﻿using System;
+using DefenseNetwork.CoreTowerDefense.Enums;
+using DefenseNetwork.CoreTowerDefense.ScriptableObjects;
+using GameSystemsCookbook;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -6,9 +9,8 @@ namespace DefenseNetwork.Modules.UIModule.Views.GamePlayView.Scripts
 {
     public class PausePanel : HidablePanel
     {
-        [Space][Header("Event Channel")] 
-        [SerializeField] private VoidEventChannelSO pauseGameEventChannel;
-        [SerializeField] private VoidEventChannelSO resumeGameEventChannel;
+        [Space] [Header("Event Channel")] 
+        [SerializeField] private GameStateEventChannelSO gameStateEventChannel;
         [SerializeField] private BoolEventChannelSO musicChannel;
         [SerializeField] private BoolEventChannelSO sfxChannel;
         [SerializeField] private VoidEventChannelSO exitToMenuEventChannel;
@@ -24,12 +26,16 @@ namespace DefenseNetwork.Modules.UIModule.Views.GamePlayView.Scripts
         private void OnEnable()
         {
             Initialize();
-            pauseGameEventChannel.OnEventRaised += Show;
+            gameStateEventChannel.OnEventRaised += HandleGameStateChange;
         }
-
         private void OnDisable()
         {
-            pauseGameEventChannel.OnEventRaised -= Show;
+            gameStateEventChannel.OnEventRaised += HandleGameStateChange;
+        }
+        
+        private void HandleGameStateChange(GameState state)
+        {
+            if(state == GameState.Paused)   Show();
         }
 
         private void Initialize()
@@ -44,17 +50,9 @@ namespace DefenseNetwork.Modules.UIModule.Views.GamePlayView.Scripts
         
         private void HandleSFXToggle(bool value) => sfxChannel.RaiseEvent(value);
         private void HandleToggleMusic(bool value) => musicChannel.RaiseEvent(value);
-        
-
-        private void PauseGame()
-        {
-            pauseGameEventChannel.RaiseEvent();
-            Show();
-        }
-
         private void ResumeGame()
         {
-            resumeGameEventChannel.RaiseEvent();
+            gameStateEventChannel.RaiseEvent(GameState.Playing);
             Hide();
         }
     }

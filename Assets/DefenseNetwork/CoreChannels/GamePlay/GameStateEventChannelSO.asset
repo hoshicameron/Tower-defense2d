@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30bfe8d95a54f418fa3389c23cff5a3a, type: 3}
-  m_Name: TowerViewSelectionChannel
+  m_Script: {fileID: 11500000, guid: 3427cd8db9fc4a4c9a36d1a7e2614287, type: 3}
+  m_Name: GameStateEventChannelSO
   m_EditorClassIdentifier: 
-  m_Description: Handle tower panel selection.
+  m_Description: 

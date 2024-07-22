@@ -1,7 +1,10 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using DefenseNetwork.Core.EventChannels.DataObjects;
 using DefenseNetwork.CoreTowerDefense.DataRequestObjects;
+using DefenseNetwork.CoreTowerDefense.Enums;
+using DefenseNetwork.CoreTowerDefense.ScriptableObjects;
 using DefenseNetwork.MainSystem.Scripts.ScriptableObjects;
 using GameSystemsCookbook;
 using UnityEngine;
@@ -16,8 +19,7 @@ namespace DefenseNetwork.MainSystem.Scripts
         [SerializeField] private EnemySpawnRequestChannelSO enemySpawnRequestChannel;
         [SerializeField] private GameObjectEventChannelSO enemyDestroyedEventChannel;
         [SerializeField] private StringEventChannelSO waveProgressEventChannel;
-        [SerializeField] private VoidEventChannelSO pauseEventChannel;
-        [SerializeField] private VoidEventChannelSO resumeEventChannel;
+        [SerializeField] private GameStateEventChannelSO gameStateEventChannel;
         
         [Space]
         [Header("Data")]
@@ -39,15 +41,29 @@ namespace DefenseNetwork.MainSystem.Scripts
         {
             Initialize();
             enemyDestroyedEventChannel.OnEventRaised += HandleEnemyDestroyed;
-            pauseEventChannel.OnEventRaised += PauseWave;
-            resumeEventChannel.OnEventRaised += ResumeWave;
+            gameStateEventChannel.OnEventRaised += HandleGameStateChange;
         }
-
         private void OnDisable()
         {
             enemyDestroyedEventChannel.OnEventRaised -= HandleEnemyDestroyed;
-            pauseEventChannel.OnEventRaised -= PauseWave;
-            resumeEventChannel.OnEventRaised -= ResumeWave;
+            gameStateEventChannel.OnEventRaised -= HandleGameStateChange;
+        }
+        
+        private void HandleGameStateChange(GameState state)
+        {
+            switch (state)
+            {
+                case GameState.Playing:
+                    ResumeWave();
+                    break;
+                case GameState.Paused:
+                case GameState.Won:
+                case GameState.Lost:
+                    PauseWave();
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(state), state, null);
+            }
         }
         
         private void Initialize()
@@ -83,8 +99,9 @@ namespace DefenseNetwork.MainSystem.Scripts
             for (; currentSpawnInfoIndex < wave.SpawnInfos.Count; currentSpawnInfoIndex++)
             {
                 var spawnInfo = wave.SpawnInfos[currentSpawnInfoIndex];
-                for (; currentEnemyIndex < spawnInfo.Count; currentEnemyIndex++)
+                while (currentEnemyIndex < spawnInfo.Count)
                 {
+                    currentEnemyIndex++;
                     enemySpawnRequestChannel.RaiseEvent(new EnemySpawnRequest 
                     { 
                         EnemyToSpawn = spawnInfo.EnemyToSpawn,
@@ -97,7 +114,7 @@ namespace DefenseNetwork.MainSystem.Scripts
                 yield return new WaitForSeconds(spawnInfo.DelayAfterGroup);
             }
             isSpawning = false;
-            currentSpawnInfoIndex = 0; 
+            //currentSpawnInfoIndex = 0; 
         }
         
         private void AddEnemyToActiveList(GameObject enemy)
@@ -109,19 +126,16 @@ namespace DefenseNetwork.MainSystem.Scripts
         private void HandleEnemyDestroyed(GameObject destroyedEnemy)
         {
             activeEnemies.Remove(destroyedEnemy);
-        
-            if (activeEnemies.Count == 0 && !isSpawning)
-            {
-                waveEndEventChannel.RaiseEvent();
+
+            if (activeEnemies.Count != 0 || isSpawning) return;
             
-                if (!IsLastWave)
-                {
-                    StartNextWave();
-                }
-            }
+            waveEndEventChannel.RaiseEvent();
+            
+            if (!IsLastWave)
+                StartNextWave();
         }
-        
-        public void PauseWave()
+
+        private void PauseWave()
         {
             if (currentWaveCoroutine == null) return;
     
@@ -130,13 +144,12 @@ namespace DefenseNetwork.MainSystem.Scripts
             isSpawning = false;
         }
 
-        public void ResumeWave()
+        private void ResumeWave()
         {
-            if (currentWaveIndex >= 0 && currentWaveIndex < waveData.Waves.Count)
-            {
-                currentWaveCoroutine = StartCoroutine(SpawnWave(waveData.Waves[currentWaveIndex]));
-                isSpawning = true;
-            }
+            if (currentWaveIndex < 0 || currentWaveIndex >= waveData.Waves.Count) return;
+            
+            currentWaveCoroutine = StartCoroutine(SpawnWave(waveData.Waves[currentWaveIndex]));
+            isSpawning = true;
         }
         
         private void ResetWaveState()

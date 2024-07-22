@@ -12,7 +12,7 @@ TagManager:
   - Water
   - UI
   - FlyingEnemy
-  - 
+  - Selectable
   - 
   - 
   - 
@@ -53,15 +53,18 @@ TagManager:
   - name: TowerSpot
     uniqueID: 1817415529
     locked: 0
-  - name: Tower
-    uniqueID: 2701948823
+  - name: EnemyView
+    uniqueID: 3692096213
     locked: 0
   - name: Projectile
     uniqueID: 1048530629
     locked: 0
-  - name: TowerUI
+  - name: Tower
+    uniqueID: 2701948823
+    locked: 0
+  - name: TowerView
     uniqueID: 1741036223
     locked: 0
-  - name: EnemyUI
-    uniqueID: 3692096213
+  - name: GamePlayView
+    uniqueID: 3072682759
     locked: 0

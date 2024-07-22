@@ -1,8 +1,8 @@
-﻿using DefenseNetwork.Core.EventChannels.DataObjects;
-using DefenseNetwork.CoreTowerDefense.DataTransferObjects;
+﻿using DefenseNetwork.CoreTowerDefense.DataTransferObjects;
+using GameSystemsCookbook;
 using UnityEngine;
 
-namespace GameSystemsCookbook
+namespace DefenseNetwork.CoreTowerDefense.ScriptableObjects
 {
     /// <summary>
     /// This event channel broadcasts and carries HitDTO payload.

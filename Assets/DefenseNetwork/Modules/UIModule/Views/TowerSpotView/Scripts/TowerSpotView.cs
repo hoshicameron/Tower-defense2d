@@ -2,18 +2,20 @@
 using System.Linq;
 using DefenseNetwork.Core.EventChannels.DataObjects.Enums;
 using DefenseNetwork.CoreTowerDefense.Requests;
+using DefenseNetwork.CoreTowerDefense.ScriptableObjects;
+using DefenseNetwork.Modules.UIModule.GamePlay.TowerSpotView.Scripts;
 using GameSystemsCookbook;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 using Utilities;
 
-namespace DefenseNetwork.Modules.UIModule.GamePlay.TowerSpotView.Scripts
+namespace DefenseNetwork.Modules.UIModule.Views.TowerSpotView.Scripts
 {
     public class TowerSpotView : MonoBehaviour
     {
         [Header("Event Channel")]
-        [SerializeField] private GameObjectEventChannelSO towerSelectionChannel;
+        [SerializeField] private GameObjectEventChannelSO selectionChannel;
         [SerializeField] private TowerDataRequestEventChannelSO towerDataRequestEventChannel;
         
         [Space] [Header("UI")]
@@ -29,12 +31,12 @@ namespace DefenseNetwork.Modules.UIModule.GamePlay.TowerSpotView.Scripts
         private List<ITowerData> towerDatas;
         private void OnEnable()
         {
-            towerSelectionChannel.OnEventRaised += TowerSelected;
+            selectionChannel.OnEventRaised += TowerSelected;
         }
 
         private void OnDisable()
         {
-            towerSelectionChannel.OnEventRaised -= TowerSelected;
+            selectionChannel.OnEventRaised -= TowerSelected;
         }
         
         private void TowerSelected(GameObject selectedGameObject)
@@ -90,7 +92,7 @@ namespace DefenseNetwork.Modules.UIModule.GamePlay.TowerSpotView.Scripts
             towerSpotCanvas.alpha = 1;
             towerSpotCanvas.interactable = true;
             towerSpotCanvas.blocksRaycasts = true;
-            towerSelectionChannel.RaiseEvent(gameObject);
+            selectionChannel.RaiseEvent(gameObject);
         }
     }
 }

@@ -41,7 +41,6 @@ namespace DefenseNetwork.Modules.TowerModule.SubModules.TowerBaseModule.Scripts.
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            
             if (((1 << other.gameObject.layer) & targetLayerMask) == 0) return;
             detectedTargets.Add(other.transform);
             UpdateClosestTarget();

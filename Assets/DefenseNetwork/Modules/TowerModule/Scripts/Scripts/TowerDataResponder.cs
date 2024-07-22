@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using DefenseNetwork.CoreTowerDefense.Requests;
+using DefenseNetwork.CoreTowerDefense.ScriptableObjects;
 using DefenseNetwork.Modules.TowerModule.Scripts.Scripts.ScriptableObjects;
 using GameSystemsCookbook;
 using UnityEngine;

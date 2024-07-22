@@ -133,6 +133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 459963932a7d4cfeae23a7182cb4e2a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameStateEventChannel: {fileID: 11400000, guid: 3cf8db33b991c04439e69513c2b375b0, type: 2}
   bodyRenderer: {fileID: 4991232339360143092}
   onTargetDetected:
     m_PersistentCalls:

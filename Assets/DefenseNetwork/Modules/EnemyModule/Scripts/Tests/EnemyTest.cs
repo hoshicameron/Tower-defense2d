@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using DefenseNetwork.Core.EventChannels.DataObjects;
 using DefenseNetwork.CoreTowerDefense.DataTransferObjects;
+using DefenseNetwork.CoreTowerDefense.ScriptableObjects;
 using GameSystemsCookbook;
 using UnityEngine;
 

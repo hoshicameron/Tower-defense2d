@@ -1,8 +1,9 @@
-﻿using DefenseNetwork.Core.EventChannels.DataObjects;
-using DefenseNetwork.CoreTowerDefense.Requests;
+﻿using DefenseNetwork.CoreTowerDefense.Requests;
+using DefenseNetwork.CoreTowerDefense.ScriptableObjects;
+using GameSystemsCookbook;
 using UnityEditor;
 
-namespace GameSystemsCookbook
+namespace DefenseNetwork.CoreTowerDefense.Editor
 {
     [CustomEditor(typeof(PathRequestEventChannelSO))]
     public class PathRequestEventChannelSOEditor : GenericEventChannelSOEditor<PathRequest>

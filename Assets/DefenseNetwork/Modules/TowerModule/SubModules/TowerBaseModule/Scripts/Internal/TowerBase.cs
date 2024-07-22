@@ -1,4 +1,7 @@
 ﻿#nullable enable
+using System;
+using DefenseNetwork.CoreTowerDefense.Enums;
+using DefenseNetwork.CoreTowerDefense.ScriptableObjects;
 using DefenseNetwork.Modules.TowerModule.SubModules.TowerBaseModule.Scripts.Internal.ScriptableObjects.Datas;
 using UnityEngine;
 using UnityEngine.Events;
@@ -8,11 +11,11 @@ namespace DefenseNetwork.Modules.TowerModule.SubModules.TowerBaseModule.Scripts.
     [RequireComponent(typeof(TowerSensorProxy))]
     public class TowerBase : MonoBehaviour
     {
+        [Header("Event Channel")] 
+        [SerializeField] private GameStateEventChannelSO gameStateEventChannel;
+        
         [Header("Components")]
         [SerializeField] private SpriteRenderer bodyRenderer;
-        
-        /*[Space][Header("Behaviours")]
-        [SerializeField] private TowerSensor towerSensorTemplate;*/
         
         [Space][Header("Events")]
         [SerializeField] public UnityEvent<Transform?> onTargetDetected;
@@ -26,6 +29,39 @@ namespace DefenseNetwork.Modules.TowerModule.SubModules.TowerBaseModule.Scripts.
         {
             towerSensorProxy = GetComponent<TowerSensorProxy>();
         }
+
+        private void OnEnable()
+        {
+            gameStateEventChannel.OnEventRaised += HandleGameStateChange;
+        }
+        
+        private void OnDisable()
+        {
+            gameStateEventChannel.OnEventRaised -= HandleGameStateChange;
+        }
+
+        private void HandleGameStateChange(GameState state)
+        {
+            switch (state)
+            {
+                case GameState.Playing:
+                    EnableSensor();
+                    break;
+                case GameState.Paused:
+                case GameState.Won:
+                case GameState.Lost:
+                    DisableSensor();
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(state), state, null);
+            }
+        }
+
+        
+
+        private void DisableSensor() => towerSensorProxy.enabled = false;
+
+        private void EnableSensor() => towerSensorProxy.enabled = true;
 
         private void Start()
         {

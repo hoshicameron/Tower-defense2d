@@ -2,6 +2,7 @@ using System;
 using DefenseNetwork.Core.EventChannels.DataObjects;
 using DefenseNetwork.Core.EventChannels.DataObjects.Enums;
 using DefenseNetwork.CoreTowerDefense.DataRequestObjects;
+using DefenseNetwork.CoreTowerDefense.ScriptableObjects;
 using GameSystemsCookbook;
 using UnityEngine;
 

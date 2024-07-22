@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using DefenseNetwork.Core.EventChannels.DataObjects;
 using DefenseNetwork.CoreTowerDefense.Requests;
+using DefenseNetwork.CoreTowerDefense.ScriptableObjects;
 using GameSystemsCookbook;
 using UnityEngine;
+using Utilities;
 
 namespace DefenseNetwork.Modules.EnemyModule.Scripts
 {
@@ -29,8 +30,8 @@ namespace DefenseNetwork.Modules.EnemyModule.Scripts
         {
             var pathRequest = new PathRequest
             {
-                StartPosition = startPoint.position,
-                EndPosition = endPoint.position
+                StartPosition = startPoint.GetWorldPositionFromHighestParent(),
+                EndPosition = endPoint.GetWorldPositionFromHighestParent()
             };
             pathRequest.OnRequestResult += HandlePathResult; 
             

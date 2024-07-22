@@ -1,11 +1,11 @@
-﻿using DefenseNetwork.Core.EventChannels.DataObjects;
-using DefenseNetwork.CoreTowerDefense.DataRequestObjects;
+﻿using DefenseNetwork.CoreTowerDefense.DataRequestObjects;
+using GameSystemsCookbook;
 using UnityEngine;
 
-namespace GameSystemsCookbook
+namespace DefenseNetwork.CoreTowerDefense.ScriptableObjects
 {
     /// <summary>
-    /// This event channel broadcasts and carries EnemySpawnRequestDTO payload.
+    /// This event channel broadcasts and carries EnemySpawnRequest payload.
     /// </summary>
     [CreateAssetMenu(fileName = "EnemySpawnRequestChannelSO", menuName = "Events/EnemySpawnRequestChannelSO")]
     public class EnemySpawnRequestChannelSO : GenericEventChannelSO<EnemySpawnRequest>

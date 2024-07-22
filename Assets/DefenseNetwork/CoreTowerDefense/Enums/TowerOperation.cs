@@ -1,4 +1,4 @@
-﻿namespace DefenseNetwork.Core.EventChannels.DataObjects.Enums
+﻿namespace DefenseNetwork.CoreTowerDefense.Enums
 {
     public enum TowerOperation
     {

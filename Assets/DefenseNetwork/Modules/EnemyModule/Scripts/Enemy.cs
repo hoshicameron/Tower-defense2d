@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
-using DefenseNetwork.Core.EventChannels.DataObjects;
+﻿using System;
+using System.Collections.Generic;
 using DefenseNetwork.CoreTowerDefense.DataTransferObjects;
+using DefenseNetwork.CoreTowerDefense.Enums;
+using DefenseNetwork.CoreTowerDefense.ScriptableObjects;
 using DefenseNetwork.Modules.CommonBehavioursModule.Scripts.ScriptableObjects;
 using DefenseNetwork.Modules.CommonBehavioursModule.Scripts.ScriptableObjects.Movers;
 using DefenseNetwork.Modules.CommonBehavioursModule.Scripts.ScriptableObjects.Rotators;
@@ -18,6 +20,7 @@ namespace DefenseNetwork.Modules.EnemyModule.Scripts
         [SerializeField] private HitEventChannelSO hitEventChannel;
         [SerializeField] private GameObjectEventChannelSO enemyDestroyedEventChannel;
         [SerializeField] private IntEventChannelSO enemyDestroyedRewardEventChannel;
+        [SerializeField] private GameStateEventChannelSO gameStateEventChannel;
         
         [Space] [Header("Data")] 
         [SerializeField] private EnemyDataSO enemyDataSo;
@@ -42,6 +45,8 @@ namespace DefenseNetwork.Modules.EnemyModule.Scripts
         private DirectionalMover directionalMover;
         private DirectionalRotator directionalRotator;
         private int currentWaypointIndex;
+
+        private bool canMove = true;
         private void OnEnable()
         {
             health = Instantiate(healthTemplate);
@@ -50,12 +55,33 @@ namespace DefenseNetwork.Modules.EnemyModule.Scripts
             health.Initialize(enemyDataSo.Health);
             
             hitEventChannel.OnEventRaised += Hit;
+            
+            gameStateEventChannel.OnEventRaised += HandleGameStateChange;
         }
         private void OnDisable()
         {
             hitEventChannel.OnEventRaised -= Hit;
             health.OnDeath -= Death;
             health.OnHealthChanged -= HealthChanged;
+            
+            gameStateEventChannel.OnEventRaised -= HandleGameStateChange;
+        }
+        
+        private void HandleGameStateChange(GameState state)
+        {
+            switch (state)
+            {
+                case GameState.Playing:
+                    canMove = true;
+                    break;
+                case GameState.Paused:
+                case GameState.Won:
+                case GameState.Lost:
+                    canMove = false;
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(state), state, null);
+            }
         }
         
         private void HealthChanged(int currentHealth, int maxHealth) => onHealthChanged?.Invoke(currentHealth,maxHealth);
@@ -94,6 +120,7 @@ namespace DefenseNetwork.Modules.EnemyModule.Scripts
 
         private void Update()
         {
+            if(canMove == false)    return;
             if(movementPath == null || movementPath.Count==0)   return;
             
             if (currentWaypointIndex < movementPath.Count)
