@@ -15,10 +15,16 @@ namespace GameSystemsCookbook
     {
         // Event for the Editor script 
         public System.Action ItemsChanged;
+        
+        // New event to notify when the set becomes empty
+        public System.Action OnSetBecameEmpty;
 
         [Header("Optional")]
         [Tooltip("Notify other objects this Runtime Set has changed")]
         [SerializeField, Optional] private VoidEventChannelSO m_RuntimeSetUpdated;
+        
+        [Tooltip("Notify other objects when this Runtime Set becomes empty")]
+        [SerializeField, Optional] private VoidEventChannelSO m_RuntimeSetBecameEmpty;
 
         // Use the Items to track a list of GameObjects at runtime.
         public List<GameObject> Items { get; set; } = new();
@@ -48,20 +54,38 @@ namespace GameSystemsCookbook
 
             if (m_RuntimeSetUpdated != null)
                 m_RuntimeSetUpdated.RaiseEvent();
+            
 
             ItemsChanged?.Invoke();
+            
+            if (Items.Count == 0)
+            {
+                OnSetBecameEmpty?.Invoke();
+                if (m_RuntimeSetBecameEmpty != null)
+                    m_RuntimeSetBecameEmpty.RaiseEvent();
+            }
 
         }
 
         // Reset the list
         public void Clear()
         {
+            bool wasNotEmpty = Items.Count > 0;
+            
             Items.Clear();
 
             if (m_RuntimeSetUpdated != null)
                 m_RuntimeSetUpdated.RaiseEvent();
 
             ItemsChanged?.Invoke();
+            
+            // If the set wasn't empty before clearing, raise the empty event
+            if (wasNotEmpty)
+            {
+                OnSetBecameEmpty?.Invoke();
+                if (m_RuntimeSetBecameEmpty != null)
+                    m_RuntimeSetBecameEmpty.RaiseEvent();
+            }
         }
 
         // Clean up any items after the list is cleared

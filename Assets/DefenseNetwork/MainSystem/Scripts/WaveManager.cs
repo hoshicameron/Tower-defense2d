@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
-using DefenseNetwork.CoreTowerDefense.DataRequestObjects;
 using DefenseNetwork.CoreTowerDefense.Enums;
 using DefenseNetwork.CoreTowerDefense.ScriptableObjects;
 using DefenseNetwork.MainSystem.Scripts.ScriptableObjects;
@@ -14,24 +12,21 @@ namespace DefenseNetwork.MainSystem.Scripts
     {
         [Header("Event Channel")]
         [SerializeField] private VoidEventChannelSO waveEndEventChannel;
-        [SerializeField] private EnemySpawnRequestChannelSO enemySpawnRequestChannel;
-        [SerializeField] private GameObjectEventChannelSO enemyDestroyedEventChannel;
+        [SerializeField] private GameObjectEventChannelSO enemySpawnChannel;
         [SerializeField] private StringEventChannelSO waveProgressEventChannel;
         [SerializeField] private GameStateEventChannelSO gameStateEventChannel;
         [SerializeField] private VoidEventChannelSO startGameChannel;
+        [SerializeField] private VoidEventChannelSO enemyGameObjectRuntimeSetBecameEmptyChannel;
         
         [Space]
         [Header("Data")]
         [SerializeField] private WaveDataSO waveData;
-        
-
         private bool IsLastWave => currentWaveIndex >= waveData.Waves.Count - 1;
         
         private int currentSpawnInfoIndex;
         private int currentEnemyIndex;
         private int currentWaveIndex;
         
-        private List<GameObject> activeEnemies = new();
         private Coroutine currentWaveCoroutine;
         
         private bool isSpawning;
@@ -39,14 +34,15 @@ namespace DefenseNetwork.MainSystem.Scripts
         private void OnEnable()
         {
             Initialize();
-            enemyDestroyedEventChannel.OnEventRaised += HandleEnemyDestroyed;
+            
             gameStateEventChannel.OnEventRaised += HandleGameStateChange;
             startGameChannel.OnEventRaised += StartSpawnEnemies;
+            enemyGameObjectRuntimeSetBecameEmptyChannel.OnEventRaised += CurrentWaveSpawnedEnemyDestroyed;
         }
         private void OnDisable()
         {
-            enemyDestroyedEventChannel.OnEventRaised -= HandleEnemyDestroyed;
             gameStateEventChannel.OnEventRaised -= HandleGameStateChange;
+            enemyGameObjectRuntimeSetBecameEmptyChannel.OnEventRaised -= CurrentWaveSpawnedEnemyDestroyed;
         }
         
         private void StartSpawnEnemies()
@@ -101,11 +97,7 @@ namespace DefenseNetwork.MainSystem.Scripts
                 while (currentEnemyIndex < spawnInfo.Count)
                 {
                     currentEnemyIndex++;
-                    enemySpawnRequestChannel.RaiseEvent(new EnemySpawnRequest 
-                    { 
-                        EnemyToSpawn = spawnInfo.EnemyToSpawn,
-                        onEnemySpawned = AddEnemyToActiveList
-                    });
+                    enemySpawnChannel.RaiseEvent(spawnInfo.EnemyToSpawn);
 
                     yield return new WaitForSeconds(spawnInfo.DelayBetweenSpawns);
                 }
@@ -114,23 +106,20 @@ namespace DefenseNetwork.MainSystem.Scripts
             }
             isSpawning = false;
         }
-        
-        private void AddEnemyToActiveList(GameObject enemy)
+        private void CurrentWaveSpawnedEnemyDestroyed()
         {
-            enemy.name += activeEnemies.Count;
-            activeEnemies.Add(enemy);
-        }
-
-        private void HandleEnemyDestroyed(GameObject destroyedEnemy)
-        {
-            activeEnemies.Remove(destroyedEnemy);
-
-            if (activeEnemies.Count != 0 || isSpawning) return;
+            if(isSpawning)  return;
             
             waveEndEventChannel.RaiseEvent();
-            
+
             if (!IsLastWave)
-                StartNextWave();
+                StartCoroutine(DelayCoroutine());
+        }
+
+        private IEnumerator DelayCoroutine()
+        {
+            yield return new WaitForSeconds(waveData.DelayBetweenWaves);
+            StartNextWave();
         }
 
         private void PauseWave()
@@ -138,6 +127,7 @@ namespace DefenseNetwork.MainSystem.Scripts
             if (currentWaveCoroutine == null) return;
     
             StopCoroutine(currentWaveCoroutine);
+            StopAllCoroutines();
             currentWaveCoroutine = null;
             isSpawning = false;
         }

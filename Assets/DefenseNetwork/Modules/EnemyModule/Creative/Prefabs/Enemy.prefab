@@ -96,6 +96,7 @@ MonoBehaviour:
   enemyDestroyedEventChannel: {fileID: 11400000, guid: 475832e6bc8622240af902b617abb43a, type: 2}
   enemyDestroyedRewardEventChannel: {fileID: 11400000, guid: b3c693ee252d47f42af82e611ef941b0, type: 2}
   gameStateEventChannel: {fileID: 11400000, guid: 3cf8db33b991c04439e69513c2b375b0, type: 2}
+  enemyGameObjectRuntimeSet: {fileID: 11400000, guid: b8ccea1555e618944aafdc0d9a84a4d9, type: 2}
   enemyDataSo: {fileID: 0}
   spriteRenderer: {fileID: 6235027211226348386}
   bodyTransform: {fileID: 122265280369909719}
@@ -191,7 +192,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1593018473
-  m_SortingLayer: 5
+  m_SortingLayer: 7
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 2650c1ab55e380949b5b576bd69192b5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

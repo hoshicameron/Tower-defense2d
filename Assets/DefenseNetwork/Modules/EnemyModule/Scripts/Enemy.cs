@@ -18,9 +18,11 @@ namespace DefenseNetwork.Modules.EnemyModule.Scripts
         [Header("Event Channel")] 
         [SerializeField] private VoidEventChannelSO reachedPlayerBaseEventChannel;
         [SerializeField] private HitEventChannelSO hitEventChannel;
-        [SerializeField] private GameObjectEventChannelSO enemyDestroyedEventChannel;
         [SerializeField] private IntEventChannelSO enemyDestroyedRewardEventChannel;
         [SerializeField] private GameStateEventChannelSO gameStateEventChannel;
+
+        [Header("RunTimeSet")] 
+        [SerializeField] private GameObjectRuntimeSetSO enemyGameObjectRuntimeSet;
         
         [Space] [Header("Data")] 
         [SerializeField] private EnemyDataSO enemyDataSo;
@@ -35,7 +37,6 @@ namespace DefenseNetwork.Modules.EnemyModule.Scripts
         [SerializeField] private HealthBehaviour healthTemplate;
         [SerializeField] private float rotationOffset;
         
-
         [Space]
         [Header("Events")]
         public UnityEvent<int, int> onHealthChanged;
@@ -57,6 +58,7 @@ namespace DefenseNetwork.Modules.EnemyModule.Scripts
             hitEventChannel.OnEventRaised += Hit;
             
             gameStateEventChannel.OnEventRaised += HandleGameStateChange;
+            enemyGameObjectRuntimeSet.Add(gameObject);
         }
         private void OnDisable()
         {
@@ -65,6 +67,7 @@ namespace DefenseNetwork.Modules.EnemyModule.Scripts
             health.onHealthChanged -= HealthChanged;
             
             gameStateEventChannel.OnEventRaised -= HandleGameStateChange;
+            enemyGameObjectRuntimeSet.Remove(gameObject);
         }
         
         private void HandleGameStateChange(GameState state)
@@ -87,7 +90,6 @@ namespace DefenseNetwork.Modules.EnemyModule.Scripts
         private void HealthChanged(int currentHealth, int maxHealth) => onHealthChanged?.Invoke(currentHealth,maxHealth);
         private void Death()
         {
-            enemyDestroyedEventChannel.RaiseEvent(gameObject);
             enemyDestroyedRewardEventChannel.RaiseEvent(enemyDataSo.RewardGoldAmount);
             Destroy(gameObject);
         }
@@ -137,7 +139,6 @@ namespace DefenseNetwork.Modules.EnemyModule.Scripts
             else
             {
                 reachedPlayerBaseEventChannel.RaiseEvent();
-                enemyDestroyedEventChannel.RaiseEvent(gameObject);
                 Destroy(gameObject);
             }
         }

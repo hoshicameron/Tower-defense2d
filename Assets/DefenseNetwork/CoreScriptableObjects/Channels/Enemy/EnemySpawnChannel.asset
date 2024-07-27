@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f9df0916b15841faa4cf8f73cf887f66, type: 3}
-  m_Name: EnemySpawnRequestChannelSO
+  m_Script: {fileID: 11500000, guid: 30bfe8d95a54f418fa3389c23cff5a3a, type: 3}
+  m_Name: EnemySpawnChannel
   m_EditorClassIdentifier: 
-  m_Description: Transmit enemy spawn request.
+  m_Description: 

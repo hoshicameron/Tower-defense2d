@@ -9,7 +9,7 @@ namespace DefenseNetwork.Modules.EnemyModule.Scripts
     public class EnemySpawner : MonoBehaviour
     {
         [Header("Event Channel")]
-        [SerializeField] private EnemySpawnRequestChannelSO enemySpawnRequestChannel;
+        [SerializeField] private GameObjectEventChannelSO enemySpawnChannel;
         
         [Space]
         [Header("Components")]
@@ -24,20 +24,18 @@ namespace DefenseNetwork.Modules.EnemyModule.Scripts
 
         private void OnEnable()
         {
-            enemySpawnRequestChannel.OnEventRaised += SpawnEnemy;
+            enemySpawnChannel.OnEventRaised += SpawnEnemy;
         }
 
         private void OnDisable()
         {
-            enemySpawnRequestChannel.OnEventRaised -= SpawnEnemy;
+            enemySpawnChannel.OnEventRaised -= SpawnEnemy;
         }
 
-        private void SpawnEnemy(EnemySpawnRequest spawnRequest)
+        private void SpawnEnemy(GameObject enemyToSpawn)
         {
-            
-            var newEnemy = Instantiate(gameObjectEnemyDict[spawnRequest.EnemyToSpawn], transform.position, Quaternion.identity);
-            newEnemy.Initialize(pathRequester.CurrentPath);
-            spawnRequest.onEnemySpawned?.Invoke(newEnemy.gameObject);
+            var newEnemy = Instantiate(enemyToSpawn, transform.position, Quaternion.identity);
+            newEnemy.GetComponent<Enemy>().Initialize(pathRequester.CurrentPath);
         }
 
         private void Start()

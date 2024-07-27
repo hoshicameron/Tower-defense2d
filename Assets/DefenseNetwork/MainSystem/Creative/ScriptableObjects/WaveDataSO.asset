@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06e33f4853b04e859f9e572c613f8cac, type: 3}
   m_Name: WaveDataSO
   m_EditorClassIdentifier: 
-  <DelayBetweenWaves>k__BackingField: 4
+  <DelayBetweenWaves>k__BackingField: 1
   <Waves>k__BackingField:
   - <SpawnInfos>k__BackingField:
     - <EnemyToSpawn>k__BackingField: {fileID: 1880789894201258090, guid: 9e47f3957f232924783978df56ec86f7, type: 3}
@@ -24,11 +24,11 @@ MonoBehaviour:
       <DelayBetweenSpawns>k__BackingField: 1
       <DelayAfterGroup>k__BackingField: 1
   - <SpawnInfos>k__BackingField:
-    - <EnemyToSpawn>k__BackingField: {fileID: 6457570068740502534, guid: 9f61204396e0c2643942d8a1998a1589, type: 3}
+    - <EnemyToSpawn>k__BackingField: {fileID: 7803257185303010625, guid: 7cafe278c7d3de84ca63c92d88ac98c6, type: 3}
       <Count>k__BackingField: 5
       <DelayBetweenSpawns>k__BackingField: 1
       <DelayAfterGroup>k__BackingField: 1
-    - <EnemyToSpawn>k__BackingField: {fileID: 7803257185303010625, guid: 7cafe278c7d3de84ca63c92d88ac98c6, type: 3}
+    - <EnemyToSpawn>k__BackingField: {fileID: 6457570068740502534, guid: 9f61204396e0c2643942d8a1998a1589, type: 3}
       <Count>k__BackingField: 5
       <DelayBetweenSpawns>k__BackingField: 1
       <DelayAfterGroup>k__BackingField: 1

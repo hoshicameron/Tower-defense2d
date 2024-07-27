@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91939820d3fa4d008bd4fbaa877345be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemySpawnRequestChannel: {fileID: 11400000, guid: 063bc2fbf32160a4794fbe6284016a2f, type: 2}
+  enemySpawnChannel: {fileID: 11400000, guid: 0b2455819b318ba42997a83fe679aa59, type: 2}
   pathRequester: {fileID: 8941462116142355813}
   availableEnemies:
   - {fileID: 2708333464684691287, guid: 7cafe278c7d3de84ca63c92d88ac98c6, type: 3}

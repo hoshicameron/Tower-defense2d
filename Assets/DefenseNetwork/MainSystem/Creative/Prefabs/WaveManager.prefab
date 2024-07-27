@@ -45,9 +45,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waveEndEventChannel: {fileID: 11400000, guid: 992f9993b5fb3c24f9fb227fe24adc3b, type: 2}
-  enemySpawnRequestChannel: {fileID: 11400000, guid: 063bc2fbf32160a4794fbe6284016a2f, type: 2}
-  enemyDestroyedEventChannel: {fileID: 11400000, guid: 475832e6bc8622240af902b617abb43a, type: 2}
+  enemySpawnChannel: {fileID: 11400000, guid: 0b2455819b318ba42997a83fe679aa59, type: 2}
   waveProgressEventChannel: {fileID: 11400000, guid: 695f5efe7885c564b8432c6dfb4d34a6, type: 2}
   gameStateEventChannel: {fileID: 11400000, guid: 3cf8db33b991c04439e69513c2b375b0, type: 2}
   startGameChannel: {fileID: 11400000, guid: d787cd78ba3f8694694c76c5d8113ecb, type: 2}
+  enemyGameObjectRuntimeSetBecameEmptyChannel: {fileID: 11400000, guid: f475eb9bce92ee04c8900ad34a2f7f79, type: 2}
   waveData: {fileID: 11400000, guid: 8db446a374f825345bd2c8eb3e11c00b, type: 2}

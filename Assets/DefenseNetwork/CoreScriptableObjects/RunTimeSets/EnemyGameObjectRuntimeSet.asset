@@ -9,7 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21db6cfa13856624282e702665253c8c, type: 3}
-  m_Name: EnemyHittedEventChannelSO
+  m_Script: {fileID: 11500000, guid: 6a25f2b2fd768466f9c42da6b7d57e63, type: 3}
+  m_Name: EnemyGameObjectRuntimeSet
   m_EditorClassIdentifier: 
-  m_Description: A channel for transmiting enemy hit data.
+  m_Description: 
+  m_RuntimeSetUpdated: {fileID: 0}
+  m_RuntimeSetBecameEmpty: {fileID: 11400000, guid: f475eb9bce92ee04c8900ad34a2f7f79, type: 2}
