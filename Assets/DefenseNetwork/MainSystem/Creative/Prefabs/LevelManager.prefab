@@ -41,9 +41,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 3251370256639554975}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a8693060afc543dd99e6221ecb8765c7, type: 3}
+  m_Script: {fileID: 11500000, guid: a7d4356343cf164458c3a7f5ee8df857, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  exitToMenuEventChannel: {fileID: 11400000, guid: 461ead66bfef1544a9be62d9bd9d41f1, type: 2}
+  showMainMenuEventChannel: {fileID: 11400000, guid: 461ead66bfef1544a9be62d9bd9d41f1, type: 2}
   restartLevelEventChannel: {fileID: 11400000, guid: 26947a5a533733a4d96a49eb6b9cd63c, type: 2}
   continueGameEventChannel: {fileID: 11400000, guid: 721434c053b5ff5459d52dd3beeeb221, type: 2}
+  showGameplayEventChannel: {fileID: 11400000, guid: 3ae1c24dc4b4bed4289243e44c34a622, type: 2}
+  mainMenuSceneName: MainMenuScene
+  gameplaySceneName: GamePlayScene

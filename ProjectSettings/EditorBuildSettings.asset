@@ -4,5 +4,14 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/DefenseNetwork/MainSystem/Creative/Scenes/SplashScreenScene.unity
+    guid: c885939b30db0c144bf04521177a3cc8
+  - enabled: 1
+    path: Assets/DefenseNetwork/MainSystem/Creative/Scenes/MainMenuScene.unity
+    guid: 2e6f62f7f473d2d46a8c9dfe8fcd0404
+  - enabled: 1
+    path: Assets/DefenseNetwork/MainSystem/Creative/Scenes/GamePlayScene.unity
+    guid: b7b62a07e686cad46bcecf83415a699b
   m_configObjects: {}

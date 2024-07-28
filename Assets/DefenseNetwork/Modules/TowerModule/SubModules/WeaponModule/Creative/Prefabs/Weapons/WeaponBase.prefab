@@ -72,7 +72,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1593018473
-  m_SortingLayer: 5
+  m_SortingLayer: 7
   m_SortingOrder: 1
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -98,6 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameStateEventChannel: {fileID: 11400000, guid: 3cf8db33b991c04439e69513c2b375b0, type: 2}
+  audioEffectEventChannel: {fileID: 11400000, guid: a32f7fe37d00b9049b67ec1d52691f83, type: 2}
   targetRotatorTemplate: {fileID: 11400000, guid: e09317f120f84b84382e849c97a15a85, type: 2}
   projectileSpawnerTemplate: {fileID: 11400000, guid: b3bde328e60a9fe4fa84e2533337d21e, type: 2}
   spriteRenderer: {fileID: 5798617794516551685}
