@@ -7,7 +7,7 @@ namespace GameSystemsCookbook
     /// <summary>
     /// Simple class for logging Build Settings scene paths to the console.
     /// </summary>
-    [InitializeOnLoad]
+    /*[InitializeOnLoad]
     public class ScenePathDebugger
     {
         // Toggle to true to enable behavior
@@ -31,5 +31,5 @@ namespace GameSystemsCookbook
                 Debug.Log("index: " + i + "  path: " + scenes[i].path);
             }
         }
-    }
+    }*/
 }

@@ -16,3 +16,4 @@ MonoBehaviour:
   <DelayBetweenShoots>k__BackingField: 0.9
   <BulletPrefab>k__BackingField: {fileID: 3630195854333113602, guid: 0160346c2465f9242a805402e7e1dbca, type: 3}
   <Sprite>k__BackingField: {fileID: 21300000, guid: df3158204b0d1be45963d56cd6922e10, type: 3}
+  <ShootAudioClip>k__BackingField: {fileID: 8300000, guid: af70fa65ece9db34485ad405eeaef764, type: 3}

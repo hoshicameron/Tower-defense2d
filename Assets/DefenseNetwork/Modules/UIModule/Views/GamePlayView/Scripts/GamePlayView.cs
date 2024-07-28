@@ -9,12 +9,12 @@ namespace DefenseNetwork.Modules.UIModule.Views.GamePlayView.Scripts
 {
     public class GamePlayView : MonoBehaviour
     {
-        [Header("Event Channel")] 
+        
         [SerializeField] private IntEventChannelSO goldEventChannel;
         [SerializeField] private IntEventChannelSO playerHealthEventChannel;
         [SerializeField] private StringEventChannelSO waveDataEventChannel;
         [SerializeField] private GameStateEventChannelSO gameStateEventChannel;
-        [SerializeField] private GameObjectEventChannelSO selectionChannel;
+        
 
         [Space] [Header("Header Panel")] 
         [SerializeField] private TextMeshProUGUI playerHealthText;
@@ -28,8 +28,15 @@ namespace DefenseNetwork.Modules.UIModule.Views.GamePlayView.Scripts
             playerHealthEventChannel.OnEventRaised += UpdatePlayerHealthText;
             waveDataEventChannel.OnEventRaised += UpdateWaveText;
             
-            pauseButton.onClick.AddListener(() => gameStateEventChannel.RaiseEvent(GameState.Paused));
+            pauseButton.onClick.AddListener(PauseGame);
         }
+
+        private void PauseGame()
+        {
+            
+            gameStateEventChannel.RaiseEvent(GameState.Paused);
+        }
+
         private void OnDisable()
         {
             goldEventChannel.OnEventRaised -= UpdateGoldText;

@@ -11,6 +11,8 @@ namespace DefenseNetwork.Modules.EnemyModule.Scripts.ScriptableObjects.Data
         [field:SerializeField] public Sprite Sprite { get; private set; }
         [field:SerializeField] public string LayerName { get; private set; }
         [field:SerializeField] public int RewardGoldAmount { get; private set; }
+        [field:SerializeField] public AudioClip ImpactSound { get; private set; }
+        [field:SerializeField] public AudioClip DeathSound { get; private set; }
         
         public int EnemyLayer => LayerMask.NameToLayer(LayerName);
     }

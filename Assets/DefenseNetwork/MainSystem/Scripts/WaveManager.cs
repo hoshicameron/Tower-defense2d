@@ -42,6 +42,7 @@ namespace DefenseNetwork.MainSystem.Scripts
         private void OnDisable()
         {
             gameStateEventChannel.OnEventRaised -= HandleGameStateChange;
+            startGameChannel.OnEventRaised -= StartSpawnEnemies;
             enemyGameObjectRuntimeSetBecameEmptyChannel.OnEventRaised -= CurrentWaveSpawnedEnemyDestroyed;
         }
         

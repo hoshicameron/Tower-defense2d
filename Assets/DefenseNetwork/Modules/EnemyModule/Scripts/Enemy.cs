@@ -20,6 +20,7 @@ namespace DefenseNetwork.Modules.EnemyModule.Scripts
         [SerializeField] private HitEventChannelSO hitEventChannel;
         [SerializeField] private IntEventChannelSO enemyDestroyedRewardEventChannel;
         [SerializeField] private GameStateEventChannelSO gameStateEventChannel;
+        [SerializeField] private AudioEventChannelSO soundEffectEventChannel;
 
         [Header("RunTimeSet")] 
         [SerializeField] private GameObjectRuntimeSetSO enemyGameObjectRuntimeSet;
@@ -87,10 +88,17 @@ namespace DefenseNetwork.Modules.EnemyModule.Scripts
             }
         }
         
-        private void HealthChanged(int currentHealth, int maxHealth) => onHealthChanged?.Invoke(currentHealth,maxHealth);
+        private void HealthChanged(int currentHealth, int maxHealth)
+        {
+            if(enemyDataSo.ImpactSound != null) soundEffectEventChannel.RaiseEvent(enemyDataSo.ImpactSound);
+            
+            onHealthChanged?.Invoke(currentHealth, maxHealth);
+        }
+
         private void Death()
         {
             enemyDestroyedRewardEventChannel.RaiseEvent(enemyDataSo.RewardGoldAmount);
+            if (enemyDataSo.DeathSound != null) soundEffectEventChannel.RaiseEvent(enemyDataSo.DeathSound);
             Destroy(gameObject);
         }
 

@@ -9,6 +9,8 @@ namespace DefenseNetwork.Modules.TowerModule.Scripts.Scripts.ScriptableObjects
     public class TowerDataSO : ScriptableObject
     {
         [field:SerializeField] public List<TowerData> Upgrades { get; private set; }
+        [field:SerializeField] public AudioClip UpgradeAudioClip { get; private set; }
+        [field:SerializeField] public AudioClip SellAudioClip { get; private set; }
 
         public ITowerData BaseTowerData => Upgrades[0];
 

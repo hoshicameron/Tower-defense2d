@@ -10,5 +10,6 @@ namespace DefenseNetwork.Modules.TowerModule.SubModules.WeaponModule.Scripts.Int
         [field:SerializeField] public float DelayBetweenShoots { get; private set; } = 5;
         [field:SerializeField] public ProjectileBase BulletPrefab { get; private set; }
         [field:SerializeField] public Sprite Sprite { get; private set; }
+        [field:SerializeField] public AudioClip ShootAudioClip { get; private set; }
     }
 }

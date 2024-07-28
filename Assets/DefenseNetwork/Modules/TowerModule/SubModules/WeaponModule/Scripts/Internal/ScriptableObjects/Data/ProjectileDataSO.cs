@@ -11,6 +11,7 @@ namespace DefenseNetwork.Modules.TowerModule.SubModules.WeaponModule.Scripts.Int
         [field:SerializeField]public float RotationSpeed { get; private set; }
         [field:SerializeField]public LayerMask DetectionLayer { get; private set; }
         [field:SerializeField] public Sprite Sprite { get; set; }
+        [field:SerializeField] public GameObject ImpactEffect { get; private set; }
         
     }
 }

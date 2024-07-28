@@ -70,6 +70,10 @@ namespace DefenseNetwork.Modules.TowerModule.SubModules.WeaponModule.Scripts.Int
             onCollide?.Invoke(detectedObject);
             
             hitEventChannel.RaiseEvent(new HitDTO{HittedObject = detectedObject,Damage = ProjectileDataSo.Damage});
+
+            if (ProjectileDataSo.ImpactEffect != null)
+                Instantiate(ProjectileDataSo.ImpactEffect, transform.position, Quaternion.identity);
+            
             DestroyBullet();
         }
 

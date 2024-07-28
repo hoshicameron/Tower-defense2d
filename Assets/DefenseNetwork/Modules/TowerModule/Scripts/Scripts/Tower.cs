@@ -16,11 +16,12 @@ namespace DefenseNetwork.Modules.TowerModule.Scripts.Scripts
         [SerializeField] private TowerModificationRequestEventChannelSO towerModifyChannel;
         [SerializeField] private IntEventChannelSO goldUpdateEventChannel;
         [SerializeField] private Vector2EventChannelSO towerSpotDeployPositionEventChannel;
-        [Space]
-        [Header("Data")]
+        [SerializeField] private AudioEventChannelSO soundEffectChannel;
+        
+        [Space] [Header("Data")]
         [SerializeField] private TowerDataSO towerDataSo;
-        [Space]
-        [Header("Events")]
+        
+        [Space] [Header("Events")]
         [SerializeField] public UnityEvent<int> onTowerSelected;
         [SerializeField] public UnityEvent onTowerSelectedWhileMax;
         [SerializeField] public UnityEvent<bool> onPointUpdated;
@@ -77,6 +78,8 @@ namespace DefenseNetwork.Modules.TowerModule.Scripts.Scripts
             {
                 case RequestResult.Succeed:
                     Debug.Log(message);
+                    if (towerDataSo.UpgradeAudioClip != null)
+                        soundEffectChannel.RaiseEvent(towerDataSo.UpgradeAudioClip);
                     Destroy(towerInternal);
                     InstantiateTowerInternals(towerDataSo.Upgrades[++towerLevel].Prefab);
                     break;
@@ -108,6 +111,9 @@ namespace DefenseNetwork.Modules.TowerModule.Scripts.Scripts
             {
                 case RequestResult.Succeed:
                     Debug.Log(message);
+                    
+                    if (towerDataSo.SellAudioClip != null) soundEffectChannel.RaiseEvent(towerDataSo.SellAudioClip);
+                    
                     towerSpotDeployPositionEventChannel.RaiseEvent(transform.position);
                     Destroy(gameObject);
                     break;

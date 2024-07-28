@@ -5,6 +5,7 @@ using DefenseNetwork.CoreTowerDefense.ScriptableObjects;
 using DefenseNetwork.Modules.CommonBehavioursModule.Scripts.ScriptableObjects.Rotators;
 using DefenseNetwork.Modules.TowerModule.SubModules.WeaponModule.Scripts.Internal.ScriptableObjects.Data;
 using DefenseNetwork.Modules.TowerModule.SubModules.WeaponModule.Scripts.Internal.ScriptableObjects.Functionality;
+using GameSystemsCookbook;
 using JetBrains.Annotations;
 using UnityEngine;
 
@@ -13,8 +14,9 @@ namespace DefenseNetwork.Modules.TowerModule.SubModules.WeaponModule.Scripts.Int
     [RequireComponent(typeof(SpriteRenderer))]
     public class Weapon : MonoBehaviour
     {
-        [Header("Event Channel")] [SerializeField]
-        private GameStateEventChannelSO gameStateEventChannel;
+        [Header("Event Channel")] 
+        [SerializeField] private GameStateEventChannelSO gameStateEventChannel;
+        [SerializeField] private AudioEventChannelSO audioEffectEventChannel; 
         
         [Space][Header("Behaviours")]
         [SerializeField] private TargetRotator targetRotatorTemplate;
@@ -87,7 +89,13 @@ namespace DefenseNetwork.Modules.TowerModule.SubModules.WeaponModule.Scripts.Int
             targetRotator.Initialize(transform, weaponDataSo.TurnSpeed);
 
             projectileSpawner = Instantiate(projectileSpawnerTemplate);
-            projectileSpawner.Initialize(projectileSpawnPositions , weaponDataSo.BulletPrefab, weaponDataSo.DelayBetweenShoots);
+            
+            projectileSpawner.Initialize(
+                projectileSpawnPositions ,
+                weaponDataSo.BulletPrefab,
+                weaponDataSo.DelayBetweenShoots,
+                () => audioEffectEventChannel.RaiseEvent(weaponDataSo.ShootAudioClip)
+                );
         }
 
         private void Update()
