@@ -3,7 +3,7 @@
 namespace DefenseNetwork.Modules.CommonBehavioursModule.Scripts.ScriptableObjects.Movers
 {
     [CreateAssetMenu(fileName = "FollowTarget Mover", menuName = "Gameplay/Behaviours/Movers/FollowTarget Mover")]
-    public class FollowTargetTargetMover : TargetMover
+    public class FollowTargetMover : TargetMover
     {
         private const float MaxTurnRate = 360f;
         private Vector2 lastDirection;
